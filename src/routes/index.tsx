@@ -1,49 +1,55 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/wirkstatt/hero.jpg";
 import review1 from "@/assets/wirkstatt/review1.png";
 import review2 from "@/assets/wirkstatt/review2.png";
 import review3 from "@/assets/wirkstatt/review3.png";
 import review4 from "@/assets/wirkstatt/review4.png";
 import review5 from "@/assets/wirkstatt/review5.png";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { services, SITE_URL } from "@/data/services";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Wirkstattnatur — Personal Training, Pilates & Massagen in Thalwil & Horgen" },
+      { name: "description", content: "Personal Training, Pilates, Golf-Fitness, Karate und Massagen mit Urs Gremlich in Thalwil & Horgen. Individuell begleitet — für mehr Kraft, Beweglichkeit und Lebensqualität." },
+      { property: "og:title", content: "Wirkstattnatur — Personal Training in Thalwil & Horgen" },
+      { property: "og:description", content: "Individuelles Training, das zu deinem Leben passt. Kraft, Mobilität, Entspannung." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
+    ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: "Wirkstattnatur",
+        image: `${SITE_URL}/og.jpg`,
+        telephone: "+41794131830",
+        email: "info@wirkstattnatur.ch",
+        url: SITE_URL,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Zürcherstrasse 73",
+          postalCode: "8800",
+          addressLocality: "Thalwil",
+          addressCountry: "CH",
+        },
+        areaServed: ["Thalwil", "Horgen", "Zürichsee", "Zürich"],
+      }),
+    }],
+  }),
   component: Home,
 });
-
-const services = [
-  { title: "Personal Training", desc: "Individuelle Trainingspläne, die zu deinem Alltag und Tempo passen.", num: "01" },
-  { title: "Pilates", desc: "Kontrolle, Atmung, Beweglichkeit — für einen stabilen, starken Körper.", num: "02" },
-  { title: "Golf-Fitness", desc: "Mehr Länge, weniger Verletzungen. Kraft und Rotation für dein Spiel.", num: "03" },
-  { title: "Karate", desc: "Disziplin und Bewegung im traditionellen Karate — für Körper und Geist.", num: "04" },
-  { title: "Massagen", desc: "Gezielte Massage zur Regeneration nach Training oder anstrengendem Alltag.", num: "05" },
-  { title: "Just Me", desc: "Zeit nur für dich — Bewegung, Entspannung und persönliche Begleitung.", num: "06" },
-];
 
 const reviews = [review1, review2, review3, review4, review5];
 
 function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* NAV */}
-      <header className="absolute top-0 left-0 right-0 z-20">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
-          <a href="#top" className="font-display text-xl font-semibold tracking-tight text-primary-foreground drop-shadow">
-            Wirkstatt<span className="text-accent">natur</span>
-          </a>
-          <div className="hidden gap-8 text-sm font-medium text-primary-foreground/90 md:flex">
-            <a href="#angebot" className="hover:text-accent">Angebot</a>
-            <a href="#ueber" className="hover:text-accent">Über</a>
-            <a href="#stimmen" className="hover:text-accent">Stimmen</a>
-            <a href="#kontakt" className="hover:text-accent">Kontakt</a>
-          </div>
-          <a
-            href="tel:+41794131830"
-            className="hidden rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-lg transition hover:brightness-95 md:inline-flex"
-          >
-            079 413 18 30
-          </a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       {/* HERO */}
       <section id="top" className="relative isolate overflow-hidden">
@@ -56,8 +62,9 @@ function Home() {
             <span className="h-px w-10 bg-accent" />
             Personal Training · Thalwil & Horgen
           </p>
-          <h1 className="max-w-4xl font-display text-5xl font-500 leading-[1.02] text-primary-foreground sm:text-6xl lg:text-8xl">
-            Bewegung, die <em className="not-italic text-accent">wirkt</em> — <br className="hidden sm:block" />
+          <h1 className="max-w-4xl font-display text-5xl leading-[1.02] text-primary-foreground sm:text-6xl lg:text-8xl">
+            Bewegung, die <em className="not-italic text-accent">wirkt</em> —{" "}
+            <br className="hidden sm:block" />
             im Rhythmus deines Lebens.
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-primary-foreground/85 lg:text-xl">
@@ -65,12 +72,12 @@ function Home() {
             der zu deinem Alltag, deiner Verfassung und deinen Zielen passt.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#kontakt" className="rounded-full bg-accent px-8 py-4 text-base font-semibold text-accent-foreground shadow-xl transition hover:brightness-95">
+            <Link to="/kontakt" className="rounded-full bg-accent px-8 py-4 text-base font-semibold text-accent-foreground shadow-xl transition hover:brightness-95">
               Kennenlerngespräch buchen
-            </a>
-            <a href="#angebot" className="rounded-full border border-primary-foreground/40 bg-primary-foreground/10 px-8 py-4 text-base font-semibold text-primary-foreground backdrop-blur transition hover:bg-primary-foreground/20">
+            </Link>
+            <Link to="/angebot" className="rounded-full border border-primary-foreground/40 bg-primary-foreground/10 px-8 py-4 text-base font-semibold text-primary-foreground backdrop-blur transition hover:bg-primary-foreground/20">
               Angebot ansehen
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -128,14 +135,18 @@ function Home() {
           </div>
           <div className="grid gap-px overflow-hidden rounded-3xl bg-primary-foreground/10 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
-              <article key={s.title} className="group relative flex flex-col justify-between gap-10 bg-primary p-8 transition hover:bg-primary-foreground/5 lg:p-10">
+              <Link
+                key={s.slug}
+                to={`/angebot/${s.slug}` as string}
+                className="group relative flex flex-col justify-between gap-10 bg-primary p-8 transition hover:bg-primary-foreground/5 lg:p-10"
+              >
                 <span className="font-display text-sm text-accent">{s.num}</span>
                 <div>
                   <h3 className="font-display text-2xl lg:text-3xl">{s.title}</h3>
-                  <p className="mt-4 text-primary-foreground/70">{s.desc}</p>
+                  <p className="mt-4 text-primary-foreground/70">{s.short}</p>
                 </div>
-                <span className="text-accent opacity-0 transition group-hover:opacity-100">→ mehr erfahren</span>
-              </article>
+                <span className="text-accent opacity-70 transition group-hover:opacity-100">→ mehr erfahren</span>
+              </Link>
             ))}
           </div>
         </div>
@@ -149,6 +160,9 @@ function Home() {
           Wenn Bewegung, Gesundheit und Entspannung zusammenkommen,
           <em className="text-primary"> verändert sich mehr als nur die Fitness.</em>»
         </blockquote>
+        <Link to="/ueber-mich" className="mt-10 inline-flex rounded-full border border-border px-7 py-3.5 text-sm font-semibold">
+          Mehr über mich
+        </Link>
       </section>
 
       {/* TESTIMONIALS */}
@@ -159,14 +173,9 @@ function Home() {
               <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">Kundenstimmen</p>
               <h2 className="font-display text-4xl leading-tight lg:text-5xl">Was andere sagen.</h2>
             </div>
-            <a
-              href="https://www.google.ch/maps/place/Wirkstattnatur+-+Personal+Training+GolfFitness+Pilates+%26+Massage/"
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm font-semibold text-primary underline underline-offset-4 hover:text-accent-foreground"
-            >
-              Alle Rezensionen auf Google Maps →
-            </a>
+            <Link to="/stimmen" className="text-sm font-semibold text-primary underline underline-offset-4 hover:text-accent-foreground">
+              Alle Stimmen ansehen →
+            </Link>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {reviews.map((src, i) => (
@@ -221,13 +230,7 @@ function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-6 py-8 text-sm text-muted-foreground lg:flex-row lg:px-10">
-          <p>© {new Date().getFullYear()} Wirkstattnatur · Urs Gremlich</p>
-          <p>Personal Training · Pilates · Golf-Fitness · Karate · Massagen</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
