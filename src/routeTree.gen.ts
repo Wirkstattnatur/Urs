@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AngebotPersonalTrainingRouteImport } from './routes/angebot.personal-training'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AngebotPersonalTrainingRoute = AngebotPersonalTrainingRouteImport.update({
+  id: '/angebot/personal-training',
+  path: '/angebot/personal-training',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/angebot/personal-training': typeof AngebotPersonalTrainingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/angebot/personal-training': typeof AngebotPersonalTrainingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/angebot/personal-training': typeof AngebotPersonalTrainingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/angebot/personal-training'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/angebot/personal-training'
+  id: '__root__' | '/' | '/angebot/personal-training'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AngebotPersonalTrainingRoute: typeof AngebotPersonalTrainingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/angebot/personal-training': {
+      id: '/angebot/personal-training'
+      path: '/angebot/personal-training'
+      fullPath: '/angebot/personal-training'
+      preLoaderRoute: typeof AngebotPersonalTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AngebotPersonalTrainingRoute: AngebotPersonalTrainingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
