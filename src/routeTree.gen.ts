@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UeberMichRouteImport } from './routes/ueber-mich'
 import { Route as StimmenRouteImport } from './routes/stimmen'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as AngebotRouteImport } from './routes/angebot'
 import { Route as IndexRouteImport } from './routes/index'
@@ -29,6 +30,11 @@ const UeberMichRoute = UeberMichRouteImport.update({
 const StimmenRoute = StimmenRouteImport.update({
   id: '/stimmen',
   path: '/stimmen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KontaktRoute = KontaktRouteImport.update({
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/angebot': typeof AngebotRouteWithChildren
   '/kontakt': typeof KontaktRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stimmen': typeof StimmenRoute
   '/ueber-mich': typeof UeberMichRoute
   '/angebot/golf-fitness': typeof AngebotGolfFitnessRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/angebot': typeof AngebotRouteWithChildren
   '/kontakt': typeof KontaktRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stimmen': typeof StimmenRoute
   '/ueber-mich': typeof UeberMichRoute
   '/angebot/golf-fitness': typeof AngebotGolfFitnessRoute
@@ -108,6 +116,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/angebot': typeof AngebotRouteWithChildren
   '/kontakt': typeof KontaktRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stimmen': typeof StimmenRoute
   '/ueber-mich': typeof UeberMichRoute
   '/angebot/golf-fitness': typeof AngebotGolfFitnessRoute
@@ -123,6 +132,7 @@ export interface FileRouteTypes {
     | '/'
     | '/angebot'
     | '/kontakt'
+    | '/sitemap.xml'
     | '/stimmen'
     | '/ueber-mich'
     | '/angebot/golf-fitness'
@@ -136,6 +146,7 @@ export interface FileRouteTypes {
     | '/'
     | '/angebot'
     | '/kontakt'
+    | '/sitemap.xml'
     | '/stimmen'
     | '/ueber-mich'
     | '/angebot/golf-fitness'
@@ -149,6 +160,7 @@ export interface FileRouteTypes {
     | '/'
     | '/angebot'
     | '/kontakt'
+    | '/sitemap.xml'
     | '/stimmen'
     | '/ueber-mich'
     | '/angebot/golf-fitness'
@@ -163,6 +175,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AngebotRoute: typeof AngebotRouteWithChildren
   KontaktRoute: typeof KontaktRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StimmenRoute: typeof StimmenRoute
   UeberMichRoute: typeof UeberMichRoute
 }
@@ -181,6 +194,13 @@ declare module '@tanstack/react-router' {
       path: '/stimmen'
       fullPath: '/stimmen'
       preLoaderRoute: typeof StimmenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kontakt': {
@@ -274,9 +294,20 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AngebotRoute: AngebotRouteWithChildren,
   KontaktRoute: KontaktRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   StimmenRoute: StimmenRoute,
   UeberMichRoute: UeberMichRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
