@@ -54,7 +54,7 @@ function Home() {
       {/* HERO — split screen */}
       <section id="top" className="relative isolate overflow-hidden border-b border-border">
         <div className="mx-auto grid max-w-7xl items-stretch gap-0 px-0 lg:grid-cols-2">
-          <div className="flex flex-col justify-center px-6 pb-16 pt-36 lg:px-10 lg:py-40">
+          <div className="flex flex-col justify-center px-6 pb-16 pt-36 lg:px-10 lg:py-28">
             <p className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-accent-foreground">
               Thalwil &amp; Horgen
             </p>
