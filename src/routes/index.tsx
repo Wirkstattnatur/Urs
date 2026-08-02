@@ -49,35 +49,58 @@ const reviews = [review1, review2, review3, review4, review5];
 function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+      <SiteHeader variant="dark" />
 
-      {/* HERO */}
-      <section id="top" className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <img src={heroImg} alt="Personal Training im Wirkraum Thalwil" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/85" />
-        </div>
-        <div className="mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-end px-6 pb-20 pt-40 lg:px-10 lg:pb-28">
-          <p className="mb-6 flex items-center gap-3 text-sm font-medium uppercase tracking-[0.2em] text-accent">
-            <span className="h-px w-10 bg-accent" />
-            Personal Training · Thalwil & Horgen
-          </p>
-          <h1 className="max-w-4xl font-display text-5xl leading-[1.02] text-primary-foreground sm:text-6xl lg:text-8xl">
-            Bewegung, die <em className="not-italic text-accent">wirkt</em> —{" "}
-            <br className="hidden sm:block" />
-            im Rhythmus deines Lebens.
-          </h1>
-          <p className="mt-8 max-w-2xl text-lg text-primary-foreground/85 lg:text-xl">
-            Kein 08/15-Programm. Wir starten dort, wo du stehst — mit einem Trainingsplan,
-            der zu deinem Alltag, deiner Verfassung und deinen Zielen passt.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link to="/kontakt" className="rounded-full bg-accent px-8 py-4 text-base font-semibold text-accent-foreground shadow-xl transition hover:brightness-95">
-              Kennenlerngespräch buchen
-            </Link>
-            <Link to="/angebot" className="rounded-full border border-primary-foreground/40 bg-primary-foreground/10 px-8 py-4 text-base font-semibold text-primary-foreground backdrop-blur transition hover:bg-primary-foreground/20">
-              Angebot ansehen
-            </Link>
+      {/* HERO — split screen */}
+      <section id="top" className="relative isolate overflow-hidden border-b border-border">
+        <div className="mx-auto grid max-w-7xl items-stretch gap-0 px-0 lg:grid-cols-2">
+          <div className="flex flex-col justify-center px-6 pb-16 pt-36 lg:px-10 lg:py-40">
+            <p className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-accent-foreground">
+              Thalwil &amp; Horgen
+            </p>
+            <h1 className="font-display text-5xl font-bold leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl">
+              Bewegung, die{" "}
+              <span className="relative inline-block">
+                <span className="absolute inset-x-0 bottom-1 -z-10 h-4 bg-accent" />
+                wirkt
+              </span>
+              .
+              <br />
+              Im Rhythmus deines Lebens.
+            </h1>
+            <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted-foreground">
+              Kein 08/15-Programm. Wir starten dort, wo du stehst — mit einem Trainingsplan,
+              der zu deinem Alltag, deiner Verfassung und deinen Zielen passt.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link to="/kontakt" className="rounded-full bg-primary px-7 py-4 text-sm font-bold text-primary-foreground transition hover:bg-accent hover:text-accent-foreground">
+                Kennenlerngespräch buchen
+              </Link>
+              <Link to="/angebot" className="rounded-full border border-border px-7 py-4 text-sm font-bold text-foreground transition hover:border-foreground">
+                Angebot ansehen
+              </Link>
+            </div>
+            <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-border pt-8">
+              {[
+                ["20+", "Jahre Erfahrung"],
+                ["6", "Angebote"],
+                ["EMR", "anerkannt"],
+              ].map(([k, v]) => (
+                <div key={v}>
+                  <dt className="font-display text-3xl font-bold">{k}</dt>
+                  <dd className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <div className="relative min-h-[60vh] lg:min-h-[92vh]">
+            <img src={heroImg} alt="Personal Training im Wirkraum Thalwil" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-background/90 p-5 backdrop-blur lg:inset-x-10 lg:bottom-10">
+              <p className="font-display text-lg font-semibold leading-snug">
+                «Ich habe den ganzen Menschen im Blick — nicht nur Trainingsziele.»
+              </p>
+              <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">Urs Gremlich</p>
+            </div>
           </div>
         </div>
       </section>
