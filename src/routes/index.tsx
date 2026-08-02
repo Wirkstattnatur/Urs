@@ -93,9 +93,9 @@ function Home() {
               ))}
             </dl>
           </div>
-          <div className="relative min-h-[60vh] lg:min-h-[92vh]">
+          <div className="relative flex min-h-[60vh] items-end p-6 lg:min-h-[92vh] lg:p-10">
             <img src={heroImg} alt="Personal Training im Wirkraum Thalwil" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-background/90 p-5 backdrop-blur lg:inset-x-10 lg:bottom-10">
+            <div className="relative w-full rounded-2xl bg-background/90 p-5 backdrop-blur">
               <p className="font-display text-lg font-semibold leading-snug">
                 «Ich habe den ganzen Menschen im Blick — nicht nur Trainingsziele.»
               </p>
