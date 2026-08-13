@@ -9,214 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as UeberMichRouteImport } from './routes/ueber-mich'
-import { Route as StimmenRouteImport } from './routes/stimmen'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as KontaktRouteImport } from './routes/kontakt'
-import { Route as AngebotRouteImport } from './routes/angebot'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AngebotPilatesRouteImport } from './routes/angebot.pilates'
-import { Route as AngebotPersonalTrainingRouteImport } from './routes/angebot.personal-training'
-import { Route as AngebotMassagenRouteImport } from './routes/angebot.massagen'
-import { Route as AngebotKarateRouteImport } from './routes/angebot.karate'
-import { Route as AngebotJustMeRouteImport } from './routes/angebot.just-me'
-import { Route as AngebotGolfFitnessRouteImport } from './routes/angebot.golf-fitness'
 
-const UeberMichRoute = UeberMichRouteImport.update({
-  id: '/ueber-mich',
-  path: '/ueber-mich',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StimmenRoute = StimmenRouteImport.update({
-  id: '/stimmen',
-  path: '/stimmen',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KontaktRoute = KontaktRouteImport.update({
-  id: '/kontakt',
-  path: '/kontakt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AngebotRoute = AngebotRouteImport.update({
-  id: '/angebot',
-  path: '/angebot',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AngebotPilatesRoute = AngebotPilatesRouteImport.update({
-  id: '/pilates',
-  path: '/pilates',
-  getParentRoute: () => AngebotRoute,
-} as any)
-const AngebotPersonalTrainingRoute = AngebotPersonalTrainingRouteImport.update({
-  id: '/personal-training',
-  path: '/personal-training',
-  getParentRoute: () => AngebotRoute,
-} as any)
-const AngebotMassagenRoute = AngebotMassagenRouteImport.update({
-  id: '/massagen',
-  path: '/massagen',
-  getParentRoute: () => AngebotRoute,
-} as any)
-const AngebotKarateRoute = AngebotKarateRouteImport.update({
-  id: '/karate',
-  path: '/karate',
-  getParentRoute: () => AngebotRoute,
-} as any)
-const AngebotJustMeRoute = AngebotJustMeRouteImport.update({
-  id: '/just-me',
-  path: '/just-me',
-  getParentRoute: () => AngebotRoute,
-} as any)
-const AngebotGolfFitnessRoute = AngebotGolfFitnessRouteImport.update({
-  id: '/golf-fitness',
-  path: '/golf-fitness',
-  getParentRoute: () => AngebotRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/angebot': typeof AngebotRouteWithChildren
-  '/kontakt': typeof KontaktRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/stimmen': typeof StimmenRoute
-  '/ueber-mich': typeof UeberMichRoute
-  '/angebot/golf-fitness': typeof AngebotGolfFitnessRoute
-  '/angebot/just-me': typeof AngebotJustMeRoute
-  '/angebot/karate': typeof AngebotKarateRoute
-  '/angebot/massagen': typeof AngebotMassagenRoute
-  '/angebot/personal-training': typeof AngebotPersonalTrainingRoute
-  '/angebot/pilates': typeof AngebotPilatesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/angebot': typeof AngebotRouteWithChildren
-  '/kontakt': typeof KontaktRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/stimmen': typeof StimmenRoute
-  '/ueber-mich': typeof UeberMichRoute
-  '/angebot/golf-fitness': typeof AngebotGolfFitnessRoute
-  '/angebot/just-me': typeof AngebotJustMeRoute
-  '/angebot/karate': typeof AngebotKarateRoute
-  '/angebot/massagen': typeof AngebotMassagenRoute
-  '/angebot/personal-training': typeof AngebotPersonalTrainingRoute
-  '/angebot/pilates': typeof AngebotPilatesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/angebot': typeof AngebotRouteWithChildren
-  '/kontakt': typeof KontaktRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/stimmen': typeof StimmenRoute
-  '/ueber-mich': typeof UeberMichRoute
-  '/angebot/golf-fitness': typeof AngebotGolfFitnessRoute
-  '/angebot/just-me': typeof AngebotJustMeRoute
-  '/angebot/karate': typeof AngebotKarateRoute
-  '/angebot/massagen': typeof AngebotMassagenRoute
-  '/angebot/personal-training': typeof AngebotPersonalTrainingRoute
-  '/angebot/pilates': typeof AngebotPilatesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/angebot'
-    | '/kontakt'
-    | '/sitemap.xml'
-    | '/stimmen'
-    | '/ueber-mich'
-    | '/angebot/golf-fitness'
-    | '/angebot/just-me'
-    | '/angebot/karate'
-    | '/angebot/massagen'
-    | '/angebot/personal-training'
-    | '/angebot/pilates'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/angebot'
-    | '/kontakt'
-    | '/sitemap.xml'
-    | '/stimmen'
-    | '/ueber-mich'
-    | '/angebot/golf-fitness'
-    | '/angebot/just-me'
-    | '/angebot/karate'
-    | '/angebot/massagen'
-    | '/angebot/personal-training'
-    | '/angebot/pilates'
-  id:
-    | '__root__'
-    | '/'
-    | '/angebot'
-    | '/kontakt'
-    | '/sitemap.xml'
-    | '/stimmen'
-    | '/ueber-mich'
-    | '/angebot/golf-fitness'
-    | '/angebot/just-me'
-    | '/angebot/karate'
-    | '/angebot/massagen'
-    | '/angebot/personal-training'
-    | '/angebot/pilates'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AngebotRoute: typeof AngebotRouteWithChildren
-  KontaktRoute: typeof KontaktRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  StimmenRoute: typeof StimmenRoute
-  UeberMichRoute: typeof UeberMichRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/ueber-mich': {
-      id: '/ueber-mich'
-      path: '/ueber-mich'
-      fullPath: '/ueber-mich'
-      preLoaderRoute: typeof UeberMichRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/stimmen': {
-      id: '/stimmen'
-      path: '/stimmen'
-      fullPath: '/stimmen'
-      preLoaderRoute: typeof StimmenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kontakt': {
-      id: '/kontakt'
-      path: '/kontakt'
-      fullPath: '/kontakt'
-      preLoaderRoute: typeof KontaktRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/angebot': {
-      id: '/angebot'
-      path: '/angebot'
-      fullPath: '/angebot'
-      preLoaderRoute: typeof AngebotRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -224,79 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/angebot/pilates': {
-      id: '/angebot/pilates'
-      path: '/pilates'
-      fullPath: '/angebot/pilates'
-      preLoaderRoute: typeof AngebotPilatesRouteImport
-      parentRoute: typeof AngebotRoute
-    }
-    '/angebot/personal-training': {
-      id: '/angebot/personal-training'
-      path: '/personal-training'
-      fullPath: '/angebot/personal-training'
-      preLoaderRoute: typeof AngebotPersonalTrainingRouteImport
-      parentRoute: typeof AngebotRoute
-    }
-    '/angebot/massagen': {
-      id: '/angebot/massagen'
-      path: '/massagen'
-      fullPath: '/angebot/massagen'
-      preLoaderRoute: typeof AngebotMassagenRouteImport
-      parentRoute: typeof AngebotRoute
-    }
-    '/angebot/karate': {
-      id: '/angebot/karate'
-      path: '/karate'
-      fullPath: '/angebot/karate'
-      preLoaderRoute: typeof AngebotKarateRouteImport
-      parentRoute: typeof AngebotRoute
-    }
-    '/angebot/just-me': {
-      id: '/angebot/just-me'
-      path: '/just-me'
-      fullPath: '/angebot/just-me'
-      preLoaderRoute: typeof AngebotJustMeRouteImport
-      parentRoute: typeof AngebotRoute
-    }
-    '/angebot/golf-fitness': {
-      id: '/angebot/golf-fitness'
-      path: '/golf-fitness'
-      fullPath: '/angebot/golf-fitness'
-      preLoaderRoute: typeof AngebotGolfFitnessRouteImport
-      parentRoute: typeof AngebotRoute
-    }
   }
 }
 
-interface AngebotRouteChildren {
-  AngebotGolfFitnessRoute: typeof AngebotGolfFitnessRoute
-  AngebotJustMeRoute: typeof AngebotJustMeRoute
-  AngebotKarateRoute: typeof AngebotKarateRoute
-  AngebotMassagenRoute: typeof AngebotMassagenRoute
-  AngebotPersonalTrainingRoute: typeof AngebotPersonalTrainingRoute
-  AngebotPilatesRoute: typeof AngebotPilatesRoute
-}
-
-const AngebotRouteChildren: AngebotRouteChildren = {
-  AngebotGolfFitnessRoute: AngebotGolfFitnessRoute,
-  AngebotJustMeRoute: AngebotJustMeRoute,
-  AngebotKarateRoute: AngebotKarateRoute,
-  AngebotMassagenRoute: AngebotMassagenRoute,
-  AngebotPersonalTrainingRoute: AngebotPersonalTrainingRoute,
-  AngebotPilatesRoute: AngebotPilatesRoute,
-}
-
-const AngebotRouteWithChildren =
-  AngebotRoute._addFileChildren(AngebotRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AngebotRoute: AngebotRouteWithChildren,
-  KontaktRoute: KontaktRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
-  StimmenRoute: StimmenRoute,
-  UeberMichRoute: UeberMichRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

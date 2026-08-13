@@ -25,34 +25,34 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 1.25rem;
-  /* Crisp bright base */
-  --background: oklch(0.99 0.006 110);
-  --foreground: oklch(0.18 0.02 150);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 150);
-  /* Ink */
-  --primary: oklch(0.19 0.025 150);
-  --primary-foreground: oklch(0.99 0.01 110);
-  /* Pale lemon wash */
-  --secondary: oklch(0.96 0.06 115);
-  --secondary-foreground: oklch(0.2 0.03 150);
-  --muted: oklch(0.96 0.01 110);
-  --muted-foreground: oklch(0.48 0.02 150);
-  /* Hi-vis lemon green */
-  --accent: oklch(0.9 0.23 120);
-  --accent-foreground: oklch(0.18 0.04 150);
-  --border: oklch(0.9 0.01 110);
-  --ring: oklch(0.9 0.23 120);
+  --radius: 1rem;
+  /* Cream / natural paper */
+  --background: oklch(0.975 0.015 95);
+  --foreground: oklch(0.22 0.03 155);
+  --card: oklch(0.99 0.01 95);
+  --card-foreground: oklch(0.22 0.03 155);
+  /* Deep forest */
+  --primary: oklch(0.32 0.06 155);
+  --primary-foreground: oklch(0.98 0.02 95);
+  /* Warm sand */
+  --secondary: oklch(0.92 0.03 85);
+  --secondary-foreground: oklch(0.28 0.05 155);
+  --muted: oklch(0.94 0.02 90);
+  --muted-foreground: oklch(0.45 0.03 145);
+  /* Lime energy — from trainer's shirt */
+  --accent: oklch(0.85 0.19 125);
+  --accent-foreground: oklch(0.22 0.05 155);
+  --border: oklch(0.88 0.02 100);
+  --ring: oklch(0.32 0.06 155);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.9 0.23 120) 0%, oklch(0.94 0.16 135) 100%);
-  --shadow-soft: 0 24px 70px -24px oklch(0.19 0.025 150 / 0.28);
-  --shadow-card: 0 6px 24px -10px oklch(0.19 0.025 150 / 0.16);
+  --gradient-hero: linear-gradient(135deg, oklch(0.32 0.06 155) 0%, oklch(0.42 0.08 150) 100%);
+  --shadow-soft: 0 20px 60px -20px oklch(0.32 0.06 155 / 0.25);
+  --shadow-card: 0 4px 20px -8px oklch(0.32 0.06 155 / 0.15);
 }
 
 @layer base {
