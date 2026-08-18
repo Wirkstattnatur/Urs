@@ -4,13 +4,15 @@ import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
+const nitroPreset = process.env.NITRO_PRESET ?? (process.env.VERCEL ? "vercel" : "node-server");
+
 export default defineConfig({
   plugins: [
     tailwindcss(),
     tanstackStart({
       server: { entry: "server" },
     }),
-    nitro({ preset: "node-server" }),
+    nitro({ preset: nitroPreset }),
     viteReact(),
   ],
   resolve: {
