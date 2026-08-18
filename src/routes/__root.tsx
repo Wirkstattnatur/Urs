@@ -1,8 +1,8 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
-  createRootRouteWithContext,
+  createRootRoute,
+  useLocation,
   useRouter,
   HeadContent,
   Scripts,
@@ -10,45 +10,63 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+import { detectSystemLocale, getLocaleFromPath, readLocalePreference } from "@/lib/locale";
+import { getSiteGraph, jsonLdScript } from "@/lib/seo";
+import { loadTidio } from "@/lib/tidio";
+
+const brandGreen = "#294f3d";
 
 function NotFoundComponent() {
+  const location = useLocation();
+  const isEnglish = getLocaleFromPath(location.pathname) === "en";
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <main
+      id="main-content"
+      className="flex min-h-screen items-center justify-center bg-background px-4"
+    >
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">
+          {isEnglish ? "Page not found" : "Seite nicht gefunden"}
+        </h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          {isEnglish
+            ? "This page does not exist or has been moved."
+            : "Diese Seite existiert nicht oder wurde verschoben."}
         </p>
         <div className="mt-6">
           <Link
-            to="/"
+            to={isEnglish ? "/en" : "/"}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            {isEnglish ? "Back to home" : "Zur Startseite"}
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
+  const location = useLocation();
+  const isEnglish = getLocaleFromPath(location.pathname) === "en";
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <main
+      id="main-content"
+      className="flex min-h-screen items-center justify-center bg-background px-4"
+    >
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          {isEnglish ? "The page could not be loaded" : "Die Seite konnte nicht geladen werden"}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          {isEnglish
+            ? "An error occurred. Please refresh the page or return to the home page."
+            : "Es ist ein Fehler aufgetreten. Bitte lade die Seite neu oder gehe zurück zur Startseite."}
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -58,41 +76,34 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            {isEnglish ? "Try again" : "Erneut versuchen"}
           </button>
           <a
-            href="/"
+            href={isEnglish ? "/en" : "/"}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            {isEnglish ? "Back to home" : "Zur Startseite"}
           </a>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Wirkstattnatur — Personal Training in Thalwil & Horgen" },
-      { name: "description", content: "Personal Training, Pilates, Golf-Fitness und Massagen mit Urs Gremlich. Individuell begleitet — für mehr Kraft, Beweglichkeit und Lebensqualität." },
-      { property: "og:title", content: "Wirkstattnatur — Personal Training in Thalwil & Horgen" },
-      { property: "og:description", content: "Individuelles Training, das zu deinem Leben passt. Kraft, Mobilität, Entspannung." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: brandGreen },
     ],
+    scripts: [jsonLdScript(getSiteGraph())],
     links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" },
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
   }),
   shellComponent: RootShell,
@@ -102,12 +113,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const location = useLocation();
+  const locale = getLocaleFromPath(location.pathname);
+
   return (
-    <html lang="en">
+    <html lang={locale === "en" ? "en" : "de-CH"}>
       <head>
         <HeadContent />
       </head>
       <body>
+        <a href="#main-content" className="site-skip-link">
+          {locale === "en" ? "Skip to content" : "Zum Inhalt springen"}
+        </a>
         {children}
         <Scripts />
       </body>
@@ -116,12 +133,30 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
-  );
+  useEffect(() => {
+    void loadTidio();
+  }, []);
+
+  useEffect(() => {
+    const locale = getLocaleFromPath(location.pathname);
+    document.documentElement.lang = locale === "en" ? "en" : "de-CH";
+
+    const automatedUserAgent = /bot|crawler|spider|slurp|bingpreview|mediapartners/i.test(
+      navigator.userAgent,
+    );
+
+    if (
+      location.pathname === "/" &&
+      !window.location.hash &&
+      !readLocalePreference() &&
+      detectSystemLocale() === "en" &&
+      !automatedUserAgent
+    ) {
+      window.location.replace("/en");
+    }
+  }, [location.pathname]);
+
+  return <Outlet />;
 }

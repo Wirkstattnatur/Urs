@@ -10,33 +10,274 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AgbRouteImport } from './routes/agb'
+import { Route as CtaDemoRouteImport } from './routes/cta-demo'
+import { Route as DatenschutzRouteImport } from './routes/datenschutz'
+import { Route as EnRouteImport } from './routes/en'
+import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as UeberMichRouteImport } from './routes/ueber-mich'
+import { Route as AngebotGolfFitnessRouteImport } from './routes/angebot/golf-fitness'
+import { Route as AngebotKarateRouteImport } from './routes/angebot/karate'
+import { Route as AngebotPersonalTrainingRouteImport } from './routes/angebot/personal-training'
+import { Route as AngebotPilatesRouteImport } from './routes/angebot/pilates'
+import { Route as EnIndexRouteImport } from './routes/en/index'
+import { Route as EnAgbRouteImport } from './routes/en/agb'
+import { Route as EnDatenschutzRouteImport } from './routes/en/datenschutz'
+import { Route as EnImpressumRouteImport } from './routes/en/impressum'
+import { Route as EnUeberMichRouteImport } from './routes/en/ueber-mich'
+import { Route as EnAngebotGolfFitnessRouteImport } from './routes/en/angebot/golf-fitness'
+import { Route as EnAngebotKarateRouteImport } from './routes/en/angebot/karate'
+import { Route as EnAngebotPersonalTrainingRouteImport } from './routes/en/angebot/personal-training'
+import { Route as EnAngebotPilatesRouteImport } from './routes/en/angebot/pilates'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgbRoute = AgbRouteImport.update({
+  id: '/agb',
+  path: '/agb',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CtaDemoRoute = CtaDemoRouteImport.update({
+  id: '/cta-demo',
+  path: '/cta-demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatenschutzRoute = DatenschutzRouteImport.update({
+  id: '/datenschutz',
+  path: '/datenschutz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnRoute = EnRouteImport.update({
+  id: '/en',
+  path: '/en',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpressumRoute = ImpressumRouteImport.update({
+  id: '/impressum',
+  path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UeberMichRoute = UeberMichRouteImport.update({
+  id: '/ueber-mich',
+  path: '/ueber-mich',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AngebotGolfFitnessRoute = AngebotGolfFitnessRouteImport.update({
+  id: '/angebot/golf-fitness',
+  path: '/angebot/golf-fitness',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AngebotKarateRoute = AngebotKarateRouteImport.update({
+  id: '/angebot/karate',
+  path: '/angebot/karate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AngebotPersonalTrainingRoute = AngebotPersonalTrainingRouteImport.update({
+  id: '/angebot/personal-training',
+  path: '/angebot/personal-training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AngebotPilatesRoute = AngebotPilatesRouteImport.update({
+  id: '/angebot/pilates',
+  path: '/angebot/pilates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnIndexRoute = EnIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnAgbRoute = EnAgbRouteImport.update({
+  id: '/agb',
+  path: '/agb',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnDatenschutzRoute = EnDatenschutzRouteImport.update({
+  id: '/datenschutz',
+  path: '/datenschutz',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnImpressumRoute = EnImpressumRouteImport.update({
+  id: '/impressum',
+  path: '/impressum',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnUeberMichRoute = EnUeberMichRouteImport.update({
+  id: '/ueber-mich',
+  path: '/ueber-mich',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnAngebotGolfFitnessRoute = EnAngebotGolfFitnessRouteImport.update({
+  id: '/angebot/golf-fitness',
+  path: '/angebot/golf-fitness',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnAngebotKarateRoute = EnAngebotKarateRouteImport.update({
+  id: '/angebot/karate',
+  path: '/angebot/karate',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnAngebotPersonalTrainingRoute =
+  EnAngebotPersonalTrainingRouteImport.update({
+    id: '/angebot/personal-training',
+    path: '/angebot/personal-training',
+    getParentRoute: () => EnRoute,
+  } as any)
+const EnAngebotPilatesRoute = EnAngebotPilatesRouteImport.update({
+  id: '/angebot/pilates',
+  path: '/angebot/pilates',
+  getParentRoute: () => EnRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agb': typeof AgbRoute
+  '/cta-demo': typeof CtaDemoRoute
+  '/datenschutz': typeof DatenschutzRoute
+  '/en': typeof EnRouteWithChildren
+  '/impressum': typeof ImpressumRoute
+  '/ueber-mich': typeof UeberMichRoute
+  '/angebot/golf-fitness': typeof AngebotGolfFitnessRoute
+  '/angebot/karate': typeof AngebotKarateRoute
+  '/angebot/personal-training': typeof AngebotPersonalTrainingRoute
+  '/angebot/pilates': typeof AngebotPilatesRoute
+  '/en/agb': typeof EnAgbRoute
+  '/en/datenschutz': typeof EnDatenschutzRoute
+  '/en/impressum': typeof EnImpressumRoute
+  '/en/ueber-mich': typeof EnUeberMichRoute
+  '/en/': typeof EnIndexRoute
+  '/en/angebot/golf-fitness': typeof EnAngebotGolfFitnessRoute
+  '/en/angebot/karate': typeof EnAngebotKarateRoute
+  '/en/angebot/personal-training': typeof EnAngebotPersonalTrainingRoute
+  '/en/angebot/pilates': typeof EnAngebotPilatesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agb': typeof AgbRoute
+  '/cta-demo': typeof CtaDemoRoute
+  '/datenschutz': typeof DatenschutzRoute
+  '/impressum': typeof ImpressumRoute
+  '/ueber-mich': typeof UeberMichRoute
+  '/angebot/golf-fitness': typeof AngebotGolfFitnessRoute
+  '/angebot/karate': typeof AngebotKarateRoute
+  '/angebot/personal-training': typeof AngebotPersonalTrainingRoute
+  '/angebot/pilates': typeof AngebotPilatesRoute
+  '/en/agb': typeof EnAgbRoute
+  '/en/datenschutz': typeof EnDatenschutzRoute
+  '/en/impressum': typeof EnImpressumRoute
+  '/en/ueber-mich': typeof EnUeberMichRoute
+  '/en': typeof EnIndexRoute
+  '/en/angebot/golf-fitness': typeof EnAngebotGolfFitnessRoute
+  '/en/angebot/karate': typeof EnAngebotKarateRoute
+  '/en/angebot/personal-training': typeof EnAngebotPersonalTrainingRoute
+  '/en/angebot/pilates': typeof EnAngebotPilatesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agb': typeof AgbRoute
+  '/cta-demo': typeof CtaDemoRoute
+  '/datenschutz': typeof DatenschutzRoute
+  '/en': typeof EnRouteWithChildren
+  '/impressum': typeof ImpressumRoute
+  '/ueber-mich': typeof UeberMichRoute
+  '/angebot/golf-fitness': typeof AngebotGolfFitnessRoute
+  '/angebot/karate': typeof AngebotKarateRoute
+  '/angebot/personal-training': typeof AngebotPersonalTrainingRoute
+  '/angebot/pilates': typeof AngebotPilatesRoute
+  '/en/agb': typeof EnAgbRoute
+  '/en/datenschutz': typeof EnDatenschutzRoute
+  '/en/impressum': typeof EnImpressumRoute
+  '/en/ueber-mich': typeof EnUeberMichRoute
+  '/en/': typeof EnIndexRoute
+  '/en/angebot/golf-fitness': typeof EnAngebotGolfFitnessRoute
+  '/en/angebot/karate': typeof EnAngebotKarateRoute
+  '/en/angebot/personal-training': typeof EnAngebotPersonalTrainingRoute
+  '/en/angebot/pilates': typeof EnAngebotPilatesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/agb'
+    | '/cta-demo'
+    | '/datenschutz'
+    | '/en'
+    | '/impressum'
+    | '/ueber-mich'
+    | '/angebot/golf-fitness'
+    | '/angebot/karate'
+    | '/angebot/personal-training'
+    | '/angebot/pilates'
+    | '/en/agb'
+    | '/en/datenschutz'
+    | '/en/impressum'
+    | '/en/ueber-mich'
+    | '/en/'
+    | '/en/angebot/golf-fitness'
+    | '/en/angebot/karate'
+    | '/en/angebot/personal-training'
+    | '/en/angebot/pilates'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/agb'
+    | '/cta-demo'
+    | '/datenschutz'
+    | '/impressum'
+    | '/ueber-mich'
+    | '/angebot/golf-fitness'
+    | '/angebot/karate'
+    | '/angebot/personal-training'
+    | '/angebot/pilates'
+    | '/en/agb'
+    | '/en/datenschutz'
+    | '/en/impressum'
+    | '/en/ueber-mich'
+    | '/en'
+    | '/en/angebot/golf-fitness'
+    | '/en/angebot/karate'
+    | '/en/angebot/personal-training'
+    | '/en/angebot/pilates'
+  id:
+    | '__root__'
+    | '/'
+    | '/agb'
+    | '/cta-demo'
+    | '/datenschutz'
+    | '/en'
+    | '/impressum'
+    | '/ueber-mich'
+    | '/angebot/golf-fitness'
+    | '/angebot/karate'
+    | '/angebot/personal-training'
+    | '/angebot/pilates'
+    | '/en/agb'
+    | '/en/datenschutz'
+    | '/en/impressum'
+    | '/en/ueber-mich'
+    | '/en/'
+    | '/en/angebot/golf-fitness'
+    | '/en/angebot/karate'
+    | '/en/angebot/personal-training'
+    | '/en/angebot/pilates'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgbRoute: typeof AgbRoute
+  CtaDemoRoute: typeof CtaDemoRoute
+  DatenschutzRoute: typeof DatenschutzRoute
+  EnRoute: typeof EnRouteWithChildren
+  ImpressumRoute: typeof ImpressumRoute
+  UeberMichRoute: typeof UeberMichRoute
+  AngebotGolfFitnessRoute: typeof AngebotGolfFitnessRoute
+  AngebotKarateRoute: typeof AngebotKarateRoute
+  AngebotPersonalTrainingRoute: typeof AngebotPersonalTrainingRoute
+  AngebotPilatesRoute: typeof AngebotPilatesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +289,180 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agb': {
+      id: '/agb'
+      path: '/agb'
+      fullPath: '/agb'
+      preLoaderRoute: typeof AgbRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cta-demo': {
+      id: '/cta-demo'
+      path: '/cta-demo'
+      fullPath: '/cta-demo'
+      preLoaderRoute: typeof CtaDemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/datenschutz': {
+      id: '/datenschutz'
+      path: '/datenschutz'
+      fullPath: '/datenschutz'
+      preLoaderRoute: typeof DatenschutzRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en': {
+      id: '/en'
+      path: '/en'
+      fullPath: '/en'
+      preLoaderRoute: typeof EnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impressum': {
+      id: '/impressum'
+      path: '/impressum'
+      fullPath: '/impressum'
+      preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ueber-mich': {
+      id: '/ueber-mich'
+      path: '/ueber-mich'
+      fullPath: '/ueber-mich'
+      preLoaderRoute: typeof UeberMichRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/angebot/golf-fitness': {
+      id: '/angebot/golf-fitness'
+      path: '/angebot/golf-fitness'
+      fullPath: '/angebot/golf-fitness'
+      preLoaderRoute: typeof AngebotGolfFitnessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/angebot/karate': {
+      id: '/angebot/karate'
+      path: '/angebot/karate'
+      fullPath: '/angebot/karate'
+      preLoaderRoute: typeof AngebotKarateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/angebot/personal-training': {
+      id: '/angebot/personal-training'
+      path: '/angebot/personal-training'
+      fullPath: '/angebot/personal-training'
+      preLoaderRoute: typeof AngebotPersonalTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/angebot/pilates': {
+      id: '/angebot/pilates'
+      path: '/angebot/pilates'
+      fullPath: '/angebot/pilates'
+      preLoaderRoute: typeof AngebotPilatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/': {
+      id: '/en/'
+      path: '/'
+      fullPath: '/en/'
+      preLoaderRoute: typeof EnIndexRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/agb': {
+      id: '/en/agb'
+      path: '/agb'
+      fullPath: '/en/agb'
+      preLoaderRoute: typeof EnAgbRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/datenschutz': {
+      id: '/en/datenschutz'
+      path: '/datenschutz'
+      fullPath: '/en/datenschutz'
+      preLoaderRoute: typeof EnDatenschutzRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/impressum': {
+      id: '/en/impressum'
+      path: '/impressum'
+      fullPath: '/en/impressum'
+      preLoaderRoute: typeof EnImpressumRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/ueber-mich': {
+      id: '/en/ueber-mich'
+      path: '/ueber-mich'
+      fullPath: '/en/ueber-mich'
+      preLoaderRoute: typeof EnUeberMichRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/angebot/golf-fitness': {
+      id: '/en/angebot/golf-fitness'
+      path: '/angebot/golf-fitness'
+      fullPath: '/en/angebot/golf-fitness'
+      preLoaderRoute: typeof EnAngebotGolfFitnessRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/angebot/karate': {
+      id: '/en/angebot/karate'
+      path: '/angebot/karate'
+      fullPath: '/en/angebot/karate'
+      preLoaderRoute: typeof EnAngebotKarateRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/angebot/personal-training': {
+      id: '/en/angebot/personal-training'
+      path: '/angebot/personal-training'
+      fullPath: '/en/angebot/personal-training'
+      preLoaderRoute: typeof EnAngebotPersonalTrainingRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/angebot/pilates': {
+      id: '/en/angebot/pilates'
+      path: '/angebot/pilates'
+      fullPath: '/en/angebot/pilates'
+      preLoaderRoute: typeof EnAngebotPilatesRouteImport
+      parentRoute: typeof EnRoute
+    }
   }
 }
 
+interface EnRouteChildren {
+  EnAgbRoute: typeof EnAgbRoute
+  EnDatenschutzRoute: typeof EnDatenschutzRoute
+  EnImpressumRoute: typeof EnImpressumRoute
+  EnUeberMichRoute: typeof EnUeberMichRoute
+  EnIndexRoute: typeof EnIndexRoute
+  EnAngebotGolfFitnessRoute: typeof EnAngebotGolfFitnessRoute
+  EnAngebotKarateRoute: typeof EnAngebotKarateRoute
+  EnAngebotPersonalTrainingRoute: typeof EnAngebotPersonalTrainingRoute
+  EnAngebotPilatesRoute: typeof EnAngebotPilatesRoute
+}
+
+const EnRouteChildren: EnRouteChildren = {
+  EnAgbRoute: EnAgbRoute,
+  EnDatenschutzRoute: EnDatenschutzRoute,
+  EnImpressumRoute: EnImpressumRoute,
+  EnUeberMichRoute: EnUeberMichRoute,
+  EnIndexRoute: EnIndexRoute,
+  EnAngebotGolfFitnessRoute: EnAngebotGolfFitnessRoute,
+  EnAngebotKarateRoute: EnAngebotKarateRoute,
+  EnAngebotPersonalTrainingRoute: EnAngebotPersonalTrainingRoute,
+  EnAngebotPilatesRoute: EnAngebotPilatesRoute,
+}
+
+const EnRouteWithChildren = EnRoute._addFileChildren(EnRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgbRoute: AgbRoute,
+  CtaDemoRoute: CtaDemoRoute,
+  DatenschutzRoute: DatenschutzRoute,
+  EnRoute: EnRouteWithChildren,
+  ImpressumRoute: ImpressumRoute,
+  UeberMichRoute: UeberMichRoute,
+  AngebotGolfFitnessRoute: AngebotGolfFitnessRoute,
+  AngebotKarateRoute: AngebotKarateRoute,
+  AngebotPersonalTrainingRoute: AngebotPersonalTrainingRoute,
+  AngebotPilatesRoute: AngebotPilatesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

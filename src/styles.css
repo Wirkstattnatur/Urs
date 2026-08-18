@@ -2,15 +2,36 @@
 @source "../src";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("./assets/fonts/inter-latin.woff2") format("woff2");
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Geometry */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
+  --radius-panel: 2rem;
+  --radius-control: 9999px;
+
+  /* Semantic colour roles */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -25,44 +46,265 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
+
+  /* Type */
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Elevation and motion */
+  --shadow-soft: 0 20px 60px -20px oklch(0.32 0.06 155 / 0.25);
+  --shadow-card: 0 4px 20px -8px oklch(0.32 0.06 155 / 0.15);
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
   --radius: 1rem;
-  /* Cream / natural paper */
+
+  /* Canvas: the default warm paper background. */
   --background: oklch(0.975 0.015 95);
   --foreground: oklch(0.22 0.03 155);
+
+  /* Raised surface: white cards and the clean biography band. */
   --card: oklch(0.99 0.01 95);
   --card-foreground: oklch(0.22 0.03 155);
-  /* Deep forest */
+
+  /* Brand surface: dark sections, primary text and controls. */
   --primary: oklch(0.32 0.06 155);
   --primary-foreground: oklch(0.98 0.02 95);
-  /* Warm sand */
+
+  /* Warm surface: testimonials and supporting content. */
   --secondary: oklch(0.92 0.03 85);
   --secondary-foreground: oklch(0.28 0.05 155);
+
+  /* Quiet surface and secondary copy. */
   --muted: oklch(0.94 0.02 90);
   --muted-foreground: oklch(0.45 0.03 145);
-  /* Lime energy — from trainer's shirt */
+
+  /* Highlight: CTAs and small moments of emphasis, never large surfaces. */
   --accent: oklch(0.85 0.19 125);
   --accent-foreground: oklch(0.22 0.05 155);
+
   --border: oklch(0.88 0.02 100);
   --ring: oklch(0.32 0.06 155);
-
-  --gradient-hero: linear-gradient(135deg, oklch(0.32 0.06 155) 0%, oklch(0.42 0.08 150) 100%);
-  --shadow-soft: 0 20px 60px -20px oklch(0.32 0.06 155 / 0.25);
-  --shadow-card: 0 4px 20px -8px oklch(0.32 0.06 155 / 0.15);
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Layout primitives */
+  .site-container {
+    @apply mx-auto w-full max-w-7xl px-6 lg:px-10;
+  }
+
+  .site-container-narrow {
+    @apply mx-auto w-full max-w-5xl px-6;
+  }
+
+  .site-section {
+    @apply py-24 lg:py-32;
+  }
+
+  .site-anchor {
+    @apply scroll-mt-24;
+  }
+
+  .site-skip-link {
+    @apply fixed left-4 top-4 rounded-control bg-accent px-5 py-3 font-semibold text-accent-foreground shadow-card focus:outline-2 focus:outline-offset-4 focus:outline-primary;
+    z-index: 60;
+    transform: translateY(-200%);
+  }
+
+  .site-skip-link:focus {
+    transform: translateY(0);
+  }
+
+  /* Typography primitives */
+  .site-eyebrow {
+    @apply mb-4 text-sm font-medium uppercase tracking-[0.2em];
+  }
+
+  .site-title {
+    @apply font-display text-4xl leading-tight lg:text-5xl;
+  }
+
+  .site-title-feature {
+    @apply font-display text-4xl leading-tight sm:text-5xl lg:text-6xl;
+  }
+
+  .site-lead {
+    @apply text-lg leading-relaxed text-muted-foreground;
+  }
+
+  /* Controls */
+  .site-button {
+    @apply inline-flex items-center justify-center rounded-control font-semibold transition duration-300 ease-brand focus-visible:outline-2 focus-visible:outline-offset-4;
+  }
+
+  .site-button-lg {
+    @apply px-8 py-4 text-base;
+  }
+
+  .site-button-md {
+    @apply px-5 py-3.5 text-base;
+  }
+
+  .site-button-sm {
+    @apply px-7 py-3.5 text-sm;
+  }
+
+  .site-button-primary {
+    @apply bg-accent text-accent-foreground shadow-lg hover:brightness-95 focus-visible:outline-accent;
+  }
+
+  .site-button-ghost-inverse {
+    @apply border border-primary-foreground/40 bg-primary/70 text-primary-foreground backdrop-blur hover:bg-primary/90 focus-visible:outline-accent;
+  }
+
+  .site-button-outline-inverse {
+    @apply border border-primary-foreground/45 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 focus-visible:outline-accent;
+  }
+
+  /* Contained surfaces. Full-width sections do not receive outlines. */
+  .site-card {
+    @apply rounded-2xl bg-card shadow-card ring-1 ring-border;
+  }
+
+  .site-card-interactive {
+    @apply transition duration-300 ease-brand hover:-translate-y-1 hover:shadow-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transform-none;
+  }
+
+  /* Long-form legal content */
+  .legal-prose {
+    @apply text-base leading-7 text-foreground/85;
+  }
+
+  .legal-prose > section {
+    @apply mt-14 scroll-mt-28;
+  }
+
+  .legal-prose h2 {
+    @apply mb-5 font-display text-3xl leading-tight text-primary sm:text-4xl;
+  }
+
+  .legal-prose p + p {
+    @apply mt-4;
+  }
+
+  .legal-prose a {
+    @apply font-semibold text-primary underline underline-offset-4 transition hover:text-accent-foreground;
+  }
+
+  .legal-prose address {
+    @apply mt-4 not-italic leading-7;
+  }
+
+  .legal-prose ul {
+    @apply mt-5 grid gap-3;
+  }
+
+  .legal-prose li {
+    @apply relative pl-6;
+  }
+
+  .legal-prose li::before {
+    content: "";
+    @apply absolute left-0 top-[0.68rem] size-1.5 rounded-full bg-accent-foreground;
+  }
+
+  .legal-intro {
+    @apply font-display text-2xl leading-relaxed text-primary sm:text-3xl;
+  }
+
+  .legal-meta {
+    @apply mb-8 text-sm font-medium text-muted-foreground;
+  }
+
+  .legal-summary {
+    @apply rounded-panel bg-secondary/60 p-7 sm:p-9;
+  }
+
+  .legal-summary h2 {
+    @apply text-2xl sm:text-3xl;
+  }
+}
+
+.site-gallery-track {
+  scrollbar-width: none;
+}
+
+.site-gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.offer-card-image {
+  opacity: 0.42;
+  transform: scale(1.05);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.offer-card-details {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .offer-card-image {
+    opacity: 0;
+  }
+
+  .offer-card-details {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+      grid-template-rows 500ms ease,
+      opacity 500ms ease;
+  }
+
+  .offer-card:hover .offer-card-image {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .offer-card:hover .offer-card-details {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .offer-card-image,
+  .offer-card-details {
+    transition: none;
+  }
+
+  .offer-card-image {
+    transform: none;
+  }
 }
