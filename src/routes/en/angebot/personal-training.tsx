@@ -1,35 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceDetailPage } from "@/components/service-detail-page";
 import { servicesBySlug } from "@/lib/services";
+import { getLocalizedService } from "@/lib/services-en";
 import { getSeoHead, getServicePageSchema, jsonLdScript } from "@/lib/seo";
 
-const service = servicesBySlug["personal-training"];
+const service = getLocalizedService(servicesBySlug["personal-training"], "en");
 
-export const Route = createFileRoute("/angebot/personal-training")({
+export const Route = createFileRoute("/en/angebot/personal-training")({
   head: () => ({
     ...getSeoHead({
-      path: service.path,
+      path: "/en/angebot/personal-training",
       title: "Personal Training in Thalwil & Horgen — Wirkstattnatur",
       description: service.description,
-      locale: "de-CH",
+      locale: "en",
       imageUrl: service.image,
       imageAlt: service.imageAlt,
     }),
     scripts: [
       jsonLdScript(
         getServicePageSchema({
-          path: service.path,
+          path: "/en/angebot/personal-training",
           name: "Personal Training in Thalwil & Horgen — Wirkstattnatur",
           description: service.description,
-          inLanguage: "de-CH",
+          inLanguage: "en",
           imageUrl: service.image,
         }),
       ),
     ],
   }),
-  component: PersonalTrainingPage,
+  component: () => <ServiceDetailPage service={service} locale="en" />,
 });
-
-function PersonalTrainingPage() {
-  return <ServiceDetailPage service={service} />;
-}

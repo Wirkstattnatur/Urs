@@ -128,6 +128,16 @@
     @apply scroll-mt-24;
   }
 
+  .site-skip-link {
+    @apply fixed left-4 top-4 rounded-control bg-accent px-5 py-3 font-semibold text-accent-foreground shadow-card focus:outline-2 focus:outline-offset-4 focus:outline-primary;
+    z-index: 60;
+    transform: translateY(-200%);
+  }
+
+  .site-skip-link:focus {
+    transform: translateY(0);
+  }
+
   /* Typography primitives */
   .site-eyebrow {
     @apply mb-4 text-sm font-medium uppercase tracking-[0.2em];
@@ -238,6 +248,14 @@
   }
 }
 
+.site-gallery-track {
+  scrollbar-width: none;
+}
+
+.site-gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
 .offer-card-image {
   opacity: 0.42;
   transform: scale(1.05);
@@ -277,6 +295,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .offer-card-image,
   .offer-card-details {
     transition: none;

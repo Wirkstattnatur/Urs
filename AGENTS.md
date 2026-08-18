@@ -34,10 +34,11 @@ Do not migrate the project to Next.js, Remix, another router, another CSS system
 
 ## Installed custom skills
 
-Two globally installed custom skills are available for this project. Use them deliberately and keep this file, `DESIGN_SYSTEM.md`, and the existing codebase as the project-specific source of truth.
+Three globally installed custom skills are available for this project. Use them deliberately and keep this file, `DESIGN_SYSTEM.md`, and the existing codebase as the project-specific source of truth.
 
 - `$vercel-work`: use for React/TanStack/Vite implementation and review work, including route and component changes, SSR/data flow, loading and bundle performance, component composition, accessibility audits, and pre-handoff verification. It is especially useful when a change affects runtime behaviour or component architecture. It must preserve this project's TanStack Start/Router architecture and must not assume or introduce Next.js patterns.
 - `$front-end-design`: use for visible interface work, including new or redesigned pages, layout, typography, colour, responsive behaviour, forms, navigation, motion, content states, and visual/UX audits. Before applying it, read `DESIGN_SYSTEM.md` and `src/styles.css`; the Wirkstattnatur design system and explicit user direction override generic stylistic suggestions.
+- `$seo-geo-foundation`: use for search, local SEO, international SEO, structured data, crawlability, indexing, metadata, sitemaps, and GEO/AI-search audits or implementation. Read the skill before changing search-facing code, keep repository/build/raw-HTML/rendered/provider evidence separate, and never claim rankings or AI citations from a single observation.
 - For changes that affect both appearance and code, use both: use `$front-end-design` to frame the visual and UX direction, then `$vercel-work` to implement, audit, and verify the React behaviour and performance.
 
 ## Current information architecture
@@ -64,6 +65,8 @@ The desktop and mobile menus follow the same order:
 
 `Angebot` is a grouped navigation item: it links to the homepage offer overview and exposes the four service detail pages. The header is persistent across the homepage and service pages. Reuse `SiteHeader`; do not create route-specific headers or duplicate navigation arrays.
 
+The German homepage is `/` and the English overview is `/en`. `src/lib/locale.ts` owns the locale rules: the first visit follows the visitor's primary system language, while the compact header switch stores an explicit choice. Keep both locale URLs crawlable and maintain reciprocal `hreflang` links when adding translated pages.
+
 The current Angebot contains exactly four services:
 
 - Personal Training
@@ -75,12 +78,14 @@ Each homepage offer card links to a dedicated detail page under `/angebot/`. The
 
 1. Split introduction with key facts and client photography
 2. Training approach combining the two-part offer and three concise benefits
-3. One practical section combining locations, methods, pricing, and a second client image
+3. One practical section combining a curated, manually controlled client-photo gallery with locations, methods, and pricing
 4. Focused contact call-to-action
 
-This structure was adapted from a client-approved draft. Its visual styling was intentionally not carried over; all service pages must continue to use the Wirkstattnatur design system.
+This structure was adapted from a client-approved draft. Its visual styling was intentionally not carried over; all service pages must continue to use the Wirkstattnatur design system. The shared gallery in the practical section uses a consistent 1:1 image crop.
 
-Do not restore numbering, arrows, Massagen, or Just Me to these cards unless the user asks. At wide widths the four cards appear in one row; they collapse responsively to two and then one column.
+Do not restore numbering, arrows, Massagen, or Just Me to the homepage offer cards unless the user asks. Massages remain a structured method group within Personal Training, not a fifth homepage offer. At wide widths the four cards appear in one row; they collapse responsively to two and then one column.
+
+Service galleries use `src/components/service-gallery.tsx`. They are manually controlled, swipeable, keyboard-accessible, reduced-motion aware, and do not auto-play. Keep the images and captions in `src/lib/services.ts`; do not add route-specific carousel implementations or a carousel dependency.
 
 ## Content and voice
 
@@ -89,6 +94,7 @@ Do not restore numbering, arrows, Massagen, or Just Me to these cards unless the
 - Address visitors with informal `du` consistently.
 - The Über-mich section is written in Urs's first-person voice.
 - Tone: direct, warm, grounded, expert, and concise. Avoid hype, medical promises, fitness clichés, and corporate jargon.
+- Do not add a full stop to headings, labels, or other non-sentences.
 - Never invent qualifications, prices, addresses, reviews, statistics, affiliations, or health claims.
 - Preserve factual nuance. If a claim is unclear or potentially current, verify it from the old website or ask the user.
 
@@ -142,15 +148,15 @@ Do not build a generic component library speculatively. Extract a shared compone
 
 ## Tidio chatbot
 
-The Tidio widget is loaded through `src/lib/tidio.ts` only when a visitor deliberately clicks a `Chat starten` action. Ordinary page browsing must not load the script or contact Tidio. Its palette is set through Tidio's supported widget API to the website forest green.
+The Tidio widget is loaded once after hydration through `src/lib/tidio.ts`, so its standard corner launcher is available throughout the site. Its palette is set through Tidio's supported widget API to the website forest green. The contact actions continue to open the same widget instance.
 
 - Do not add a second embed.
-- Do not restore an unconditional Tidio script in the document shell.
+- Do not add a separate hard-coded Tidio script to the document shell; initialise the single widget through `loadTidio()` in the root component.
 - Do not style the cross-origin iframe with brittle CSS hacks.
 - Do not extract or reuse private WordPress/Tidio tokens.
 - Dashboard access is required for bot flows, operators, inboxes, and account-level settings.
 - If changing its appearance from code, use supported Tidio APIs and wait for the ready event.
-- Keep the chat optional and preserve the direct click-to-load behavior. The privacy page must accurately explain it.
+- Keep active chat use optional. The privacy page must accurately explain that the widget connects to Tidio automatically on an ordinary page visit.
 
 ## Legal and privacy content
 
@@ -194,6 +200,8 @@ For visible UI/layout changes, also verify in the running site at `http://localh
 - The Tidio integration was not accidentally duplicated or removed
 
 Use the browser-verification workflow for visual changes and close automation browser sessions after checking. A successful build alone is not sufficient evidence that a design change is correct.
+
+Use Codex's built-in browser for local visual verification. Do not launch or connect to a separate Chrome instance for this project.
 
 ## Source control and deployment
 

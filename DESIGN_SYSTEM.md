@@ -57,6 +57,7 @@ Use the shared component classes:
 | `site-container-narrow` | Editorial content such as a large quote                              |
 | `site-section`          | Standard vertical section rhythm (`py-24`, `lg:py-32`)               |
 | `site-anchor`           | Anchor offset that clears the persistent site header                 |
+| `site-skip-link`        | Keyboard skip navigation, visually revealed on focus                 |
 
 New full-width sections should normally use this structure:
 
@@ -109,6 +110,10 @@ Use `rounded-panel` for major contained panels, `rounded-2xl` for standard cards
 `src/components/site-header.tsx` is the only site-wide header. It is completely transparent at the top of a page and transitions to its appropriate solid surface, blur, and quiet shadow after scrolling begins. On the homepage and service pages it overlays the forest hero and adopts the forest surface while moving. The desktop Angebot control opens a keyboard-accessible service panel; mobile presents the same hierarchy inside one compact menu. New top-level pages must reuse this header rather than creating local navigation.
 
 Service-page heroes use the same forest surface, inverse typography, lime eyebrow and primary action treatment as the homepage hero. Their facts remain contained within the hero as quiet translucent panels.
+
+Service-page photography below the hero uses the shared `ServiceGallery` with a consistent square crop. It is manually controlled, supports native horizontal swiping, arrow keys and explicit previous/next controls, and never auto-plays. Keep galleries curated to a small set of informative client photographs; do not create decorative image dumps.
+
+The three concise benefit statements on service pages use the shared `BenefitIcon` line-art family. Icons reinforce the written benefit and remain visually subordinate inside the forest panel; do not mix in filled, multicolour, or third-party icon styles.
 
 The homepage and service pages share one compact contact CTA. Phone is the lime primary action; email and chat use the inverse outline treatment. Practical information belongs in the shared flat, full-width footer, which groups the brand and addresses, a linked sitemap, and contact and insurance details. Do not turn the footer into a floating card or repeat the service list in the copyright row.
 

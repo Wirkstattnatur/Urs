@@ -1,16 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/legal-page";
+import { getLegalPageSchema, getSeoHead, jsonLdScript } from "@/lib/seo";
+
+const title = "Impressum — Wirkstattnatur";
+const description = "Anbieter- und Kontaktangaben von Wirkstattnatur, Urs Gremlich.";
 
 export const Route = createFileRoute("/impressum")({
   head: () => ({
-    meta: [
-      { title: "Impressum — Wirkstattnatur" },
-      {
-        name: "description",
-        content: "Anbieter- und Kontaktangaben von Wirkstattnatur, Urs Gremlich.",
-      },
+    ...getSeoHead({ path: "/impressum", title, description, locale: "de-CH" }),
+    scripts: [
+      jsonLdScript(
+        getLegalPageSchema({ path: "/impressum", name: title, description, inLanguage: "de-CH" }),
+      ),
     ],
-    links: [{ rel: "canonical", href: "https://wirkstattnatur.ch/impressum" }],
   }),
   component: ImpressumPage,
 });

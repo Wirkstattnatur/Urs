@@ -1,16 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/legal-page";
+import { getLegalPageSchema, getSeoHead, jsonLdScript } from "@/lib/seo";
+
+const title = "Datenschutzerklärung — Wirkstattnatur";
+const description = "Datenschutzerklärung von Wirkstattnatur gemäss Schweizer Datenschutzrecht.";
 
 export const Route = createFileRoute("/datenschutz")({
   head: () => ({
-    meta: [
-      { title: "Datenschutzerklärung — Wirkstattnatur" },
-      {
-        name: "description",
-        content: "Datenschutzerklärung von Wirkstattnatur gemäss Schweizer Datenschutzrecht.",
-      },
+    ...getSeoHead({ path: "/datenschutz", title, description, locale: "de-CH" }),
+    scripts: [
+      jsonLdScript(
+        getLegalPageSchema({ path: "/datenschutz", name: title, description, inLanguage: "de-CH" }),
+      ),
     ],
-    links: [{ rel: "canonical", href: "https://wirkstattnatur.ch/datenschutz" }],
   }),
   component: DatenschutzPage,
 });
@@ -22,7 +24,7 @@ function DatenschutzPage() {
       title="Datenschutzerklärung"
       description="Transparent erklärt: welche Daten wir bearbeiten, wofür wir sie benötigen und welche Wahlmöglichkeiten du hast."
     >
-      <p className="legal-meta">Stand: 14. August 2026</p>
+      <p className="legal-meta">Stand: 18. August 2026</p>
 
       <aside className="legal-summary" aria-labelledby="privacy-summary-title">
         <h2 id="privacy-summary-title">Das Wichtigste in Kürze</h2>
@@ -31,7 +33,10 @@ function DatenschutzPage() {
           <li>
             Die Schriften werden lokal geladen; dabei findet keine Verbindung zu Google Fonts statt.
           </li>
-          <li>Der Tidio-Chat wird erst geladen, wenn du «Chat starten» anklickst.</li>
+          <li>
+            Das Tidio-Chatfenster wird beim Seitenbesuch geladen und erscheint als Kontaktsymbol am
+            Bildschirmrand.
+          </li>
           <li>
             Google Maps und andere externe Seiten werden nur geöffnet, wenn du einen Link anklickst.
           </li>
@@ -126,27 +131,52 @@ function DatenschutzPage() {
       <section id="chat">
         <h2>6. Optionaler Chat mit Tidio</h2>
         <p>
-          Für den Live-Chat verwenden wir Tidio. Der Dienst wird von Tidio LLC, San Francisco, USA,
-          und Tidio Poland sp. z o.o., Szczecin, Polen, angeboten. Der Chat ist optional. Das
-          Tidio-Skript wird erst geladen, wenn du bewusst «Chat starten» anklickst. Beim
-          gewöhnlichen Seitenbesuch entsteht keine Verbindung zu Tidio.
+          Für die Chatkommunikation verwenden wir Tidio, eine Kommunikationsplattform von Tidio LLC
+          (San Francisco, USA) und Tidio Poland sp. z o.o. (Szczecin, Polen). Das Tidio-Skript wird
+          beim Seitenbesuch automatisch geladen, damit das Chatsymbol am Bildschirmrand verfügbar
+          ist. Dadurch kann bereits vor dem Öffnen des Chatfensters eine Verbindung zu Tidio
+          entstehen. Die aktive Nutzung des Chats bleibt freiwillig.
         </p>
         <p>
-          Dabei können IP-Adresse, Geräte- und Browserinformationen, Nutzungsdaten, Identifikatoren
-          im Browser-Speicher sowie die von dir eingegebenen Kontaktangaben und Chat-Inhalte
-          bearbeitet werden. Wirkstattnatur nutzt diese Angaben, um die Chatfunktion
-          bereitzustellen, Anfragen zu beantworten und den Gesprächsverlauf zuzuordnen. Tidio gibt
-          an, die übermittelten Daten hauptsächlich im EWR und auf dort befindlichen Servern zu
-          bearbeiten. Einzelne Daten können in die USA oder weitere Länder übermittelt werden. Tidio
-          nennt dafür insbesondere das Swiss-U.S. Data Privacy Framework und
-          Standardvertragsklauseln als Garantien.
+          Je nach aktivierten Funktionen können insbesondere IP-Adresse, Geräte- und
+          Browserinformationen, Identifikatoren im Browser-Speicher, Name, E-Mail-Adresse,
+          Telefonnummer, weitere Kontaktangaben sowie Chat-Inhalte und Metadaten bearbeitet werden.
+          Welche Felder und Funktionen tatsächlich eingesetzt werden, hängt von der Konfiguration im
+          Tidio-Dashboard ab. Wirkstattnatur nutzt diese Angaben, um den Chat bereitzustellen,
+          Anfragen zu beantworten und den Gesprächsverlauf zu verwalten. Vertrauliche
+          Gesundheitsangaben gehören nicht in den Chat.
+        </p>
+        <p>
+          Tidio gibt an, Daten hauptsächlich im Europäischen Wirtschaftsraum zu bearbeiten und zu
+          speichern. Einzelne Daten können in die USA oder weitere Länder übermittelt werden. Tidio
+          nennt dafür je nach Fall Angemessenheitsbeschlüsse, das Swiss-U.S. Data Privacy Framework
+          und Standardvertragsklauseln als mögliche Garantien. Für die Bearbeitung von Chatdaten
+          kann Tidio als Auftragsbearbeiter eingesetzt werden; die konkreten Vertrags- und
+          Unterauftragsbedingungen sind im Tidio-Dashboard beziehungsweise in der
+          Auftragsbearbeitungsvereinbarung zu prüfen.
         </p>
         <p>
           Die Nutzung des Chats ist freiwillig. Alternativ kannst du per Telefon oder E-Mail Kontakt
-          aufnehmen. Weitere Informationen findest du in der
+          aufnehmen. Auskunfts-, Berichtigungs- und Löschbegehren kannst du an
+          <a href="mailto:info@wirkstattnatur.ch"> info@wirkstattnatur.ch</a> richten. Weitere
+          Informationen findest du in der
           <a href="https://www.tidio.com/privacy-policy/" target="_blank" rel="noreferrer">
             {" "}
             Datenschutzerklärung von Tidio
+          </a>
+          , in den
+          <a
+            href="https://help.tidio.com/hc/en-us/articles/5462910440220-Privacy-Policy-and-GDPR-Compliance"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            Hinweisen zu Datenschutz und DSGVO
+          </a>
+          und in den Angaben zur
+          <a href="https://www.tidio.com/terms/" target="_blank" rel="noreferrer">
+            {" "}
+            Auftragsbearbeitung
           </a>
           .
         </p>
@@ -155,15 +185,26 @@ function DatenschutzPage() {
       <section id="cookies">
         <h2>7. Cookies und ähnliche Technologien</h2>
         <p>
-          Wirkstattnatur setzt auf dieser Website keine Analyse- oder Marketing-Cookies ein und
-          speichert keine allgemeine Cookie-Auswahl. Solange du den Chat nicht startest, werden von
-          Tidio weder Cookies noch Einträge im lokalen Browser-Speicher gesetzt.
+          Wirkstattnatur setzt auf dieser Website keine eigenen Analyse- oder Marketing-Cookies ein
+          und speichert keine allgemeine Cookie-Auswahl. Durch das automatisch geladene
+          Tidio-Chatfenster können bereits beim Seitenbesuch Einträge im lokalen Browser-Speicher,
+          Cookies oder vergleichbare Technologien eingesetzt werden.
         </p>
         <p>
-          Wenn du den Chat startest, nutzt Tidio nach eigenen Angaben überwiegend den lokalen
-          Browser-Speicher und kann je nach technischer Situation zusätzlich Cookies oder
-          vergleichbare Technologien einsetzen. Du kannst Browser-Speicher und Cookies über die
-          Einstellungen deines Browsers löschen.
+          Tidio erklärt, dass unter normalen Bedingungen überwiegend der lokale Browser-Speicher
+          verwendet und nicht zwingend ein Cookie gesetzt wird. Je nach technischer Situation und
+          aktivierten Funktionen können jedoch zusätzliche Cookies oder vergleichbare Technologien
+          eingesetzt werden. Chatverläufe, die lokal im Browser angezeigt werden, kannst du durch
+          das Löschen des Browser-Speichers entfernen. Weitere Hinweise dazu enthält die
+          <a
+            href="https://help.tidio.com/hc/en-us/articles/12425531041052-How-visitors-can-remove-their-chat-history"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            Anleitung von Tidio
+          </a>
+          .
         </p>
       </section>
 

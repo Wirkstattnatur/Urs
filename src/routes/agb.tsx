@@ -1,16 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/legal-page";
+import { getLegalPageSchema, getSeoHead, jsonLdScript } from "@/lib/seo";
+
+const title = "Allgemeine Geschäftsbedingungen — Wirkstattnatur";
+const description = "Allgemeine Geschäftsbedingungen von Wirkstattnatur, Urs Gremlich.";
 
 export const Route = createFileRoute("/agb")({
   head: () => ({
-    meta: [
-      { title: "Allgemeine Geschäftsbedingungen — Wirkstattnatur" },
-      {
-        name: "description",
-        content: "Allgemeine Geschäftsbedingungen von Wirkstattnatur, Urs Gremlich.",
-      },
+    ...getSeoHead({ path: "/agb", title, description, locale: "de-CH" }),
+    scripts: [
+      jsonLdScript(
+        getLegalPageSchema({ path: "/agb", name: title, description, inLanguage: "de-CH" }),
+      ),
     ],
-    links: [{ rel: "canonical", href: "https://wirkstattnatur.ch/agb" }],
   }),
   component: AgbPage,
 });

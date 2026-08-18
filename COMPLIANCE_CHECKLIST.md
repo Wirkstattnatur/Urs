@@ -28,7 +28,7 @@ Diese Checkliste ergänzt die technische Umsetzung und die Rechtstexte der Websi
 - Google Fonts werden lokal ausgeliefert.
 - Es gibt keine Analyse- oder Werbetracker.
 - Google Maps und Google-Rezensionen sind nur externe Links und nicht eingebettet.
-- Tidio wird erst nach einem bewussten Klick auf `Chat starten` geladen; beim gewöhnlichen Seitenbesuch entsteht keine Verbindung zu Tidio.
+- Tidio wird beim Seitenbesuch automatisch geladen, damit das Chatsymbol sichtbar ist; die Datenschutzerklärung beschreibt die dabei entstehende Verbindung und mögliche Browser-Speicherung.
 
 ## Prüfreferenzen
 

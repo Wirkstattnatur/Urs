@@ -1,7 +1,10 @@
-import { Link } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
 import { useEffect, useId, useRef, useState, type MouseEvent } from "react";
 import { PhoneIcon } from "@/components/contact-icons";
+import { GlobeIcon } from "@/components/language-icon";
+import { getLocaleFromPath, persistLocalePreference, type Locale } from "@/lib/locale";
 import { serviceOffers, type ServiceDetail } from "@/lib/services";
+import { getLocalizedService } from "@/lib/services-en";
 
 const primaryNavigation = [
   { id: "konzept", label: "Das Konzept" },
@@ -10,20 +13,33 @@ const primaryNavigation = [
   { id: "kontakt", label: "Kontakt" },
 ] as const;
 
+const englishNavigation = [
+  { id: "konzept", label: "Concept" },
+  { id: "urs", label: "About me" },
+  { id: "stimmen", label: "Reviews" },
+  { id: "kontakt", label: "Contact" },
+] as const;
+
 type SiteHeaderProps = {
   variant?: "home" | "primary" | "surface";
   currentServicePath?: ServiceDetail["path"];
 };
 
 export function SiteHeader({ variant = "surface", currentServicePath }: SiteHeaderProps) {
+  const location = useLocation();
   const [offersOpen, setOffersOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const offersId = useId();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownButtonRef = useRef<HTMLButtonElement>(null);
-  const sectionPrefix = variant === "home" ? "" : "/";
-  const isHome = variant === "home";
+  const mobileMenuRef = useRef<HTMLDetailsElement>(null);
+  const mobileSummaryRef = useRef<HTMLElement>(null);
   const isInverse = variant !== "surface";
+  const isEnglish = getLocaleFromPath(location.pathname) === "en";
+  const locale: Locale = isEnglish ? "en" : "de";
+  const navigation = isEnglish ? englishNavigation : primaryNavigation;
+  const homePath = isEnglish ? "/en" : "/";
+  const sectionPrefix = variant === "home" ? "" : homePath;
 
   useEffect(() => {
     function updateHeaderSurface() {
@@ -61,6 +77,31 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
     };
   }, [offersOpen]);
 
+  useEffect(() => {
+    function closeMobileMenuOnOutsidePointer(event: PointerEvent) {
+      const menu = mobileMenuRef.current;
+      if (menu?.open && !menu.contains(event.target as Node)) {
+        menu.open = false;
+      }
+    }
+
+    function closeMobileMenuOnEscape(event: KeyboardEvent) {
+      const menu = mobileMenuRef.current;
+      if (event.key === "Escape" && menu?.open) {
+        menu.open = false;
+        mobileSummaryRef.current?.focus();
+      }
+    }
+
+    document.addEventListener("pointerdown", closeMobileMenuOnOutsidePointer);
+    document.addEventListener("keydown", closeMobileMenuOnEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeMobileMenuOnOutsidePointer);
+      document.removeEventListener("keydown", closeMobileMenuOnEscape);
+    };
+  }, []);
+
   const foregroundClass = isInverse ? "text-primary-foreground" : "text-foreground";
   const hoverClass = isInverse ? "hover:text-accent" : "hover:text-primary";
 
@@ -78,21 +119,20 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
     >
       <nav
         className="site-container flex h-20 items-center justify-between"
-        aria-label="Hauptnavigation"
+        aria-label={isEnglish ? "Main navigation" : "Hauptnavigation"}
       >
-        <Link
-          to="/"
-          hash="top"
-          aria-label="Wirkstattnatur Startseite"
+        <a
+          href={`${homePath}#top`}
+          aria-label={isEnglish ? "Wirkstattnatur homepage" : "Wirkstattnatur Startseite"}
           className={`font-display text-2xl font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${foregroundClass}`}
         >
           Wirkstatt
           <span className={isInverse ? "text-accent" : "text-accent-foreground"}>natur</span>
-        </Link>
+        </a>
 
         <div className={`hidden items-center gap-7 text-sm font-medium lg:flex ${foregroundClass}`}>
           <a href={`${sectionPrefix}#konzept`} className={`transition ${hoverClass}`}>
-            Das Konzept
+            {isEnglish ? "Concept" : "Das Konzept"}
           </a>
 
           <div ref={dropdownRef} className="relative">
@@ -104,7 +144,7 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
               onClick={() => setOffersOpen((open) => !open)}
               className={`flex items-center gap-1.5 transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${hoverClass}`}
             >
-              Angebot
+              {isEnglish ? "Services" : "Angebot"}
               <ChevronIcon open={offersOpen} />
             </button>
 
@@ -119,30 +159,37 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
                     onClick={() => setOffersOpen(false)}
                     className="block rounded-xl px-4 py-3 text-sm font-semibold transition hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none"
                   >
-                    Alle Angebote
+                    {isEnglish ? "All services" : "Alle Angebote"}
                   </a>
                   <div className="mt-1 grid gap-1">
-                    {serviceOffers.map((service) => (
-                      <Link
-                        key={service.path}
-                        to={service.path}
-                        aria-current={currentServicePath === service.path ? "page" : undefined}
-                        onClick={() => setOffersOpen(false)}
-                        className="rounded-xl px-4 py-3 transition hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none aria-[current=page]:bg-secondary"
-                      >
-                        <span className="block text-sm font-semibold">{service.title}</span>
-                        <span className="mt-0.5 block text-xs font-normal text-muted-foreground">
-                          {service.eyebrow}
-                        </span>
-                      </Link>
-                    ))}
+                    {serviceOffers.map((service) => {
+                      const localizedService = getLocalizedService(service, locale);
+                      const servicePath = isEnglish ? `/en${service.path}` : service.path;
+
+                      return (
+                        <a
+                          key={service.path}
+                          href={servicePath}
+                          aria-current={currentServicePath === service.path ? "page" : undefined}
+                          onClick={() => setOffersOpen(false)}
+                          className="rounded-xl px-4 py-3 transition hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none aria-[current=page]:bg-secondary"
+                        >
+                          <span className="block text-sm font-semibold">
+                            {localizedService.title}
+                          </span>
+                          <span className="mt-0.5 block text-xs font-normal text-muted-foreground">
+                            {localizedService.eyebrow}
+                          </span>
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
             ) : null}
           </div>
 
-          {primaryNavigation.slice(1).map((item) => (
+          {navigation.slice(1).map((item) => (
             <a
               key={item.id}
               href={`${sectionPrefix}#${item.id}`}
@@ -151,6 +198,12 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
               {item.label}
             </a>
           ))}
+
+          <LanguageSwitch
+            pathname={location.pathname}
+            isEnglish={isEnglish}
+            isInverse={isInverse}
+          />
         </div>
 
         <div className="flex items-center gap-3">
@@ -162,16 +215,17 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
             079 413 18 30
           </a>
 
-          <details className="group relative lg:hidden">
+          <details ref={mobileMenuRef} className="group relative lg:hidden">
             <summary
-              className={`cursor-pointer list-none rounded-control px-4 py-2.5 text-sm font-semibold ring-1 transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent [&::-webkit-details-marker]:hidden ${
+              ref={mobileSummaryRef}
+              className={`cursor-pointer list-none rounded-control px-4 py-3 text-sm font-semibold ring-1 transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent [&::-webkit-details-marker]:hidden ${
                 isInverse
                   ? "bg-primary-foreground/10 text-primary-foreground ring-primary-foreground/30 hover:bg-primary-foreground/20"
                   : "bg-secondary text-primary ring-border hover:bg-card"
               }`}
             >
               <span className="flex items-center gap-2">
-                Menü
+                {isEnglish ? "Menu" : "Menü"}
                 <ChevronIcon />
               </span>
             </summary>
@@ -182,31 +236,36 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
                 onClick={closeMobileMenu}
                 className="block rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none"
               >
-                Das Konzept
+                {isEnglish ? "Concept" : "Das Konzept"}
               </a>
 
               <div className="my-1 rounded-xl bg-secondary/60 p-2">
                 <a
                   href={`${sectionPrefix}#angebot`}
                   onClick={closeMobileMenu}
-                  className="block rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground transition hover:bg-card focus-visible:bg-card focus-visible:outline-none"
+                  className="block rounded-lg px-3 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground transition hover:bg-card focus-visible:bg-card focus-visible:outline-none"
                 >
-                  Angebot
+                  {isEnglish ? "Services" : "Angebot"}
                 </a>
-                {serviceOffers.map((service) => (
-                  <Link
-                    key={service.path}
-                    to={service.path}
-                    aria-current={currentServicePath === service.path ? "page" : undefined}
-                    onClick={closeMobileMenu}
-                    className="block rounded-lg px-3 py-2.5 text-sm font-semibold transition hover:bg-card focus-visible:bg-card focus-visible:outline-none aria-[current=page]:bg-card"
-                  >
-                    {service.title}
-                  </Link>
-                ))}
+                {serviceOffers.map((service) => {
+                  const localizedService = getLocalizedService(service, locale);
+                  const servicePath = isEnglish ? `/en${service.path}` : service.path;
+
+                  return (
+                    <a
+                      key={service.path}
+                      href={servicePath}
+                      aria-current={currentServicePath === service.path ? "page" : undefined}
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-3 text-sm font-semibold transition hover:bg-card focus-visible:bg-card focus-visible:outline-none aria-[current=page]:bg-card"
+                    >
+                      {localizedService.title}
+                    </a>
+                  );
+                })}
               </div>
 
-              {primaryNavigation.slice(1).map((item) => (
+              {navigation.slice(1).map((item) => (
                 <a
                   key={item.id}
                   href={`${sectionPrefix}#${item.id}`}
@@ -226,10 +285,57 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
               </a>
             </div>
           </details>
+
+          <div className="lg:hidden">
+            <LanguageSwitch
+              pathname={location.pathname}
+              isEnglish={isEnglish}
+              isInverse={isInverse}
+            />
+          </div>
         </div>
       </nav>
     </header>
   );
+}
+
+function LanguageSwitch({
+  pathname,
+  isEnglish,
+  isInverse,
+}: {
+  pathname: string;
+  isEnglish: boolean;
+  isInverse: boolean;
+}) {
+  const nextLocale = isEnglish ? "de" : "en";
+  const href = getLocalizedPath(pathname, nextLocale);
+
+  return (
+    <a
+      href={href}
+      onClick={() => persistLocalePreference(nextLocale)}
+      aria-label={isEnglish ? "Switch to German" : "Auf Englisch wechseln"}
+      className={`inline-flex items-center gap-2 rounded-control px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition ring-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
+        isInverse
+          ? "bg-primary-foreground/10 text-accent ring-primary-foreground/25 hover:bg-primary-foreground/15"
+          : "bg-secondary text-accent-foreground ring-border hover:bg-card"
+      }`}
+    >
+      <GlobeIcon className="h-3.5 w-3.5" />
+      {nextLocale === "en" ? "EN" : "DE"}
+    </a>
+  );
+}
+
+function getLocalizedPath(pathname: string, locale: Locale): string {
+  if (locale === "en") {
+    if (pathname === "/") return "/en";
+    return pathname.startsWith("/en") ? pathname : `/en${pathname}`;
+  }
+
+  if (pathname === "/en") return "/";
+  return pathname.startsWith("/en/") ? pathname.slice(3) : pathname;
 }
 
 function ChevronIcon({ open = false }: { open?: boolean }) {

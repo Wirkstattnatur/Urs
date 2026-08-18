@@ -1,5 +1,6 @@
 type TidioChatApi = {
   open: () => void;
+  show: () => void;
   setColorPalette: (color: string) => void;
 };
 
@@ -15,11 +16,16 @@ const TIDIO_BRAND_COLOR = "#294f3d";
 
 let tidioReadyPromise: Promise<void> | undefined;
 
+function configureTidio() {
+  window.tidioChatApi?.setColorPalette(TIDIO_BRAND_COLOR);
+  window.tidioChatApi?.show();
+}
+
 export function loadTidio() {
   if (typeof window === "undefined") return Promise.resolve();
 
   if (window.tidioChatApi) {
-    window.tidioChatApi.setColorPalette(TIDIO_BRAND_COLOR);
+    configureTidio();
     return Promise.resolve();
   }
 
@@ -27,7 +33,7 @@ export function loadTidio() {
 
   tidioReadyPromise = new Promise<void>((resolve) => {
     const handleReady = () => {
-      window.tidioChatApi?.setColorPalette(TIDIO_BRAND_COLOR);
+      configureTidio();
       resolve();
     };
 
@@ -58,5 +64,8 @@ export function loadTidio() {
 export function openTidioChat() {
   if (typeof window === "undefined") return;
 
-  void loadTidio().then(() => window.tidioChatApi?.open());
+  void loadTidio().then(() => {
+    window.tidioChatApi?.show();
+    window.tidioChatApi?.open();
+  });
 }
