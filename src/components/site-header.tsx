@@ -199,14 +199,17 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
             </a>
           ))}
 
-          <LanguageSwitch
-            pathname={location.pathname}
-            isEnglish={isEnglish}
-            isInverse={isInverse}
-          />
         </div>
 
         <div className="flex items-center gap-3">
+          <div className="hidden lg:block">
+            <LanguageSwitch
+              pathname={location.pathname}
+              isEnglish={isEnglish}
+              isInverse={isInverse}
+            />
+          </div>
+
           <a
             href="tel:+41794131830"
             className="hidden shrink-0 items-center gap-2 rounded-control bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-card transition hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent xl:inline-flex"
