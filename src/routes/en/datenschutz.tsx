@@ -21,7 +21,7 @@ export const Route = createFileRoute("/en/datenschutz")({
 function EnglishPrivacyPage() {
   return (
     <LegalPage currentPath="/en/datenschutz" locale="en" title={title} description={description}>
-      <p className="legal-meta">Last updated: 18 August 2026</p>
+      <p className="legal-meta">Last updated: 20 August 2026</p>
 
       <aside className="legal-summary" aria-labelledby="privacy-summary-title">
         <h2 id="privacy-summary-title">Key points at a glance</h2>
@@ -126,24 +126,35 @@ function EnglishPrivacyPage() {
           We use Tidio, a communication platform operated by Tidio LLC (San Francisco, USA) and
           Tidio Poland sp. z o.o. (Szczecin, Poland), for chat communication. The Tidio script is
           loaded automatically when you visit the website so that the chat icon is available at the
-          edge of the screen. This means that a connection to Tidio may be established before the
-          chat window is opened. Actively using the chat remains entirely voluntary.
+          edge of the screen. This establishes a connection to Tidio before the chat window is
+          opened. Technically necessary connection data, particularly your IP address, is
+          transmitted to Tidio. Tidio states that it only saves the IP address in the visitor
+          profile when a person starts a chat. Actively using the chat remains entirely voluntary.
         </p>
         <p>
-          Depending on the enabled features, this may include your IP address, device and browser
-          information, local-storage identifiers, name, email address, telephone number, other
-          contact details, chat content and related metadata. The actual fields and functions depend
-          on the configuration in the Tidio dashboard. Wirkstattnatur uses this information to
-          provide the chat, respond to enquiries and manage conversation history. Please do not send
-          confidential health information through the chat.
+          The chat currently opens directly into a message field. No pre-chat form is enabled before
+          the first message, and a name, email address, or telephone number is not mandatory. When
+          you start a chat, the data processed may include chat content and timestamps, your IP
+          address, identifiers in local browser storage, pages visited, browser and operating-system
+          information, and any contact details you provide voluntarily. Wirkstattnatur uses this
+          information solely to provide the chat, respond to enquiries, and manage conversation
+          history. Please do not send confidential health information through the chat.
         </p>
         <p>
-          Tidio states that data is primarily processed and stored in the European Economic Area.
-          Individual data may be transferred to the United States or other countries. Depending on
-          the circumstances, Tidio refers to adequacy decisions, the Swiss-U.S. Data Privacy
-          Framework and standard contractual clauses as possible safeguards. Tidio may act as a
-          processor for chat data; the applicable contractual and sub-processor terms must be
-          checked in the Tidio dashboard or data-processing agreement.
+          Tidio states that application data is stored on servers in the European Economic Area. In
+          connection with operations, support, and sub-processors, data may nevertheless be
+          transferred to or accessed from the United States or other countries. Depending on the
+          circumstances, Tidio refers to adequacy decisions, the Swiss-U.S. Data Privacy Framework,
+          and standard contractual clauses as safeguards. Under Tidio's current terms, a data
+          processing agreement is incorporated into the contractual terms for customers in
+          Switzerland.
+        </p>
+        <p>
+          Messages and associated contact data are stored within the Tidio application.
+          Wirkstattnatur deletes or anonymises chat histories once they are no longer required to
+          handle the enquiry or provide relevant evidence, unless a legal obligation or overriding
+          interest requires continued retention. Deletion is performed in the Tidio dashboard. Tidio
+          provides a deletion function for contacts and their conversation histories.
         </p>
         <p>
           Using the chat is optional. You can always reach us by telephone or email instead.

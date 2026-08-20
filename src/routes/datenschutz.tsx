@@ -24,7 +24,7 @@ function DatenschutzPage() {
       title="Datenschutzerklärung"
       description="Transparent erklärt: welche Daten wir bearbeiten, wofür wir sie benötigen und welche Wahlmöglichkeiten du hast."
     >
-      <p className="legal-meta">Stand: 18. August 2026</p>
+      <p className="legal-meta">Stand: 20. August 2026</p>
 
       <aside className="legal-summary" aria-labelledby="privacy-summary-title">
         <h2 id="privacy-summary-title">Das Wichtigste in Kürze</h2>
@@ -134,26 +134,37 @@ function DatenschutzPage() {
           Für die Chatkommunikation verwenden wir Tidio, eine Kommunikationsplattform von Tidio LLC
           (San Francisco, USA) und Tidio Poland sp. z o.o. (Szczecin, Polen). Das Tidio-Skript wird
           beim Seitenbesuch automatisch geladen, damit das Chatsymbol am Bildschirmrand verfügbar
-          ist. Dadurch kann bereits vor dem Öffnen des Chatfensters eine Verbindung zu Tidio
-          entstehen. Die aktive Nutzung des Chats bleibt freiwillig.
+          ist. Dadurch entsteht bereits vor dem Öffnen des Chatfensters eine Verbindung zu Tidio.
+          Dabei werden technisch notwendige Verbindungsdaten, insbesondere die IP-Adresse, an Tidio
+          übermittelt. Tidio gibt an, die IP-Adresse im Besucherprofil erst zu speichern, wenn eine
+          Person einen Chat startet. Die aktive Nutzung des Chats bleibt freiwillig.
         </p>
         <p>
-          Je nach aktivierten Funktionen können insbesondere IP-Adresse, Geräte- und
-          Browserinformationen, Identifikatoren im Browser-Speicher, Name, E-Mail-Adresse,
-          Telefonnummer, weitere Kontaktangaben sowie Chat-Inhalte und Metadaten bearbeitet werden.
-          Welche Felder und Funktionen tatsächlich eingesetzt werden, hängt von der Konfiguration im
-          Tidio-Dashboard ab. Wirkstattnatur nutzt diese Angaben, um den Chat bereitzustellen,
-          Anfragen zu beantworten und den Gesprächsverlauf zu verwalten. Vertrauliche
-          Gesundheitsangaben gehören nicht in den Chat.
+          Der derzeit eingesetzte Chat führt direkt zu einem Nachrichtenfeld. Vor der ersten
+          Nachricht ist kein Vorabformular aktiviert; Name, E-Mail-Adresse und Telefonnummer werden
+          nicht zwingend abgefragt. Wenn du einen Chat startest, können insbesondere Chat-Inhalte,
+          Zeitpunkte, IP-Adresse, Identifikatoren im lokalen Browser-Speicher, besuchte Seiten,
+          Browser- und Betriebssysteminformationen sowie freiwillig mitgeteilte Kontaktangaben
+          bearbeitet werden. Wirkstattnatur nutzt diese Angaben ausschliesslich, um den Chat
+          bereitzustellen, Anfragen zu beantworten und den Gesprächsverlauf zu verwalten.
+          Vertrauliche Gesundheitsangaben gehören nicht in den Chat.
         </p>
         <p>
-          Tidio gibt an, Daten hauptsächlich im Europäischen Wirtschaftsraum zu bearbeiten und zu
-          speichern. Einzelne Daten können in die USA oder weitere Länder übermittelt werden. Tidio
-          nennt dafür je nach Fall Angemessenheitsbeschlüsse, das Swiss-U.S. Data Privacy Framework
-          und Standardvertragsklauseln als mögliche Garantien. Für die Bearbeitung von Chatdaten
-          kann Tidio als Auftragsbearbeiter eingesetzt werden; die konkreten Vertrags- und
-          Unterauftragsbedingungen sind im Tidio-Dashboard beziehungsweise in der
-          Auftragsbearbeitungsvereinbarung zu prüfen.
+          Tidio gibt an, Anwendungsdaten auf Servern im Europäischen Wirtschaftsraum zu speichern.
+          Im Rahmen des Betriebs, des Supports und des Einsatzes von Unterauftragsbearbeitern können
+          Daten dennoch in die USA oder weitere Länder übermittelt beziehungsweise von dort aus
+          zugänglich sein. Tidio nennt dafür je nach Fall Angemessenheitsbeschlüsse, das Swiss-U.S.
+          Data Privacy Framework und Standardvertragsklauseln als Garantien. Nach den aktuellen
+          Tidio-Vertragsbedingungen ist für Kundinnen und Kunden in der Schweiz eine
+          Auftragsbearbeitungsvereinbarung Bestandteil der Vertragsbedingungen.
+        </p>
+        <p>
+          Nachrichten und zugehörige Kontaktdaten werden in der Tidio-Anwendung gespeichert.
+          Wirkstattnatur löscht oder anonymisiert Chatverläufe, sobald sie für die Bearbeitung der
+          Anfrage und allfällige Nachweise nicht mehr erforderlich sind und keine gesetzliche
+          Pflicht oder ein überwiegendes Interesse entgegensteht. Die technische Löschung erfolgt im
+          Tidio-Dashboard. Tidio stellt dafür eine Löschfunktion für Kontakte und deren
+          Gesprächsverläufe bereit.
         </p>
         <p>
           Die Nutzung des Chats ist freiwillig. Alternativ kannst du per Telefon oder E-Mail Kontakt

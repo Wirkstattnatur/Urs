@@ -198,7 +198,6 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
               {item.label}
             </a>
           ))}
-
         </div>
 
         <div className="flex items-center gap-3">

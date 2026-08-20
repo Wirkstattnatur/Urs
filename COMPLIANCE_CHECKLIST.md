@@ -4,9 +4,9 @@ Diese Checkliste ergänzt die technische Umsetzung und die Rechtstexte der Websi
 
 ## Vor dem Produktionsstart
 
-- [ ] Mit Tidio eine Auftragsbearbeitungsvereinbarung (DPA/ADV) abschliessen und darauf achten, dass sie das Schweizer DSG sowie internationale Datenübermittlungen abdeckt.
-- [ ] Im Tidio-Dashboard prüfen, welche Bots, KI-Funktionen, Kontaktfelder, Integrationen und Aufbewahrungsfristen aktiv sind. Die Datenschutzerklärung aktualisieren, falls mehr als der beschriebene Live-Chat genutzt wird.
-- [ ] Im Tidio-Dashboard einen kurzen Datenschutzhinweis vor der ersten Nachricht einblenden und auf die Datenschutzerklärung verlinken.
+- [ ] Dokumentieren, dass für das Schweizer Tidio-Konto die aktuellen Vertragsbedingungen samt integrierter Auftragsbearbeitungsvereinbarung (DPA/ADV) gelten; bei Bedarf eine unterzeichnete Fassung samt Standardvertragsklauseln bei `privacy@tidio.net` anfordern und ablegen.
+- [ ] Im Tidio-Dashboard prüfen, welche Bots, KI-Funktionen, Integrationen und Aufbewahrungsfristen aktiv sind. Die Datenschutzerklärung aktualisieren, falls mehr als der öffentlich sichtbare Live-Chat genutzt wird.
+- [ ] Falls später ein Vorabformular, eine Automatisierung oder eine Datenerhebung vor der ersten Nachricht aktiviert wird, dort einen kurzen Datenschutzhinweis mit Link auf die Datenschutzerklärung einblenden.
 - [ ] Sicherstellen, dass Chatverläufe und Kontakte in Tidio regelmässig gelöscht werden, sobald sie nicht mehr benötigt werden.
 - [ ] Die Auftragsbearbeitungsbedingungen von Hostpoint für das konkrete Hosting prüfen und dokumentieren.
 - [ ] HTTPS für die gesamte Domain erzwingen und Weiterleitungen von HTTP testen.
@@ -29,6 +29,7 @@ Diese Checkliste ergänzt die technische Umsetzung und die Rechtstexte der Websi
 - Es gibt keine Analyse- oder Werbetracker.
 - Google Maps und Google-Rezensionen sind nur externe Links und nicht eingebettet.
 - Tidio wird beim Seitenbesuch automatisch geladen, damit das Chatsymbol sichtbar ist; die Datenschutzerklärung beschreibt die dabei entstehende Verbindung und mögliche Browser-Speicherung.
+- Öffentliche Prüfung am 20. August 2026: Der Chat führt direkt zu einem Nachrichtenfeld. Es ist kein Vorabformular sichtbar, und Name, E-Mail-Adresse oder Telefonnummer werden vor der ersten Nachricht nicht zwingend abgefragt.
 
 ## Prüfreferenzen
 
