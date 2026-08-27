@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import heroImg from "@/assets/wirkstatt/hero-stairs.webp";
-import wirkraumImg from "@/assets/wirkstatt/pilates.jpg";
+import parkingImg from "@/assets/wirkstatt/parking-wirkstattnatur.webp";
+import ursGoalImg from "@/assets/wirkstatt/urs-goal.webp";
 import ursImg from "@/assets/wirkstatt/urs-gremlich.jpg";
 import { ContactCta } from "@/components/contact-cta";
 import { LocationIcon } from "@/components/contact-icons";
@@ -32,9 +33,17 @@ const reviews = [
     author: "Evelyn Janik",
     text: "Urs has been my personal trainer for nearly 3 years and responds afresh to my needs and how I'm feeling in every single session! The training is a perfect combination of strength and endurance, and importantly, having fun is never neglected. Urs has a wide range of expertise, not just in training theory. A true professional whom I warmly recommend!",
   },
+  {
+    author: "Joanna Bielenia",
+    text: "Dear Urs, I would like to thank you warmly once again for your professional guidance and support during our training sessions together. When I began training with you, my body was still very weak after my accident. Despite an extended period of physiotherapy and osteopathic treatment, I lacked physical strength, and my overall condition was at a very low level. Thanks to your expert and individually tailored support, my health has improved significantly. Every session was varied, engaging, and perfectly adapted to my physical condition at the time. At the same time, you managed to create a positive and motivating atmosphere in every session. I greatly appreciated your professionalism, your deep expertise, and your pleasant, humorous manner. Working with you was not only effective, but also a great pleasure. I would like to thank you from the bottom of my heart for your support, your dedication, and your patience. I can recommend you as a trainer without reservation and wish you continued success and all the best. Warm regards Jo",
+  },
 ] as const;
 
-const reviewColumns = [[reviews[0], reviews[1]], [reviews[2], reviews[3]], [reviews[4]]] as const;
+const reviewColumns = [
+  [reviews[0], reviews[1]],
+  [reviews[2], reviews[3]],
+  [reviews[4], reviews[5]],
+] as const;
 
 const reviewColumnMotion = [
   { offset: 0, depth: -12 },
@@ -204,7 +213,7 @@ export function EnglishHomePage() {
             <div className="site-lead space-y-6 lg:col-span-7 lg:pt-4">
               <p>
                 There are no off-the-shelf solutions here. I take the time to understand your wishes
-                and goals — creating a training programme that is truly shaped around you.
+                and goals — and create a training programme tailored around you.
               </p>
               <p>
                 Movement is important. Rest and recovery just as much so. Together we find the
@@ -293,35 +302,51 @@ export function EnglishHomePage() {
                 <em className="text-primary">more than just fitness changes.</em>”
               </blockquote>
             </div>
-            <a
-              href={googleMapsUrl}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Open Wirkraum Thalwil on Google Maps"
-              className="group relative overflow-hidden rounded-panel shadow-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:col-span-5"
-            >
+            <div className="relative overflow-hidden rounded-panel bg-secondary shadow-soft lg:col-span-5">
               <img
-                src={wirkraumImg}
-                alt="Bright Wirkraum studio in Thalwil with blue training mats"
+                src={ursGoalImg}
+                alt="Urs Gremlich carrying a child at the basketball hoop"
                 loading="lazy"
-                className="aspect-square w-full object-cover transition duration-500 ease-brand group-hover:scale-[1.02] motion-reduce:transform-none"
+                className="aspect-[4/5] h-full w-full object-cover"
+                style={{ objectPosition: "center 48%" }}
               />
-              <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-primary/90 p-4 text-primary-foreground backdrop-blur-sm sm:inset-x-5 sm:bottom-5 sm:p-5">
-                <div className="flex items-start gap-3">
-                  <span className="flex size-8 flex-none items-center justify-center rounded-full bg-accent text-accent-foreground">
-                    <LocationIcon className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <p className="font-display text-xl transition group-hover:text-accent sm:text-2xl">
-                      Wirkraum Thalwil
-                    </p>
-                    <p className="mt-1 text-sm text-primary-foreground/75">
-                      Zürcherstrasse 73 · 8800 Thalwil
-                    </p>
-                  </div>
+            </div>
+          </div>
+
+          <div className="mt-16 overflow-hidden rounded-panel bg-primary text-primary-foreground shadow-soft lg:mt-20 lg:grid lg:grid-cols-[1.15fr_0.85fr]">
+            <img
+              src={parkingImg}
+              alt="Customer parking at the Wirkraum in Thalwil"
+              loading="lazy"
+              className="aspect-[4/3] h-full w-full object-cover"
+              style={{ objectPosition: "center center" }}
+            />
+            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
+              <p className="site-eyebrow text-accent">Location</p>
+              <h2 className="font-display text-4xl leading-tight sm:text-5xl">Wirkraum Thalwil</h2>
+              <p className="mt-5 max-w-md leading-relaxed text-primary-foreground/75">
+                The Wirkraum is located at Zürcherstrasse 73 in Thalwil.
+              </p>
+              <div className="mt-6 flex items-start gap-3">
+                <span className="flex size-8 flex-none items-center justify-center rounded-full bg-accent text-accent-foreground">
+                  <LocationIcon className="h-4 w-4" />
+                </span>
+                <div>
+                  <p className="font-semibold">Zürcherstrasse 73 · 8800 Thalwil</p>
+                  <p className="mt-1 text-sm text-primary-foreground/70">
+                    Parking space no. 51 reserved for customers
+                  </p>
                 </div>
               </div>
-            </a>
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="site-button site-button-md site-button-ghost-inverse mt-8 self-start"
+              >
+                View on Google Maps
+              </a>
+            </div>
           </div>
         </section>
 
@@ -347,13 +372,13 @@ export function EnglishHomePage() {
               </h2>
               <div className="site-lead mt-8 max-w-2xl space-y-5">
                 <p>
-                  I accompany clients in German and English. As a martial artist with competition
-                  experience, I combine solid expertise with a fine intuition for the person in
-                  front of me.
+                  I support people in German and English. As a Movement & Health Trainer and a
+                  martial artist with competitive experience, I combine sound expertise with a fine
+                  sense for the person in front of me.
                 </p>
                 <p>
-                  Movement, relaxation and nutrition belong together. Trust, humour and a zest for
-                  life form the foundation — quality always comes before quantity.
+                  Movement, relaxation and nutrition belong together for me. Trust, humour and a
+                  zest for life form the foundation.
                 </p>
               </div>
               <div className="mt-8 max-w-2xl border-l-2 border-accent pl-6">

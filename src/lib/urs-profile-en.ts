@@ -24,10 +24,15 @@ export const ursProfileEnglish = {
     },
     {
       title: "Therapy & Regeneration",
-      items: ["Spinal Therapist", "Trigger Point and Cupping Therapy", "Classic Massage"],
+      items: [
+        "Spinal Therapist",
+        "Trigger Point and Cupping Therapy",
+        "Classic Massage",
+        "Spiraldynamik Intermediate",
+      ],
     },
     {
-      title: "Teaching & Specialisations",
+      title: "Specialisms",
       items: [
         "Continuing Professional Development in Obesity Management",
         "Adult Educator (SVEB1)",
@@ -38,7 +43,6 @@ export const ursProfileEnglish = {
   qualityNote:
     "As a practice recognised by health insurance, Wirkstattnatur completes and provides evidence of at least two days of continuing professional development each year.",
   affiliations: [
-    { name: "EMfit", detail: "BGB Schweiz quality label for prevention and health" },
     {
       name: "Berufsverband für Gesundheit & Bewegung Schweiz",
       detail: "Board member · Finance",

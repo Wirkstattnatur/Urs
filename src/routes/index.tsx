@@ -1,7 +1,8 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import heroImg from "@/assets/wirkstatt/hero-stairs.webp";
-import wirkraumImg from "@/assets/wirkstatt/pilates.jpg";
+import parkingImg from "@/assets/wirkstatt/parking-wirkstattnatur.webp";
+import ursGoalImg from "@/assets/wirkstatt/urs-goal.webp";
 import ursImg from "@/assets/wirkstatt/urs-gremlich.jpg";
 import { ContactCta } from "@/components/contact-cta";
 import { LocationIcon } from "@/components/contact-icons";
@@ -61,9 +62,18 @@ const reviews = [
     language: "de",
     text: "Seit bald 3 Jahren ist Urs mein Personal Trainer und geht in jeder Stunde von Neuem auf meine Bedürfnisse und mein Befinden ein! Das Training ist eine perfekte Kombination von Kraft und Ausdauer, bei dem, und das ist mir wichtig, der Spass nicht zu kurz kommt. Urs hat ein sehr breites Fachwissen, nicht nur in der Trainingslehre. Ein Profi, den ich wärmstens empfehlen kann!",
   },
+  {
+    author: "Joanna Bielenia",
+    language: "de",
+    text: "Lieber Urs, ich möchte mich nochmals herzlich für deine professionelle sportliche Begleitung und Betreuung während unserer gemeinsamen Trainings bedanken. Als ich bei dir mit dem Training begonnen habe, war mein Körper nach meinem Unfall noch sehr geschwächt. Trotz einer längeren Phase mit Physiotherapie und osteopathischer Behandlung fehlte mir die körperliche Kraft, und mein allgemeiner Zustand war auf einem sehr tiefen Niveau. Dank deiner fachlich kompetenten und individuell abgestimmten Betreuung hat sich mein Gesundheitszustand deutlich verbessert. Jedes Training war abwechslungsreich, interessant und optimal an meine jeweilige körperliche Verfassung angepasst. Gleichzeitig hast du es geschafft, jede Trainingseinheit mit einer positiven und motivierenden Atmosphäre zu gestalten. Ich habe deine Professionalität, dein grosses Fachwissen und deine angenehme, humorvolle Art sehr geschätzt. Die Zusammenarbeit mit dir war nicht nur effektiv, sondern hat auch viel Freude bereitet. Für deine Unterstützung, dein Engagement und deine Geduld möchte ich dir von Herzen danken. Ich kann dich als Trainer uneingeschränkt weiterempfehlen und wünsche dir weiterhin viel Erfolg und alles Gute. Herzliche Grüsse Jo",
+  },
 ];
 
-const reviewColumns = [[reviews[0], reviews[1]], [reviews[2], reviews[3]], [reviews[4]]] as const;
+const reviewColumns = [
+  [reviews[0], reviews[1]],
+  [reviews[2], reviews[3]],
+  [reviews[4], reviews[5]],
+] as const;
 
 const reviewColumnMotion = [
   { offset: 0, depth: -12 },
@@ -237,8 +247,8 @@ function Home() {
             <div className="site-lead space-y-6 lg:col-span-7 lg:pt-4">
               <p>
                 Bei mir gibt es keine Lösungen von der Stange. Ich nehme mir Zeit, deine Wünsche und
-                Ziele kennenzulernen — und erstelle daraus ein Trainingsprogramm, das sich wirklich
-                an dir orientiert.
+                Ziele kennenzulernen — und erstelle daraus ein Trainingsprogramm, das sich an dir
+                orientiert.
               </p>
               <p>
                 Bewegung ist wichtig. Ruhephasen ebenso. Gemeinsam finden wir die Balance, damit du
@@ -325,35 +335,51 @@ function Home() {
               </blockquote>
             </div>
 
-            <a
-              href={googleMapsUrl}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Wirkraum Thalwil auf Google Maps öffnen"
-              className="group relative overflow-hidden rounded-panel shadow-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:col-span-5"
-            >
+            <div className="relative overflow-hidden rounded-panel bg-secondary shadow-soft lg:col-span-5">
               <img
-                src={wirkraumImg}
-                alt="Heller Wirkraum in Thalwil mit blauen Trainingsmatten"
+                src={ursGoalImg}
+                alt="Urs Gremlich trägt ein Kind am Basketballkorb"
                 loading="lazy"
-                className="aspect-square w-full object-cover transition duration-500 ease-brand group-hover:scale-[1.02] motion-reduce:transform-none"
+                className="aspect-[4/5] h-full w-full object-cover"
+                style={{ objectPosition: "center 48%" }}
               />
-              <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-primary/90 p-4 text-primary-foreground backdrop-blur-sm sm:inset-x-5 sm:bottom-5 sm:p-5">
-                <div className="flex items-start gap-3">
-                  <span className="flex size-8 flex-none items-center justify-center rounded-full bg-accent text-accent-foreground">
-                    <LocationIcon className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <p className="font-display text-xl transition group-hover:text-accent sm:text-2xl">
-                      Wirkraum Thalwil
-                    </p>
-                    <p className="mt-1 text-sm text-primary-foreground/75">
-                      Zürcherstrasse 73 · 8800 Thalwil
-                    </p>
-                  </div>
+            </div>
+          </div>
+
+          <div className="mt-16 overflow-hidden rounded-panel bg-primary text-primary-foreground shadow-soft lg:mt-20 lg:grid lg:grid-cols-[1.15fr_0.85fr]">
+            <img
+              src={parkingImg}
+              alt="Kundenparkplatz beim Wirkraum in Thalwil"
+              loading="lazy"
+              className="aspect-[4/3] h-full w-full object-cover"
+              style={{ objectPosition: "center center" }}
+            />
+            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
+              <p className="site-eyebrow text-accent">Standort</p>
+              <h2 className="font-display text-4xl leading-tight sm:text-5xl">Wirkraum Thalwil</h2>
+              <p className="mt-5 max-w-md leading-relaxed text-primary-foreground/75">
+                Der Wirkraum befindet sich an der Zürcherstrasse 73 in Thalwil.
+              </p>
+              <div className="mt-6 flex items-start gap-3">
+                <span className="flex size-8 flex-none items-center justify-center rounded-full bg-accent text-accent-foreground">
+                  <LocationIcon className="h-4 w-4" />
+                </span>
+                <div>
+                  <p className="font-semibold">Zürcherstrasse 73 · 8800 Thalwil</p>
+                  <p className="mt-1 text-sm text-primary-foreground/70">
+                    Parkplatz Nr. 51 für Kunden reserviert
+                  </p>
                 </div>
               </div>
-            </a>
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="site-button site-button-md site-button-ghost-inverse mt-8 self-start"
+              >
+                Auf Google Maps ansehen
+              </a>
+            </div>
           </div>
         </section>
 
@@ -380,13 +406,13 @@ function Home() {
               </h2>
               <div className="site-lead mt-8 max-w-2xl space-y-5">
                 <p>
-                  Ich begleite Menschen auf Deutsch und Englisch. Als Kampfkünstler mit
-                  Wettkampferfahrung verbinde ich fundiertes Fachwissen mit einem feinen Gespür für
-                  die Person vor mir.
+                  Ich begleite Menschen auf Deutsch und Englisch. Als Trainer Bewegung & Gesundheit
+                  sowie als Kampfkünstler mit Wettkampferfahrung verbinde ich fundiertes Fachwissen
+                  mit einem feinen Gespür für die Menschen vor mir.
                 </p>
                 <p>
                   Bewegung, Entspannung und Ernährung gehören für mich zusammen. Vertrauen, Humor
-                  und Lebensfreude bilden die Basis — Qualität steht dabei immer vor Quantität.
+                  und Lebensfreude bilden die Basis.
                 </p>
               </div>
 

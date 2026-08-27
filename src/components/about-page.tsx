@@ -39,10 +39,11 @@ const aboutCopy = {
         ihren Zielen aus.
       </>,
       <>
-        Als{" "}
+        Als <strong className="font-semibold text-primary">Trainer Bewegung & Gesundheit</strong>{" "}
+        sowie als{" "}
         <strong className="font-semibold text-primary">Kampfkünstler mit Wettkampferfahrung</strong>{" "}
         und langjähriger Praxis im Einzel- und Gruppentraining verbinde ich fundiertes Fachwissen
-        mit einem persönlichen, direkten Zugang.{" "}
+        mit einem persönlichen und direkten Zugang.{" "}
         <strong className="font-semibold text-primary">
           Qualität steht für mich immer vor Quantität.
         </strong>
@@ -81,14 +82,14 @@ const aboutCopy = {
         Every session is tailored to the individual, their current situation and their goals.
       </>,
       <>
-        As a{" "}
+        As a <strong className="font-semibold text-primary">Movement & Health Trainer</strong> and a{" "}
         <strong className="font-semibold text-primary">
           martial artist with competition experience
         </strong>{" "}
-        and many years of practice in one-to-one and group training, I combine solid expertise with
-        a personal, direct approach.{" "}
+        with many years of practice in one-to-one and group training, I combine sound expertise with
+        a personal and direct approach.{" "}
         <strong className="font-semibold text-primary">
-          For me, quality always comes before quantity.
+          Quality always comes before quantity for me.
         </strong>
       </>,
     ],

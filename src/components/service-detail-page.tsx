@@ -50,7 +50,7 @@ export function ServiceDetailPage({
         <section className="bg-primary text-primary-foreground">
           <div className="site-container grid items-stretch gap-12 py-16 lg:grid-cols-12 lg:gap-16 lg:py-24">
             <div className="flex flex-col justify-center lg:col-span-6 lg:py-6">
-              <p className="site-eyebrow text-accent">{service.eyebrow}</p>
+              <p className="site-eyebrow text-accent">{service.title} · Thalwil &amp; Horgen</p>
               <h1 className="font-display text-5xl leading-[1.03] sm:text-6xl lg:text-7xl">
                 {service.heroTitle}
               </h1>

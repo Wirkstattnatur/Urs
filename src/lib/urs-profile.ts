@@ -24,10 +24,15 @@ export const ursProfile = {
     },
     {
       title: "Therapie & Regeneration",
-      items: ["Wirbelsäulentherapeut", "Triggerpunkt- und Schröpftherapie", "Klassische Massage"],
+      items: [
+        "Wirbelsäulentherapeut",
+        "Triggerpunkt- und Schröpftherapie",
+        "Klassische Massage",
+        "Spiraldynamik Intermediate",
+      ],
     },
     {
-      title: "Vermittlung & Spezialgebiete",
+      title: "Spezialgebiete",
       items: [
         "Adipositas Weiterbildung",
         "Erwachsenenbildner (SVEB1)",
@@ -38,10 +43,6 @@ export const ursProfile = {
   qualityNote:
     "Als von den Krankenkassen anerkannter Betrieb weist Wirkstattnatur jährlich mindestens zwei Weiterbildungstage nach.",
   affiliations: [
-    {
-      name: "EMfit",
-      detail: "BGB Schweiz Qualitätslabel für Prävention und Gesundheit",
-    },
     {
       name: "Berufsverband für Gesundheit & Bewegung Schweiz",
       detail: "Vorstandsmitglied · Ressort Finanzen",

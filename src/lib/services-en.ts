@@ -32,24 +32,48 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     imageAlt: "Urs Gremlich during functional outdoor training with resistance bands",
     gallery: [
       {
-        alt: "Urs Gremlich guiding a client during an exercise on the sling trainer",
+        alt: "A man doing a squat with a resistance band outdoors",
+        caption: "Strength training with a resistance band in nature",
+      },
+      {
+        alt: "A female client doing a squat with a weight bag in the training room",
+        caption: "Functional strength training with added weight",
+      },
+      {
+        alt: "A female client doing balance training with a dumbbell in the Wirkraum",
+        caption: "Combining balance, strength, and coordination",
+      },
+      {
+        alt: "A client doing an overhead exercise with a resistance band",
+        caption: "Mobility and strength in the shoulder area",
+      },
+      {
+        alt: "Urs Gremlich guiding a female client during balance training on the sling trainer",
         caption: "Personal guidance on the sling trainer",
       },
       {
-        alt: "Urs Gremlich training coordination and stability with an exercise ball",
-        caption: "Coordination and strength in the Wirkraum",
+        alt: "A client doing stair training outdoors",
+        caption: "Endurance training on the stairs",
       },
       {
-        alt: "Urs Gremlich doing an exercise with resistance bands between trees",
-        caption: "Bodyweight training in nature",
+        alt: "A person training with battle ropes in the Wirkraum",
+        caption: "Dynamic full-body training",
       },
       {
-        alt: "Urs Gremlich during a balance exercise in the Wirkraum",
-        caption: "Balance, reaction and joy of movement",
+        alt: "A female client doing a core exercise with a ball outdoors",
+        caption: "Core stability under the open sky",
+      },
+      {
+        alt: "Urs Gremlich guiding a female client doing lunges outdoors",
+        caption: "Individually guided outdoor training",
+      },
+      {
+        alt: "Two female clients doing stair training in the greenery",
+        caption: "Endurance and coordination on the stairs",
       },
     ],
     facts: [
-      { label: "Coaching", value: "1:1" },
+      { label: "Coaching", value: "1:1 / 1:2" },
       { label: "Duration", value: "60 min." },
       { label: "Price", value: "CHF 130" },
     ],
@@ -59,7 +83,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     offerCards: [
       {
         title: "Individual planning",
-        text: "Strength, mobility, coordination and endurance are combined to match your starting point. Home exercises help you stay on track between sessions.",
+        text: "Strength, mobility, coordination and endurance are combined to match your starting point and your goals. If desired, you will also receive personalised exercises for home so you can stay active between sessions.",
       },
       {
         title: "A clear training structure",
@@ -108,7 +132,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
       },
       { title: "Massages", items: ["Classic massage", "Back & neck massage"] },
     ],
-    prices: [{ title: "Single session", price: "CHF 130", note: "60 minutes" }],
+    prices: [{ title: "Personal Training", price: "CHF 130", note: "60 minutes" }],
   },
   pilates: {
     title: "Pilates",
@@ -117,25 +141,25 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     heroTitle: "Movement from the core.",
     intro:
       "Pilates combines controlled movement with conscious breathing and relaxation. In personal training or in a small group, you work calmly and precisely on stability and mobility.",
-    imageAlt: "Urs Gremlich performing a lunge with a wooden pole in the Wirkraum",
+    imageAlt: "Urs Gremlich performing a balance exercise with weights",
     gallery: [
       {
-        alt: "Urs Gremlich during a dynamic exercise on the training equipment in the Wirkraum",
-        caption: "Movement, stability and body control",
+        alt: "A client performing a controlled Pilates exercise on a mat",
+        caption: "Mobility and conscious body awareness",
       },
       {
-        alt: "Urs Gremlich performing a controlled exercise in front of the mirror in the Wirkraum",
-        caption: "Precise movement in a personal setting",
+        alt: "Bright Wirkraum in Thalwil with blue training mats",
+        caption: "Pilates in the Wirkraum Thalwil",
       },
       {
-        alt: "Urs Gremlich during a controlled full-body exercise in the Wirkraum",
-        caption: "Consciously connecting strength and mobility",
+        alt: "A client performing a stabilising forearm plank exercise in the Wirkraum",
+        caption: "Targeted training for stability and the core",
       },
     ],
     facts: [
-      { label: "Group", value: "Max. 5" },
+      { label: "Group", value: "3–5" },
       { label: "Duration", value: "60 min." },
-      { label: "Per person", value: "From CHF 35" },
+      { label: "Per person", value: "CHF 35" },
     ],
     offerTitle: "Train calmly, move consciously.",
     offerIntro:
@@ -174,7 +198,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
       {
         title: "Small group",
         price: "CHF 35",
-        note: "60 minutes · per person · max. 5 people",
+        note: "60 minutes · per person · 3–5 people",
       },
     ],
   },
@@ -188,22 +212,22 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     imageAlt: "Urs Gremlich during balance and rotation training with a golf club",
     gallery: [
       {
-        alt: "Urs Gremlich during balance and rotation training with a golf club",
-        caption: "Targeted training for rotation and balance",
+        alt: "A golfer doing putting and balance training in the Wirkraum",
+        caption: "Combining putting with balance and control",
       },
       {
-        alt: "Urs Gremlich during strength and stability training with dumbbells",
-        caption: "Strength and stability as the foundation for your swing",
+        alt: "A golfer practising their swing on a balance board",
+        caption: "Rotation and stability in the golf swing",
       },
       {
-        alt: "Urs Gremlich performing a dynamic GolfFitness exercise",
-        caption: "Varied promotion of mobility and coordination",
+        alt: "Urs Gremlich performing a GolfFitness exercise with weights",
+        caption: "Training power transfer and mobility",
       },
     ],
     facts: [
-      { label: "Coaching", value: "1:1" },
-      { label: "Formats", value: "Individual & group" },
-      { label: "Price", value: "From CHF 30" },
+      { label: "Coaching", value: "1:1 / group" },
+      { label: "Duration", value: "60 min." },
+      { label: "Price", value: "CHF 130" },
     ],
     offerTitle: "Fitness as the foundation for good golf.",
     offerIntro:
@@ -245,8 +269,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     ],
     prices: [
       { title: "Single session", price: "CHF 130", note: "60 minutes" },
-      { title: "Group up to 5", price: "CHF 35", note: "Per person and session" },
-      { title: "Group of 6 or more", price: "CHF 30", note: "Per person and session" },
+      { title: "Group 3–5", price: "CHF 35", note: "60 minutes · per person" },
     ],
   },
   karate: {
@@ -256,23 +279,31 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     heroTitle: "Strength, clarity and posture.",
     intro:
       "FitKarate combines elements of Shotokan-Ryu with versatile fitness training. Technique, coordination, strength and concentration develop together — adapted to your level.",
-    imageAlt: "Urs Gremlich training with yellow and black focus mitts in the Wirkraum",
+    imageAlt: "Urs Gremlich with strike pads in the Wirkraum",
     gallery: [
       {
-        alt: "Japanese Karate calligraphy in the Wirkraum",
-        caption: "Tradition, posture and concentration",
+        alt: "Urs Gremlich and a client practising a controlled hold in the Wirkraum",
+        caption: "Technique and body control in partner training",
       },
       {
-        alt: "A karateka executing a dynamic kick in the Wirkraum",
-        caption: "Dynamism, precision and controlled power",
+        alt: "Urs Gremlich and a client practising a defensive technique",
+        caption: "Practising defence and reaction together",
       },
       {
-        alt: "Urs Gremlich performing a powerful movement exercise outdoors",
-        caption: "Strength and body control in motion",
+        alt: "Urs Gremlich and a client practising an arm technique",
+        caption: "Precision and distance in partner training",
       },
       {
-        alt: "Bright Wirkraum studio in Thalwil with blue training mats",
-        caption: "Training in the Wirkraum Thalwil",
+        alt: "A client performing a controlled side kick",
+        caption: "Kicking technique with controlled power",
+      },
+      {
+        alt: "A client practising a kick with a strike pad",
+        caption: "Training reaction and precision",
+      },
+      {
+        alt: "A karateka in fighting stance in the Wirkraum",
+        caption: "Posture, focus and readiness",
       },
     ],
     facts: [

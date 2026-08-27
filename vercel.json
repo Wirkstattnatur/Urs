@@ -1,0 +1,100 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/wirkstattnatur-urs-gremlich-2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/eisenhorn-thalwil-horgen",
+      "destination": "/ueber-mich",
+      "permanent": true
+    },
+    {
+      "source": "/urs-gremlich-thalwil-horgen",
+      "destination": "/ueber-mich",
+      "permanent": true
+    },
+    {
+      "source": "/preise-agb-2",
+      "destination": "/agb",
+      "permanent": true
+    },
+    {
+      "source": "/karate-thalwil-horgen",
+      "destination": "/angebot/karate",
+      "permanent": true
+    },
+    {
+      "source": "/pilates-thalwil-horgen",
+      "destination": "/angebot/pilates",
+      "permanent": true
+    },
+    {
+      "source": "/golffitness-thalwil-horgen",
+      "destination": "/angebot/golf-fitness",
+      "permanent": true
+    },
+    {
+      "source": "/golffitness",
+      "destination": "/angebot/golf-fitness",
+      "permanent": true
+    },
+    {
+      "source": "/personaltraining-thalwil",
+      "destination": "/angebot/personal-training",
+      "permanent": true
+    },
+    {
+      "source": "/indoor-thalwil-horgen",
+      "destination": "/angebot/personal-training",
+      "permanent": true
+    },
+    {
+      "source": "/outdoor-thalwil-horgen",
+      "destination": "/angebot/personal-training",
+      "permanent": true
+    },
+    {
+      "source": "/hometraining-thalwil-horgen",
+      "destination": "/angebot/personal-training",
+      "permanent": true
+    },
+    {
+      "source": "/massage-thalwil-horgen",
+      "destination": "/angebot/personal-training",
+      "permanent": true
+    },
+    {
+      "source": "/wirkraum-massage-thalwil-horgen",
+      "destination": "/angebot/personal-training",
+      "permanent": true
+    },
+    {
+      "source": "/kontakt-2",
+      "destination": "/#kontakt",
+      "permanent": true
+    },
+    {
+      "source": "/kontakt-3",
+      "destination": "/#kontakt",
+      "permanent": true
+    },
+    {
+      "source": "/impressum-2",
+      "destination": "/impressum",
+      "permanent": true
+    },
+    {
+      "source": "/gallery",
+      "destination": "/#angebot",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    }
+  ]
+}

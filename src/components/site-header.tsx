@@ -9,7 +9,7 @@ import { getLocalizedService } from "@/lib/services-en";
 const primaryNavigation = [
   { id: "konzept", label: "Das Konzept" },
   { id: "urs", label: "Über mich" },
-  { id: "stimmen", label: "Stimmen" },
+  { id: "stimmen", label: "Kundenstimmen" },
   { id: "kontakt", label: "Kontakt" },
 ] as const;
 

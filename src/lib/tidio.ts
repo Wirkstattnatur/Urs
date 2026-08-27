@@ -5,6 +5,10 @@ type TidioChatApi = {
 };
 
 declare global {
+  interface Document {
+    tidioChatLang?: "de" | "en";
+  }
+
   interface Window {
     tidioChatApi?: TidioChatApi;
   }
@@ -43,6 +47,7 @@ export function loadTidio() {
     if (existingScript) return;
 
     const script = document.createElement("script");
+    document.tidioChatLang = document.documentElement.lang.startsWith("en") ? "en" : "de";
     script.id = TIDIO_SCRIPT_ID;
     script.src = TIDIO_WIDGET_URL;
     script.async = true;

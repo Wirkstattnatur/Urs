@@ -25,7 +25,7 @@ const germanPageLinks = [
   { label: "Das Konzept", href: "/#konzept" },
   { label: "Angebot", href: "/#angebot" },
   { label: "Über mich", href: "/ueber-mich" },
-  { label: "Stimmen", href: "/#stimmen" },
+  { label: "Kundenstimmen", href: "/#stimmen" },
   { label: "Kontakt", href: "/#kontakt" },
 ] as const;
 

@@ -1,21 +1,29 @@
-import golfFitnessImage from "@/assets/wirkstatt/golf-fitness.jpg";
-import golfFitnessDetailImage from "@/assets/wirkstatt/golf-fitness-balance.jpg";
+import golfGallery1Image from "@/assets/wirkstatt/golf-gallery-1.webp";
+import golfGallery2Image from "@/assets/wirkstatt/golf-gallery-2.webp";
+import golfGallery3Image from "@/assets/wirkstatt/golf-gallery-3.webp";
 import golfFitnessHeroImage from "@/assets/wirkstatt/golf-fitness-hero-258.webp";
-import golfFitnessStrengthImage from "@/assets/wirkstatt/golf-fitness-strength-156.webp";
-import karateImage from "@/assets/wirkstatt/karate.jpg";
-import karateDetailImage from "@/assets/wirkstatt/karate-movement.jpg";
-import karateFocusMittsImage from "@/assets/wirkstatt/karate-focus-mitts.webp";
-import karateKickImage from "@/assets/wirkstatt/karate-kick.webp";
+import karateGallery1Image from "@/assets/wirkstatt/karate-gallery-1.webp";
+import karateGallery2Image from "@/assets/wirkstatt/karate-gallery-2.webp";
+import karateGallery3Image from "@/assets/wirkstatt/karate-gallery-3.webp";
+import karateGallery4Image from "@/assets/wirkstatt/karate-gallery-4.webp";
+import karateGallery5Image from "@/assets/wirkstatt/karate-gallery-5.webp";
+import karateGallery6Image from "@/assets/wirkstatt/karate-gallery-6.webp";
+import karateOverviewImage from "@/assets/wirkstatt/karate-overview.webp";
 import wirkraumImage from "@/assets/wirkstatt/pilates.jpg";
-import personalTrainingBallImage from "@/assets/wirkstatt/personal-training-ball.webp";
-import personalTrainingClientImage from "@/assets/wirkstatt/personal-training-client.webp";
-import pilatesHeroImage from "@/assets/wirkstatt/personal-training-cover-132.webp";
+import pilatesGallery1Image from "@/assets/wirkstatt/pilates-gallery-1.webp";
+import pilatesGallery3Image from "@/assets/wirkstatt/pilates-gallery-3.webp";
+import pilatesOverviewImage from "@/assets/wirkstatt/pilates-overview.webp";
 import personalTrainingDetailImage from "@/assets/wirkstatt/personal-training-outdoor.jpg";
-import personalTrainingOutdoorPushImage from "@/assets/wirkstatt/personal-training-outdoor-push.webp";
-import pilatesDetailImage from "@/assets/wirkstatt/pilates-detail-126.webp";
-import pilatesCareImage from "@/assets/wirkstatt/pilates-care.jpg";
-import pilatesTrxImage from "@/assets/wirkstatt/pilates-cover-trx.webp";
-import trainerStudioImage from "@/assets/wirkstatt/trainer-studio.webp";
+import personalTrainingGallery1Image from "@/assets/wirkstatt/pt-gallery-1.webp";
+import personalTrainingGallery2Image from "@/assets/wirkstatt/pt-gallery-2.webp";
+import personalTrainingGallery3Image from "@/assets/wirkstatt/pt-gallery-3.webp";
+import personalTrainingGallery4Image from "@/assets/wirkstatt/pt-gallery-4.webp";
+import personalTrainingGallery5Image from "@/assets/wirkstatt/pt-gallery-5.webp";
+import personalTrainingGallery6Image from "@/assets/wirkstatt/pt-gallery-6.webp";
+import personalTrainingGallery7Image from "@/assets/wirkstatt/pt-gallery-7.webp";
+import personalTrainingGallery8Image from "@/assets/wirkstatt/pt-gallery-8.webp";
+import personalTrainingGallery9Image from "@/assets/wirkstatt/pt-gallery-9.webp";
+import personalTrainingGallery10Image from "@/assets/wirkstatt/pt-gallery-10.webp";
 
 type ServiceFact = {
   value: string;
@@ -104,32 +112,68 @@ export const serviceOffers = [
     imagePosition: "72% center",
     gallery: [
       {
-        src: personalTrainingClientImage,
-        alt: "Urs Gremlich begleitet einen Kunden bei einer Übung am Sling Trainer",
-        caption: "Persönliche Begleitung am Sling Trainer",
-        position: "88% center",
-      },
-      {
-        src: personalTrainingBallImage,
-        alt: "Urs Gremlich trainiert Koordination und Stabilität mit einem Ball",
-        caption: "Koordination und Kraft im Wirkraum",
-        position: "38% center",
-      },
-      {
-        src: personalTrainingOutdoorPushImage,
-        alt: "Urs Gremlich bei einer Übung mit Widerstandsbändern zwischen Bäumen",
-        caption: "Training mit dem eigenen Körpergewicht in der Natur",
+        src: personalTrainingGallery1Image,
+        alt: "Ein Mann bei einer Kniebeuge mit Widerstandsband im Freien",
+        caption: "Krafttraining mit Widerstandsband in der Natur",
         position: "center center",
       },
       {
-        src: trainerStudioImage,
-        alt: "Urs Gremlich bei einer Balanceübung im Wirkraum",
-        caption: "Balance, Reaktion und Bewegungsfreude",
+        src: personalTrainingGallery2Image,
+        alt: "Eine Kundin bei einer Kniebeuge mit Gewichtssack im Trainingsraum",
+        caption: "Funktionelles Krafttraining mit Zusatzgewicht",
+        position: "center center",
+      },
+      {
+        src: personalTrainingGallery3Image,
+        alt: "Eine Kundin beim Balancetraining mit Hantel im Wirkraum",
+        caption: "Balance, Kraft und Koordination verbinden",
+        position: "center center",
+      },
+      {
+        src: personalTrainingGallery4Image,
+        alt: "Ein Kunde bei einer Überkopfübung mit Widerstandsband",
+        caption: "Beweglichkeit und Kraft im Schulterbereich",
+        position: "center center",
+      },
+      {
+        src: personalTrainingGallery5Image,
+        alt: "Urs Gremlich begleitet eine Kundin beim Balancetraining am Sling Trainer",
+        caption: "Persönliche Begleitung am Sling Trainer",
+        position: "center center",
+      },
+      {
+        src: personalTrainingGallery6Image,
+        alt: "Ein Kunde beim Treppentraining im Freien",
+        caption: "Ausdauertraining auf der Treppe",
+        position: "center center",
+      },
+      {
+        src: personalTrainingGallery7Image,
+        alt: "Eine Person trainiert mit Battle Ropes im Wirkraum",
+        caption: "Dynamisches Ganzkörpertraining",
+        position: "center center",
+      },
+      {
+        src: personalTrainingGallery8Image,
+        alt: "Eine Kundin bei einer Rumpfübung mit Ball im Freien",
+        caption: "Rumpfstabilität unter freiem Himmel",
+        position: "center center",
+      },
+      {
+        src: personalTrainingGallery9Image,
+        alt: "Urs Gremlich begleitet eine Kundin bei Ausfallschritten im Freien",
+        caption: "Individuell begleitetes Outdoor-Training",
+        position: "center center",
+      },
+      {
+        src: personalTrainingGallery10Image,
+        alt: "Zwei Kundinnen beim Treppentraining im Grünen",
+        caption: "Ausdauer und Koordination auf der Treppe",
         position: "center center",
       },
     ],
     facts: [
-      { value: "1:1", label: "Begleitung" },
+      { value: "1:1 / 1:2", label: "Begleitung" },
       { value: "60 Min.", label: "Dauer" },
       { value: "CHF 130", label: "Preis" },
     ],
@@ -139,7 +183,7 @@ export const serviceOffers = [
     offerCards: [
       {
         title: "Individuelle Planung",
-        text: "Kraft, Beweglichkeit, Koordination und Ausdauer werden passend zu deinem Ausgangspunkt kombiniert. Übungen für zu Hause helfen dir, zwischen den Terminen dranzubleiben.",
+        text: "Kraft, Beweglichkeit, Koordination und Ausdauer werden passend zu deinem Ausgangspunkt und deinen Zielen kombiniert. Auf Wunsch erhältst du zusätzlich individuelle Übungen für zu Hause, damit du auch zwischen den Terminen aktiv bleiben kannst.",
       },
       {
         title: "Eine klare Trainingsstruktur",
@@ -202,7 +246,7 @@ export const serviceOffers = [
         items: ["Klassische Massage", "Rücken- & Nackenmassage"],
       },
     ],
-    prices: [{ title: "Einzeltraining", price: "CHF 130", note: "60 Minuten" }],
+    prices: [{ title: "Personal Training", price: "CHF 130", note: "60 Minuten" }],
   },
   {
     slug: "pilates",
@@ -213,33 +257,33 @@ export const serviceOffers = [
     heroTitle: "Aus der Mitte in Bewegung.",
     intro:
       "Pilates verbindet kontrollierte Bewegung mit bewusster Atmung und Entspannung. Im persönlichen Training oder in einer kleinen Gruppe arbeitest du ruhig und präzise an Stabilität und Beweglichkeit.",
-    image: pilatesHeroImage,
-    imageAlt: "Urs Gremlich beim Ausfallschritt mit Holzstab im Wirkraum",
-    imagePosition: "31% center",
+    image: pilatesOverviewImage,
+    imageAlt: "Urs Gremlich bei einer Balanceübung mit Gewichten",
+    imagePosition: "center 52%",
     gallery: [
       {
-        src: pilatesDetailImage,
-        alt: "Urs Gremlich bei einer dynamischen Übung am Trainingsgerät im Wirkraum",
-        caption: "Bewegung, Stabilität und Körperkontrolle",
-        position: "38% center",
+        src: pilatesGallery1Image,
+        alt: "Eine Kundin bei einer kontrollierten Pilates-Übung auf der Matte",
+        caption: "Beweglichkeit und bewusste Körperwahrnehmung",
+        position: "center 55%",
       },
       {
-        src: pilatesCareImage,
-        alt: "Urs Gremlich führt eine kontrollierte Übung vor dem Spiegel im Wirkraum aus",
-        caption: "Präzise Bewegung im persönlichen Rahmen",
+        src: wirkraumImage,
+        alt: "Heller Wirkraum in Thalwil mit blauen Trainingsmatten",
+        caption: "Pilates im Wirkraum Thalwil",
         position: "center center",
       },
       {
-        src: pilatesTrxImage,
-        alt: "Urs Gremlich bei einer kontrollierten Ganzkörperübung im Wirkraum",
-        caption: "Kraft und Beweglichkeit bewusst verbinden",
+        src: pilatesGallery3Image,
+        alt: "Eine Kundin bei einer stabilisierenden Unterarmstütz-Übung im Wirkraum",
+        caption: "Stabilität und Körpermitte gezielt trainieren",
         position: "center center",
       },
     ],
     facts: [
-      { value: "Max. 5", label: "Gruppe" },
+      { value: "3–5", label: "Gruppe" },
       { value: "60 Min.", label: "Dauer" },
-      { value: "Ab CHF 35", label: "Pro Person" },
+      { value: "CHF 35", label: "Pro Person" },
     ],
     offerTitle: "Ruhig trainieren, bewusst bewegen.",
     offerIntro:
@@ -275,7 +319,7 @@ export const serviceOffers = [
     methods: ["Atmung", "Balance & Beweglichkeit", "Kräftigung", "Koordination", "Faszientraining"],
     prices: [
       { title: "Einzeltraining", price: "CHF 130", note: "60 Minuten" },
-      { title: "Kleingruppe", price: "CHF 35", note: "60 Minuten · pro Person · max. 5 Personen" },
+      { title: "Kleingruppe", price: "CHF 35", note: "60 Minuten · pro Person · 3–5 Personen" },
     ],
   },
   {
@@ -293,28 +337,28 @@ export const serviceOffers = [
     imagePosition: "center 45%",
     gallery: [
       {
-        src: golfFitnessDetailImage,
-        alt: "Urs Gremlich beim Balance- und Rotationstraining mit einem Golfschläger",
-        caption: "Rotation und Balance gezielt trainieren",
+        src: golfGallery1Image,
+        alt: "Golfspieler beim Putt- und Balancetraining im Wirkraum",
+        caption: "Putting mit Balance und Kontrolle verbinden",
         position: "center center",
       },
       {
-        src: golfFitnessStrengthImage,
-        alt: "Urs Gremlich beim Kraft- und Stabilitätstraining mit Hanteln",
-        caption: "Kraft und Stabilität als Basis für den Schwung",
+        src: golfGallery2Image,
+        alt: "Golfspieler beim Schwungtraining auf einem Balancebrett",
+        caption: "Rotation und Stabilität im Golfschwung",
         position: "center center",
       },
       {
-        src: golfFitnessImage,
-        alt: "Urs Gremlich bei einer dynamischen GolfFitness-Übung",
-        caption: "Beweglichkeit und Koordination abwechslungsreich fördern",
-        position: "center 28%",
+        src: golfGallery3Image,
+        alt: "Urs Gremlich bei einer GolfFitness-Übung mit Gewichten",
+        caption: "Kraftübertragung und Beweglichkeit trainieren",
+        position: "center center",
       },
     ],
     facts: [
-      { value: "1:1", label: "Begleitung" },
-      { value: "Einzel & Gruppe", label: "Formate" },
-      { value: "Ab CHF 30", label: "Preis" },
+      { value: "1:1 / Gruppe", label: "Begleitung" },
+      { value: "60 Min.", label: "Dauer" },
+      { value: "CHF 130", label: "Preis" },
     ],
     offerTitle: "Fitness als Basis für gutes Golf.",
     offerIntro:
@@ -362,8 +406,7 @@ export const serviceOffers = [
     ],
     prices: [
       { title: "Einzeltraining", price: "CHF 130", note: "60 Minuten" },
-      { title: "Gruppe bis 5", price: "CHF 35", note: "Pro Person und Einheit" },
-      { title: "Gruppe ab 6", price: "CHF 30", note: "Pro Person und Einheit" },
+      { title: "Gruppe 3–5", price: "CHF 35", note: "60 Minuten · pro Person" },
     ],
   },
   {
@@ -375,33 +418,44 @@ export const serviceOffers = [
     heroTitle: "Kraft, Klarheit und Haltung.",
     intro:
       "FitKarate verbindet Elemente des Shotokan-Ryu mit einem vielseitigen Fitnesstraining. Technik, Koordination, Kraft und Konzentration entwickeln sich gemeinsam — angepasst an dein Niveau.",
-    image: karateFocusMittsImage,
-    imageAlt: "Urs Gremlich trainiert mit gelb-schwarzen Schlagpolstern im Wirkraum",
-    imagePosition: "center 24%",
+    image: karateOverviewImage,
+    imageAlt: "Urs Gremlich mit Schlagpolstern im Wirkraum",
+    imagePosition: "center 42%",
     gallery: [
       {
-        src: karateImage,
-        alt: "Japanische Karate-Kalligrafie im Wirkraum",
-        caption: "Tradition, Haltung und Konzentration",
-        position: "center center",
-        fit: "contain",
-      },
-      {
-        src: karateKickImage,
-        alt: "Ein Karateka führt im Wirkraum einen dynamischen Tritt aus",
-        caption: "Dynamik, Präzision und kontrollierte Kraft",
-        position: "center top",
-      },
-      {
-        src: karateDetailImage,
-        alt: "Urs Gremlich bei einer kraftvollen Bewegungsübung im Freien",
-        caption: "Kraft und Körperkontrolle in Bewegung",
+        src: karateGallery1Image,
+        alt: "Urs Gremlich und ein Kunde üben einen kontrollierten Griff im Wirkraum",
+        caption: "Technik und Körperkontrolle im Partnertraining",
         position: "center center",
       },
       {
-        src: wirkraumImage,
-        alt: "Heller Wirkraum in Thalwil mit blauen Trainingsmatten",
-        caption: "Training im Wirkraum Thalwil",
+        src: karateGallery2Image,
+        alt: "Urs Gremlich und ein Kunde trainieren eine Abwehrtechnik",
+        caption: "Abwehr und Reaktion gemeinsam üben",
+        position: "center center",
+      },
+      {
+        src: karateGallery3Image,
+        alt: "Urs Gremlich und ein Kunde trainieren eine Armtechnik",
+        caption: "Präzision und Distanz im Partnertraining",
+        position: "center center",
+      },
+      {
+        src: karateGallery4Image,
+        alt: "Ein Kunde führt einen kontrollierten Seitwärtskick aus",
+        caption: "Trittechnik mit kontrollierter Kraft",
+        position: "center center",
+      },
+      {
+        src: karateGallery5Image,
+        alt: "Ein Kunde trainiert einen Tritt mit Schlagpolster",
+        caption: "Reaktion und Zielgenauigkeit trainieren",
+        position: "center center",
+      },
+      {
+        src: karateGallery6Image,
+        alt: "Ein Karateka in Kampfstellung im Wirkraum",
+        caption: "Haltung, Fokus und Bereitschaft",
         position: "center center",
       },
     ],

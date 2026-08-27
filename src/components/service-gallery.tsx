@@ -135,7 +135,7 @@ export function ServiceGallery({ images, label, locale = "de" }: ServiceGalleryP
               }
               aria-current={activeIndex === index ? "true" : undefined}
               onClick={() => showImage(index)}
-              className="h-1.5 min-w-8 flex-1 rounded-control bg-border transition hover:bg-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary aria-[current=true]:bg-primary"
+              className="h-1.5 min-w-0 flex-1 rounded-control bg-border transition hover:bg-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary aria-[current=true]:bg-primary"
             />
           ))}
         </div>
