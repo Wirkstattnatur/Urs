@@ -278,6 +278,7 @@ export const serviceOffers = [
         alt: "Eine Kundin bei einer stabilisierenden Unterarmstütz-Übung im Wirkraum",
         caption: "Stabilität und Körpermitte gezielt trainieren",
         position: "center center",
+        fit: "contain",
       },
     ],
     facts: [
@@ -420,7 +421,7 @@ export const serviceOffers = [
       "FitKarate verbindet Elemente des Shotokan-Ryu mit einem vielseitigen Fitnesstraining. Technik, Koordination, Kraft und Konzentration entwickeln sich gemeinsam — angepasst an dein Niveau.",
     image: karateOverviewImage,
     imageAlt: "Urs Gremlich mit Schlagpolstern im Wirkraum",
-    imagePosition: "center 42%",
+    imagePosition: "44.5% 5%",
     gallery: [
       {
         src: karateGallery1Image,
