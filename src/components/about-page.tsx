@@ -35,7 +35,7 @@ const aboutCopy = {
         Ich begleite Menschen mit einem{" "}
         <strong className="font-semibold text-primary">umfassenden Trainingskonzept</strong>, das{" "}
         <strong className="font-semibold text-primary">Bewegung, Entspannung und Ernährung</strong>{" "}
-        zusammendenkt. Dabei richte ich jede Einheit an der Person, ihrer aktuellen Situation und
+        zusammendenkt. Dabei richte ich jede Einheit an der Person:en, ihrer aktuellen Situation und
         ihren Zielen aus.
       </>,
       <>
