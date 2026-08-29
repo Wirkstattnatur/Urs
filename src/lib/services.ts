@@ -407,7 +407,7 @@ export const serviceOffers = [
     ],
     prices: [
       { title: "Einzeltraining", price: "CHF 130", note: "60 Minuten" },
-      { title: "Gruppe 3–5", price: "CHF 35", note: "60 Minuten · pro Person" },
+      { title: "Kleingruppe", price: "CHF 35", note: "60 Minuten · pro Person · 3–5 Personen" },
     ],
   },
   {
@@ -455,9 +455,10 @@ export const serviceOffers = [
       },
       {
         src: karateGallery6Image,
-        alt: "Ein Karateka in Kampfstellung im Wirkraum",
+        alt: "Urs Gremlich mit Schwarzgurt in Kampfstellung im Wirkraum",
         caption: "Haltung, Fokus und Bereitschaft",
         position: "center center",
+        fit: "contain",
       },
     ],
     facts: [

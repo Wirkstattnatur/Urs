@@ -80,7 +80,7 @@ export function ServiceGallery({ images, label, locale = "de" }: ServiceGalleryP
                 decoding="async"
                 style={{ objectPosition: image.position }}
                 className={`aspect-square h-full w-full ${
-                  image.fit === "contain" ? "bg-secondary object-contain" : "object-cover"
+                  image.fit === "contain" ? "bg-primary object-contain" : "object-cover"
                 }`}
               />
             </div>

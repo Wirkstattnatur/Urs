@@ -269,7 +269,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     ],
     prices: [
       { title: "Single session", price: "CHF 130", note: "60 minutes" },
-      { title: "Group 3–5", price: "CHF 35", note: "60 minutes · per person" },
+      { title: "Small group", price: "CHF 35", note: "60 minutes · per person · 3–5 people" },
     ],
   },
   karate: {
@@ -302,7 +302,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
         caption: "Training reaction and precision",
       },
       {
-        alt: "A karateka in fighting stance in the Wirkraum",
+        alt: "Urs Gremlich wearing a black belt in fighting stance in the Wirkraum",
         caption: "Posture, focus and readiness",
       },
     ],

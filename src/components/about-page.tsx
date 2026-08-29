@@ -84,7 +84,7 @@ const aboutCopy = {
       <>
         As a <strong className="font-semibold text-primary">Movement & Health Trainer</strong> and a{" "}
         <strong className="font-semibold text-primary">
-          martial artist with competition experience
+          Martial Artist with competition experience
         </strong>{" "}
         with many years of practice in one-to-one and group training, I combine sound expertise with
         a personal and direct approach.{" "}
