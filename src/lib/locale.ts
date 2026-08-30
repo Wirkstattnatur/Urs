@@ -1,6 +1,7 @@
-export type Locale = "de" | "en";
+import { localePreferenceCookieName, type Locale } from "./locale-negotiation";
 
-export const localePreferenceCookieName = "wirkstattnatur-locale";
+export { localePreferenceCookieName, type Locale } from "./locale-negotiation";
+
 const localeStorageKey = localePreferenceCookieName;
 
 export function getLocaleFromPath(pathname: string): Locale {

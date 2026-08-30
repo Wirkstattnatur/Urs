@@ -1,46 +1,7 @@
 import { createStart, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
-import { localePreferenceCookieName, type Locale } from "./lib/locale";
-
-function readLocaleCookie(cookieHeader: string | null): Locale | null {
-  if (!cookieHeader) return null;
-
-  for (const item of cookieHeader.split(";")) {
-    const [name, value] = item.trim().split("=", 2);
-    if (name === localePreferenceCookieName && (value === "de" || value === "en")) {
-      return value;
-    }
-  }
-
-  return null;
-}
-
-function prefersEnglish(acceptLanguage: string | null): boolean {
-  let primaryLanguage: string | undefined;
-  let highestQuality = -1;
-
-  for (const languageRange of acceptLanguage?.split(",") ?? []) {
-    const [language, ...parameters] = languageRange.trim().toLowerCase().split(";");
-    if (!language) continue;
-
-    const qualityParameter = parameters.find((parameter) => parameter.trim().startsWith("q="));
-    const parsedQuality = qualityParameter
-      ? Number.parseFloat(qualityParameter.trim().slice(2))
-      : 1;
-    const quality =
-      Number.isFinite(parsedQuality) && parsedQuality >= 0 && parsedQuality <= 1
-        ? parsedQuality
-        : 0;
-
-    if (quality > highestQuality) {
-      primaryLanguage = language;
-      highestQuality = quality;
-    }
-  }
-
-  return primaryLanguage === "en" || primaryLanguage?.startsWith("en-") === true;
-}
+import { shouldUseEnglish } from "./lib/locale-negotiation";
 
 const localeMiddleware = createMiddleware().server(async ({ next, request, handlerType }) => {
   const url = new URL(request.url);
@@ -50,12 +11,7 @@ const localeMiddleware = createMiddleware().server(async ({ next, request, handl
     url.pathname === "/";
 
   if (isNegotiatedHomepage) {
-    const storedLocale = readLocaleCookie(request.headers.get("cookie"));
-    const shouldUseEnglish =
-      storedLocale === "en" ||
-      (storedLocale === null && prefersEnglish(request.headers.get("accept-language")));
-
-    if (shouldUseEnglish) {
+    if (shouldUseEnglish(request.headers.get("cookie"), request.headers.get("accept-language"))) {
       url.pathname = "/en";
       return new Response(null, {
         status: 307,
