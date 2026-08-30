@@ -1,7 +1,7 @@
 import { useId, useState } from "react";
 import { googleMapsUrl } from "@/lib/seo";
 
-const REVIEW_PREVIEW_WORDS = 60;
+const REVIEW_PREVIEW_WORDS = 70;
 
 type ReviewCardProps = {
   review: {
