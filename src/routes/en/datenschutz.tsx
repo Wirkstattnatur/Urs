@@ -198,9 +198,14 @@ function EnglishPrivacyPage() {
         <h2>7. Cookies and similar technologies</h2>
         <p>
           Wirkstattnatur does not use any first-party analytics or marketing cookies on this website
-          and does not store general cookie preferences. Due to the automatically loaded Tidio chat
-          widget, entries in local browser storage, cookies, or similar technologies may be set as
-          soon as you visit the website.
+          and does not store general cookie preferences. Your selected website language is stored in
+          local browser storage and in the functional <code>wirkstattnatur-locale</code> cookie for
+          a maximum of twelve months. This preserves your manual language choice for later visits.
+          The preference is not used for analytics or marketing.
+        </p>
+        <p>
+          Due to the automatically loaded Tidio chat widget, entries in local browser storage,
+          cookies, or similar technologies may be set as soon as you visit the website.
         </p>
         <p>
           Tidio states that under normal conditions it primarily relies on local browser storage and

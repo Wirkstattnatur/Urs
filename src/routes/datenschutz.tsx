@@ -201,9 +201,14 @@ function DatenschutzPage() {
         <h2>7. Cookies und ähnliche Technologien</h2>
         <p>
           Wirkstattnatur setzt auf dieser Website keine eigenen Analyse- oder Marketing-Cookies ein
-          und speichert keine allgemeine Cookie-Auswahl. Durch das automatisch geladene
-          Tidio-Chatfenster können bereits beim Seitenbesuch Einträge im lokalen Browser-Speicher,
-          Cookies oder vergleichbare Technologien eingesetzt werden.
+          und speichert keine allgemeine Cookie-Auswahl. Deine gewählte Website-Sprache wird im
+          lokalen Browser-Speicher und im funktionalen Cookie <code>wirkstattnatur-locale</code> für
+          höchstens zwölf Monate gespeichert. So bleibt die manuelle Sprachauswahl bei späteren
+          Besuchen erhalten. Diese Präferenz wird weder für Analyse noch für Marketing verwendet.
+        </p>
+        <p>
+          Durch das automatisch geladene Tidio-Chatfenster können bereits beim Seitenbesuch Einträge
+          im lokalen Browser-Speicher, Cookies oder vergleichbare Technologien eingesetzt werden.
         </p>
         <p>
           Tidio erklärt, dass unter normalen Bedingungen überwiegend der lokale Browser-Speicher

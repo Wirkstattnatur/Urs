@@ -5,12 +5,13 @@ import { getLocalizedService } from "@/lib/services-en";
 import { getSeoHead, getServicePageSchema, jsonLdScript } from "@/lib/seo";
 
 const service = getLocalizedService(servicesBySlug.karate, "en");
+const title = "Karate in Thalwil and Horgen — Wirkstattnatur";
 
 export const Route = createFileRoute("/en/angebot/karate")({
   head: () => ({
     ...getSeoHead({
       path: "/en/angebot/karate",
-      title: "Karate in Thalwil & Horgen — Wirkstattnatur",
+      title,
       description: service.description,
       locale: "en",
       imageUrl: service.image,
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/en/angebot/karate")({
       jsonLdScript(
         getServicePageSchema({
           path: "/en/angebot/karate",
-          name: "Karate in Thalwil & Horgen — Wirkstattnatur",
+          name: title,
           description: service.description,
           inLanguage: "en",
           imageUrl: service.image,

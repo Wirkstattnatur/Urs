@@ -5,12 +5,13 @@ import { getLocalizedService } from "@/lib/services-en";
 import { getSeoHead, getServicePageSchema, jsonLdScript } from "@/lib/seo";
 
 const service = getLocalizedService(servicesBySlug.pilates, "en");
+const title = "Pilates in Thalwil and Horgen — Wirkstattnatur";
 
 export const Route = createFileRoute("/en/angebot/pilates")({
   head: () => ({
     ...getSeoHead({
       path: "/en/angebot/pilates",
-      title: "Pilates in Thalwil & Horgen — Wirkstattnatur",
+      title,
       description: service.description,
       locale: "en",
       imageUrl: service.image,
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/en/angebot/pilates")({
       jsonLdScript(
         getServicePageSchema({
           path: "/en/angebot/pilates",
-          name: "Pilates in Thalwil & Horgen — Wirkstattnatur",
+          name: title,
           description: service.description,
           inLanguage: "en",
           imageUrl: service.image,

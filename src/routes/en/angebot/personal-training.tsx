@@ -5,12 +5,13 @@ import { getLocalizedService } from "@/lib/services-en";
 import { getSeoHead, getServicePageSchema, jsonLdScript } from "@/lib/seo";
 
 const service = getLocalizedService(servicesBySlug["personal-training"], "en");
+const title = "Personal Training in Thalwil and Horgen — Wirkstattnatur";
 
 export const Route = createFileRoute("/en/angebot/personal-training")({
   head: () => ({
     ...getSeoHead({
       path: "/en/angebot/personal-training",
-      title: "Personal Training in Thalwil & Horgen — Wirkstattnatur",
+      title,
       description: service.description,
       locale: "en",
       imageUrl: service.image,
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/en/angebot/personal-training")({
       jsonLdScript(
         getServicePageSchema({
           path: "/en/angebot/personal-training",
-          name: "Personal Training in Thalwil & Horgen — Wirkstattnatur",
+          name: title,
           description: service.description,
           inLanguage: "en",
           imageUrl: service.image,

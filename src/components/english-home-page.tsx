@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import heroImg from "@/assets/wirkstatt/hero-stairs.webp";
+import heroMobileImg from "@/assets/wirkstatt/hero-stairs-mobile.webp";
 import parkingImg from "@/assets/wirkstatt/parking-wirkstattnatur.webp";
 import ursGoalImg from "@/assets/wirkstatt/urs-goal.webp";
 import ursImg from "@/assets/wirkstatt/urs-gremlich.jpg";
@@ -145,6 +146,10 @@ export function EnglishHomePage() {
           <div className="absolute inset-0 -z-10">
             <img
               src={heroImg}
+              srcSet={`${heroMobileImg} 800w, ${heroImg} 1400w`}
+              sizes="100vw"
+              width="1400"
+              height="933"
               alt="Urs Gremlich running on a leafy staircase"
               fetchPriority="high"
               decoding="async"

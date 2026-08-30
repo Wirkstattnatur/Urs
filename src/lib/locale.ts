@@ -1,31 +1,17 @@
 export type Locale = "de" | "en";
 
-const localeStorageKey = "wirkstattnatur-locale";
+export const localePreferenceCookieName = "wirkstattnatur-locale";
+const localeStorageKey = localePreferenceCookieName;
 
 export function getLocaleFromPath(pathname: string): Locale {
   return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "de";
 }
 
-export function detectSystemLocale(): Locale {
-  if (typeof navigator === "undefined") return "de";
-
-  const languages = navigator.languages.length > 0 ? navigator.languages : [navigator.language];
-  return languages[0]?.toLowerCase().startsWith("en") ? "en" : "de";
-}
-
-export function readLocalePreference(): Locale | null {
-  if (typeof window === "undefined") return null;
-
-  try {
-    const preference = window.localStorage.getItem(localeStorageKey);
-    return preference === "en" || preference === "de" ? preference : null;
-  } catch {
-    return null;
-  }
-}
-
 export function persistLocalePreference(locale: Locale): void {
   if (typeof window === "undefined") return;
+
+  const secure = window.location.protocol === "https:" ? "; Secure" : "";
+  document.cookie = `${localePreferenceCookieName}=${locale}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
 
   try {
     window.localStorage.setItem(localeStorageKey, locale);

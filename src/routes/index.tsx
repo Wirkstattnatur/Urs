@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import heroImg from "@/assets/wirkstatt/hero-stairs.webp";
+import heroMobileImg from "@/assets/wirkstatt/hero-stairs-mobile.webp";
 import parkingImg from "@/assets/wirkstatt/parking-wirkstattnatur.webp";
 import ursGoalImg from "@/assets/wirkstatt/urs-goal.webp";
 import ursImg from "@/assets/wirkstatt/urs-gremlich.jpg";
@@ -175,6 +176,10 @@ function Home() {
           <div className="absolute inset-0 -z-10">
             <img
               src={heroImg}
+              srcSet={`${heroMobileImg} 800w, ${heroImg} 1400w`}
+              sizes="100vw"
+              width="1400"
+              height="933"
               alt="Urs Gremlich beim Lauftraining auf einer begrünten Treppe"
               fetchPriority="high"
               decoding="async"

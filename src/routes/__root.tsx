@@ -10,9 +10,9 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { detectSystemLocale, getLocaleFromPath, readLocalePreference } from "@/lib/locale";
+import { getLocaleFromPath } from "@/lib/locale";
 import { getSiteGraph, jsonLdScript } from "@/lib/seo";
-import { loadTidio } from "@/lib/tidio";
+import { scheduleTidioLoad } from "@/lib/tidio";
 
 const brandGreen = "#294f3d";
 
@@ -136,26 +136,12 @@ function RootComponent() {
   const location = useLocation();
 
   useEffect(() => {
-    void loadTidio();
+    return scheduleTidioLoad();
   }, []);
 
   useEffect(() => {
     const locale = getLocaleFromPath(location.pathname);
     document.documentElement.lang = locale === "en" ? "en" : "de-CH";
-
-    const automatedUserAgent = /bot|crawler|spider|slurp|bingpreview|mediapartners/i.test(
-      navigator.userAgent,
-    );
-
-    if (
-      location.pathname === "/" &&
-      !window.location.hash &&
-      !readLocalePreference() &&
-      detectSystemLocale() === "en" &&
-      !automatedUserAgent
-    ) {
-      window.location.replace("/en");
-    }
   }, [location.pathname]);
 
   return <Outlet />;
