@@ -9,6 +9,8 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import frauncesFont from "@/assets/fonts/fraunces-latin.woff2?url";
+import interFont from "@/assets/fonts/inter-latin.woff2?url";
 import appCss from "../styles.css?url";
 import { getLocaleFromPath } from "@/lib/locale";
 import { getSiteGraph, jsonLdScript } from "@/lib/seo";
@@ -99,6 +101,20 @@ export const Route = createRootRoute({
     ],
     scripts: [jsonLdScript(getSiteGraph())],
     links: [
+      {
+        rel: "preload",
+        href: interFont,
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        href: frauncesFont,
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
       {
         rel: "stylesheet",
         href: appCss,

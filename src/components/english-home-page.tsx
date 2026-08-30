@@ -2,9 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import heroImg from "@/assets/wirkstatt/hero-stairs.webp";
 import heroMobileImg from "@/assets/wirkstatt/hero-stairs-mobile.webp";
-import parkingImg from "@/assets/wirkstatt/parking-wirkstattnatur.webp";
-import ursGoalImg from "@/assets/wirkstatt/urs-goal.webp";
-import ursImg from "@/assets/wirkstatt/urs-gremlich.jpg";
+import parkingImg from "@/assets/wirkstatt/parking-wirkstattnatur-720.webp";
+import parkingLargeImg from "@/assets/wirkstatt/parking-wirkstattnatur-1200.webp";
+import ursGoalImg from "@/assets/wirkstatt/urs-goal-720.webp";
+import ursGoalLargeImg from "@/assets/wirkstatt/urs-goal-960.webp";
+import ursImg from "@/assets/wirkstatt/urs-gremlich-720.webp";
+import ursLargeImg from "@/assets/wirkstatt/urs-gremlich-960.webp";
 import { ContactCta } from "@/components/contact-cta";
 import { LocationIcon } from "@/components/contact-icons";
 import { ReviewCard } from "@/components/review-card";
@@ -250,7 +253,7 @@ export function EnglishHomePage() {
                     className="offer-card group relative isolate flex min-h-[19rem] overflow-hidden rounded-[2rem] bg-white/5 p-7 ring-1 ring-white/12 transition duration-500 hover:-translate-y-1 hover:ring-white/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transform-none sm:min-h-[21rem]"
                   >
                     <img
-                      src={service.image}
+                      src={service.cardImage}
                       alt=""
                       loading="lazy"
                       style={{ objectPosition: service.imagePosition }}
@@ -291,6 +294,10 @@ export function EnglishHomePage() {
             <div className="relative overflow-hidden rounded-panel bg-secondary shadow-soft lg:col-span-5">
               <img
                 src={ursGoalImg}
+                srcSet={`${ursGoalImg} 720w, ${ursGoalLargeImg} 960w`}
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                width="720"
+                height="960"
                 alt="Urs Gremlich carrying a child at the basketball hoop"
                 loading="lazy"
                 className="aspect-[4/5] h-full w-full object-cover"
@@ -302,6 +309,10 @@ export function EnglishHomePage() {
           <div className="mt-16 overflow-hidden rounded-panel bg-primary text-primary-foreground shadow-soft lg:mt-20 lg:grid lg:grid-cols-[1.15fr_0.85fr]">
             <img
               src={parkingImg}
+              srcSet={`${parkingImg} 720w, ${parkingLargeImg} 1200w`}
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              width="720"
+              height="540"
               alt="Customer parking at the Wirkraum in Thalwil"
               loading="lazy"
               className="aspect-[4/3] h-full w-full object-cover"
@@ -342,6 +353,10 @@ export function EnglishHomePage() {
             <div className="relative overflow-hidden rounded-panel bg-secondary shadow-soft lg:col-span-5">
               <img
                 src={ursImg}
+                srcSet={`${ursImg} 720w, ${ursLargeImg} 960w`}
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                width="720"
+                height="480"
                 alt="Urs Gremlich outdoors in front of a stack of wood"
                 loading="lazy"
                 className="aspect-[4/5] h-full w-full object-cover"
