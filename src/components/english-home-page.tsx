@@ -6,6 +6,7 @@ import ursGoalImg from "@/assets/wirkstatt/urs-goal.webp";
 import ursImg from "@/assets/wirkstatt/urs-gremlich.jpg";
 import { ContactCta } from "@/components/contact-cta";
 import { LocationIcon } from "@/components/contact-icons";
+import { ReviewCard } from "@/components/review-card";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { serviceOffers } from "@/lib/services";
@@ -50,6 +51,14 @@ const reviewColumnMotion = [
   { offset: 28, depth: 16 },
   { offset: 12, depth: -8 },
 ] as const;
+
+const reviewLabels = {
+  collapse: "Show less",
+  expand: "Read more",
+  excerpt: "Excerpt",
+  googleLink: "Google Maps",
+  stars: "5 out of 5 stars on Google Maps",
+} as const;
 
 function ReviewGrid() {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -112,44 +121,16 @@ function ReviewGrid() {
           className="grid content-start gap-6 lg:will-change-transform"
         >
           {column.map((review) => (
-            <ReviewCard key={review.author} review={review} />
+            <ReviewCard
+              key={review.author}
+              review={review}
+              labels={reviewLabels}
+              quotationMarks={["“", "”"]}
+            />
           ))}
         </div>
       ))}
     </div>
-  );
-}
-
-function ReviewCard({ review }: { review: (typeof reviews)[number] }) {
-  return (
-    <a
-      href={googleMapsUrl}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={`Open Google review by ${review.author}`}
-      className="site-card site-card-interactive group block p-7"
-    >
-      <div className="flex items-center gap-4">
-        <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary font-display text-xl text-primary-foreground">
-          {review.author.charAt(0)}
-        </span>
-        <div>
-          <h3 className="font-sans text-base font-semibold">{review.author}</h3>
-          <p
-            className="mt-1 flex items-center gap-2 text-sm"
-            aria-label="5 out of 5 stars on Google Maps"
-          >
-            <span className="tracking-wider text-amber-500" aria-hidden="true">
-              ★★★★★
-            </span>
-            <span className="text-muted-foreground">Excerpt · Google Maps</span>
-          </p>
-        </div>
-      </div>
-      <blockquote className="mt-6 text-base leading-relaxed text-foreground/85">
-        “{review.text}”
-      </blockquote>
-    </a>
   );
 }
 
