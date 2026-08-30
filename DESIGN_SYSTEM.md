@@ -79,6 +79,8 @@ New full-width sections should normally use this structure:
 - Fraunces is reserved for headings, quotations, and expressive numbers.
 - Inter is used for navigation, body copy, labels, and controls.
 - Italic forest or lime words may provide one point of emphasis per major heading.
+- Major headings allow language-aware hyphenation so long words remain readable on narrow screens.
+- Long-form prose should stay close to 60–75 characters per line on wide screens.
 - Avoid introducing additional font sizes when one of the shared scales fits.
 
 ## Controls and cards

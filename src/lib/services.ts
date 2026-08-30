@@ -104,7 +104,7 @@ export const serviceOffers = [
     eyebrow: "Individuell trainieren",
     description:
       "Ein Trainingsplan, der sich an deinem Alltag, deinem Tempo und deinen Zielen orientiert.",
-    heroTitle: "Training, das bei dir beginnt.",
+    heroTitle: "Training, das bei dir beginnt",
     intro:
       "Wir richten jede Einheit an deiner aktuellen Verfassung, deinen Wünschen und deinen Zielen aus. So entsteht ein persönliches Training, das fordert, ohne dich zu überfordern.",
     image: personalTrainingDetailImage,
@@ -246,7 +246,7 @@ export const serviceOffers = [
         items: ["Klassische Massage", "Rücken- & Nackenmassage"],
       },
     ],
-    prices: [{ title: "Personal Training", price: "CHF 130", note: "60 Minuten" }],
+    prices: [{ title: "Personal Training", price: "CHF 130", note: "60 Minuten · 1–2 Personen" }],
   },
   {
     slug: "pilates",
@@ -254,7 +254,7 @@ export const serviceOffers = [
     title: "Pilates",
     eyebrow: "Stabilität & Beweglichkeit",
     description: "Kontrolle, Atmung und präzise Bewegung für einen stabilen, starken Körper.",
-    heroTitle: "Aus der Mitte in Bewegung.",
+    heroTitle: "Aus der Mitte in Bewegung",
     intro:
       "Pilates verbindet kontrollierte Bewegung mit bewusster Atmung und Entspannung. Im persönlichen Training oder in einer kleinen Gruppe arbeitest du ruhig und präzise an Stabilität und Beweglichkeit.",
     image: pilatesOverviewImage,
@@ -330,7 +330,7 @@ export const serviceOffers = [
     eyebrow: "Kraft für den Schwung",
     description:
       "Mehr Stabilität, Rotation und Beweglichkeit für einen gesunden, effizienten Golfschwung.",
-    heroTitle: "Mehr Körper für deinen Schwung.",
+    heroTitle: "Mehr Körper für deinen Schwung",
     intro:
       "Ein auf dich abgestimmtes GolfFitness-Training verbindet Kraft, Stabilität, Beweglichkeit und Balance. Es ergänzt die Arbeit mit deinem GolfPro und richtet den Blick auf die körperlichen Voraussetzungen deines Schwungs.",
     image: golfFitnessHeroImage,
@@ -361,7 +361,7 @@ export const serviceOffers = [
       { value: "60 Min.", label: "Dauer" },
       { value: "CHF 130", label: "Preis" },
     ],
-    offerTitle: "Fitness als Basis für gutes Golf.",
+    offerTitle: "Fitness als Basis für gutes Golf",
     offerIntro:
       "Golf verlangt dem ganzen Körper Koordination, Beweglichkeit und Stabilität ab. Im Training arbeiten wir gezielt an diesen Grundlagen — abgestimmt auf deinen Körper und dein Spiel.",
     offerCards: [
@@ -416,7 +416,7 @@ export const serviceOffers = [
     title: "Karate",
     eyebrow: "Körper & Geist",
     description: "Traditionelles Karate verbindet Disziplin, Koordination, Kraft und innere Ruhe.",
-    heroTitle: "Kraft, Klarheit und Haltung.",
+    heroTitle: "Kraft, Klarheit und Haltung",
     intro:
       "FitKarate verbindet Elemente des Shotokan-Ryu mit einem vielseitigen Fitnesstraining. Technik, Koordination, Kraft und Konzentration entwickeln sich gemeinsam — angepasst an dein Niveau.",
     image: karateOverviewImage,
@@ -464,9 +464,9 @@ export const serviceOffers = [
     facts: [
       { value: "3. Dan", label: "Grad" },
       { value: "60 Min.", label: "Dauer" },
-      { value: "Ab CHF 80", label: "Monat" },
+      { value: "80 CHF", label: "Monat" },
     ],
-    offerTitle: "Kampfkunst als Ganzkörper\u00adtraining.",
+    offerTitle: "Kampfkunst als Ganzkörper\u00adtraining",
     offerIntro:
       "Karate stellt körperliche und mentale Aufgaben. Rotationen, Sprünge, Gleichgewicht, Beugen und Strecken machen das Training vielseitig und sprechen den ganzen Körper an.",
     offerCards: [
@@ -507,7 +507,7 @@ export const serviceOffers = [
     ],
     prices: [
       { title: "Einzeltraining", price: "CHF 130", note: "60 Minuten" },
-      { title: "Kleingruppe", price: "CHF 80", note: "Pro Monat" },
+      { title: "Kleingruppe", price: "80 CHF", note: "Pro Monat" },
     ],
   },
 ] as const satisfies readonly ServiceDetail[];

@@ -24,7 +24,7 @@ function DatenschutzPage() {
       title="Datenschutzerklärung"
       description="Transparent erklärt: welche Daten wir bearbeiten, wofür wir sie benötigen und welche Wahlmöglichkeiten du hast."
     >
-      <p className="legal-meta">Stand: 20. August 2026</p>
+      <p className="legal-meta">Stand: 29. August 2026</p>
 
       <aside className="legal-summary" aria-labelledby="privacy-summary-title">
         <h2 id="privacy-summary-title">Das Wichtigste in Kürze</h2>
@@ -79,17 +79,21 @@ function DatenschutzPage() {
       <section>
         <h2>3. Website und Hosting</h2>
         <p>
-          Die Website wird bei der Hostpoint AG, Neue Jonastrasse 60, 8640 Rapperswil-Jona, Schweiz,
-          gehostet. Beim Aufruf werden technisch notwendige Protokolldaten bearbeitet. Dazu können
-          insbesondere IP-Adresse, Datum und Uhrzeit, aufgerufene Adresse, Statuscode, übertragene
-          Datenmenge, verweisende Seite, Browser, Betriebssystem und Fehlermeldungen gehören.
+          Die Website wird über die global verteilte Infrastruktur der Vercel Inc. (USA)
+          bereitgestellt. Beim Aufruf bearbeitet Vercel technisch notwendige Verbindungs- und
+          Protokolldaten. Dazu können insbesondere IP-Adresse, Datum und Uhrzeit, aufgerufene
+          Adresse, Statuscode, übertragene Datenmenge, verweisende Seite, Browser, Betriebssystem,
+          Geräteinformationen und Fehlermeldungen gehören.
         </p>
         <p>
           Diese Daten dienen dem sicheren und stabilen Betrieb, der Fehleranalyse und der Abwehr von
-          Angriffen. Hostpoint speichert Protokolldaten nach eigenen Angaben bis zum Wegfall der
-          betrieblichen Notwendigkeit und dem Ablauf gesetzlicher oder vertraglicher Fristen; für
-          die meisten Daten höchstens sechs Monate. Das Hosting und die Sicherungen erfolgen in der
-          Schweiz.
+          Angriffen. Die Bearbeitung kann in den USA und weiteren Ländern erfolgen, in denen Vercel
+          oder seine Unterauftragnehmer tätig sind; ergänzend gilt Ziffer 8. Weitere Informationen
+          findest du in der{" "}
+          <a href="https://vercel.com/legal/privacy-notice" target="_blank" rel="noreferrer">
+            Datenschutzerklärung von Vercel
+          </a>
+          .
         </p>
       </section>
 

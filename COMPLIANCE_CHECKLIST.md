@@ -8,7 +8,7 @@ Diese Checkliste ergänzt die technische Umsetzung und die Rechtstexte der Websi
 - [ ] Im Tidio-Dashboard prüfen, welche Bots, KI-Funktionen, Integrationen und Aufbewahrungsfristen aktiv sind. Die Datenschutzerklärung aktualisieren, falls mehr als der öffentlich sichtbare Live-Chat genutzt wird.
 - [ ] Falls später ein Vorabformular, eine Automatisierung oder eine Datenerhebung vor der ersten Nachricht aktiviert wird, dort einen kurzen Datenschutzhinweis mit Link auf die Datenschutzerklärung einblenden.
 - [ ] Sicherstellen, dass Chatverläufe und Kontakte in Tidio regelmässig gelöscht werden, sobald sie nicht mehr benötigt werden.
-- [ ] Die Auftragsbearbeitungsbedingungen von Hostpoint für das konkrete Hosting prüfen und dokumentieren.
+- [ ] Beim Transfer des Vercel-Projekts die für den tatsächlich verwendeten Tarif geltenden Vertrags- und Datenschutzbedingungen prüfen und dokumentieren.
 - [ ] HTTPS für die gesamte Domain erzwingen und Weiterleitungen von HTTP testen.
 - [ ] Festlegen, wie Gesundheitsfragebogen und Gesundheitsangaben sicher übermittelt, abgelegt, zugriffsbeschränkt und gelöscht werden. Vertrauliche Gesundheitsdaten nicht über Tidio oder ungesicherte Nachrichten anfordern.
 - [ ] Die intern tatsächlich verwendeten Aufbewahrungsfristen für Kunden-, Gesundheits-, Vertrags- und Kommunikationsdaten dokumentieren.
@@ -35,6 +35,7 @@ Diese Checkliste ergänzt die technische Umsetzung und die Rechtstexte der Websi
 
 - [EDÖB: Datenschutzerklärungen im Internet](https://www.edoeb.admin.ch/de/datenschutzerklaerungen-im-internet)
 - [EDÖB: Leitfaden zu Cookies und ähnlichen Technologien](https://www.edoeb.admin.ch/de/leitfaden-betreffend-datenbearbeitungen-mittels-cookies-veroeffentlicht)
-- [Hostpoint: Welche Daten der Website-Besucher werden verarbeitet?](https://support.hostpoint.ch/de/administratives/dsgvo/haeufig-gestellte-fragen-zur-dsgvo/welche-daten-ihrer-besucher-werden-durch-hostpoint-immer-verarbeitet)
+- [Vercel Privacy Notice](https://vercel.com/legal/privacy-notice)
+- [Vercel Data Processing Addendum](https://vercel.com/legal/dpa)
 - [Tidio: Privacy Policy and GDPR Compliance](https://help.tidio.com/hc/en-us/articles/5462910440220-Privacy-Policy-and-GDPR-Compliance)
 - [Tidio Privacy Policy](https://www.tidio.com/privacy-policy/)

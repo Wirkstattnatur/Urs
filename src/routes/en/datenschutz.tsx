@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/legal-page";
 import { getLegalPageSchema, getSeoHead, jsonLdScript } from "@/lib/seo";
 
-const title = "Privacy policy — Wirkstattnatur";
+const pageTitle = "Privacy policy";
+const title = `${pageTitle} — Wirkstattnatur`;
 const description =
   "Transparently explained: what data we process, why we need it, and what choices you have.";
 
@@ -11,7 +12,12 @@ export const Route = createFileRoute("/en/datenschutz")({
     ...getSeoHead({ path: "/en/datenschutz", title, description, locale: "en" }),
     scripts: [
       jsonLdScript(
-        getLegalPageSchema({ path: "/en/datenschutz", name: title, description, inLanguage: "en" }),
+        getLegalPageSchema({
+          path: "/en/datenschutz",
+          name: pageTitle,
+          description,
+          inLanguage: "en",
+        }),
       ),
     ],
   }),
@@ -20,8 +26,13 @@ export const Route = createFileRoute("/en/datenschutz")({
 
 function EnglishPrivacyPage() {
   return (
-    <LegalPage currentPath="/en/datenschutz" locale="en" title={title} description={description}>
-      <p className="legal-meta">Last updated: 20 August 2026</p>
+    <LegalPage
+      currentPath="/en/datenschutz"
+      locale="en"
+      title={pageTitle}
+      description={description}
+    >
+      <p className="legal-meta">Last updated: 29 August 2026</p>
 
       <aside className="legal-summary" aria-labelledby="privacy-summary-title">
         <h2 id="privacy-summary-title">Key points at a glance</h2>
@@ -71,17 +82,20 @@ function EnglishPrivacyPage() {
       <section>
         <h2>3. Website and hosting</h2>
         <p>
-          This website is hosted by Hostpoint AG, Neue Jonastrasse 60, 8640 Rapperswil-Jona,
-          Switzerland. When accessing the website, technically necessary log data is processed. This
-          may include, in particular, your IP address, date and time of access, requested page/URL,
-          status code, volume of data transferred, referrer URL, browser type, operating system, and
-          error logs.
+          This website is delivered through the globally distributed infrastructure of Vercel Inc.
+          (USA). When you access the website, Vercel processes technically necessary connection and
+          log data. This may include your IP address, date and time of access, requested page or
+          URL, status code, volume of data transferred, referrer URL, browser type, operating
+          system, device information, and error logs.
         </p>
         <p>
-          This data serves to ensure secure and stable operation, fault analysis, and defence
-          against cyber threats. Hostpoint states that it stores log data until the operational
-          necessity ceases and statutory or contractual retention periods expire; for most data,
-          this is a maximum of six months. Hosting and backups take place entirely in Switzerland.
+          This data is used to provide secure and stable operation, diagnose faults, and defend
+          against attacks. Processing may take place in the USA and other countries where Vercel or
+          its subprocessors operate; section 8 also applies. Further information is available in the{" "}
+          <a href="https://vercel.com/legal/privacy-notice" target="_blank" rel="noreferrer">
+            Vercel Privacy Notice
+          </a>
+          .
         </p>
       </section>
 

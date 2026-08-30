@@ -26,7 +26,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     title: "Personal Training",
     eyebrow: "Personalised training",
     description: "A training plan shaped around your everyday life, your pace and your goals.",
-    heroTitle: "Training that begins with you.",
+    heroTitle: "Training that begins with you",
     intro:
       "We tailor every session to your current condition, your wishes and your goals. This creates personal training that challenges you without overwhelming you.",
     imageAlt: "Urs Gremlich during functional outdoor training with resistance bands",
@@ -77,7 +77,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
       { label: "Duration", value: "60 min." },
       { label: "Price", value: "CHF 130" },
     ],
-    offerTitle: "How your training becomes personal.",
+    offerTitle: "How your training becomes personal",
     offerIntro:
       "You won’t get a rigid standard programme. Content and intensity are continuously adapted to you — in the Wirkraum, outdoors or at your location.",
     offerCards: [
@@ -132,13 +132,13 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
       },
       { title: "Massages", items: ["Classic massage", "Back & neck massage"] },
     ],
-    prices: [{ title: "Personal Training", price: "CHF 130", note: "60 minutes" }],
+    prices: [{ title: "Personal Training", price: "CHF 130", note: "60 minutes · 1–2 people" }],
   },
   pilates: {
     title: "Pilates",
     eyebrow: "Stability & mobility",
     description: "Control, breathing and precise movement for a stable, strong body.",
-    heroTitle: "Movement from the core.",
+    heroTitle: "Movement from the core",
     intro:
       "Pilates combines controlled movement with conscious breathing and relaxation. In personal training or in a small group, you work calmly and precisely on stability and mobility.",
     imageAlt: "Urs Gremlich performing a balance exercise with weights",
@@ -206,7 +206,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     title: "Golf-Fitness",
     eyebrow: "Power for your swing",
     description: "More stability, rotation and mobility for a healthy, efficient golf swing.",
-    heroTitle: "More body for your swing.",
+    heroTitle: "More body for your swing",
     intro:
       "A tailored GolfFitness programme combines strength, stability, mobility and balance. It complements your work with your golf pro and focuses on the physical foundation of your swing.",
     imageAlt: "Urs Gremlich during balance and rotation training with a golf club",
@@ -229,7 +229,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
       { label: "Duration", value: "60 min." },
       { label: "Price", value: "CHF 130" },
     ],
-    offerTitle: "Fitness as the foundation for good golf.",
+    offerTitle: "Fitness as the foundation for good golf",
     offerIntro:
       "Golf demands coordination, mobility and stability from the whole body. In training, we work specifically on these fundamentals — tailored to your body and your game.",
     offerCards: [
@@ -276,7 +276,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     title: "Karate",
     eyebrow: "Body & mind",
     description: "Traditional Karate combines discipline, coordination, strength and inner calm.",
-    heroTitle: "Strength, clarity and posture.",
+    heroTitle: "Strength, clarity and posture",
     intro:
       "FitKarate combines elements of Shotokan-Ryu with versatile fitness training. Technique, coordination, strength and concentration develop together — adapted to your level.",
     imageAlt: "Urs Gremlich with strike pads in the Wirkraum",
@@ -309,9 +309,9 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     facts: [
       { label: "Rank", value: "3rd Dan" },
       { label: "Duration", value: "60 min." },
-      { label: "Per month", value: "From CHF 80" },
+      { label: "Per month", value: "80 CHF" },
     ],
-    offerTitle: "Martial arts as full-body training.",
+    offerTitle: "Martial arts as full-body training",
     offerIntro:
       "Karate presents both physical and mental challenges. Rotations, jumps, balance, bending and stretching make training versatile and engage the whole body.",
     offerCards: [
@@ -349,7 +349,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
     ],
     prices: [
       { title: "Single session", price: "CHF 130", note: "60 minutes" },
-      { title: "Small group", price: "CHF 80", note: "Per month" },
+      { title: "Small group", price: "80 CHF", note: "Per month" },
     ],
   },
 };

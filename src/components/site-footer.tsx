@@ -162,8 +162,8 @@ export function SiteFooter() {
                 ✓
               </span>
               {isEnglish
-                ? "Recognised by Swiss supplementary health insurance."
-                : "Anerkannt von den Zusatzversicherungen der Krankenkassen."}
+                ? "Recognised by Swiss supplementary health insurance"
+                : "Anerkannt von den Zusatzversicherungen der Krankenkassen"}
             </p>
 
             <nav

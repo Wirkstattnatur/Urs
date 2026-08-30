@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/legal-page";
 import { getLegalPageSchema, getSeoHead, jsonLdScript } from "@/lib/seo";
 
-const title = "Terms and conditions — Wirkstattnatur";
+const pageTitle = "Terms and conditions";
+const title = `${pageTitle} — Wirkstattnatur`;
 const description =
   "The terms and conditions that apply to all services provided by Wirkstattnatur.";
 
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/en/agb")({
     ...getSeoHead({ path: "/en/agb", title, description, locale: "en" }),
     scripts: [
       jsonLdScript(
-        getLegalPageSchema({ path: "/en/agb", name: title, description, inLanguage: "en" }),
+        getLegalPageSchema({ path: "/en/agb", name: pageTitle, description, inLanguage: "en" }),
       ),
     ],
   }),
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/en/agb")({
 
 function EnglishAgbPage() {
   return (
-    <LegalPage currentPath="/en/agb" locale="en" title={title} description={description}>
+    <LegalPage currentPath="/en/agb" locale="en" title={pageTitle} description={description}>
       <p className="legal-intro">
         All services provided by Wirkstattnatur are subject in full to these terms and conditions,
         unless amended or supplemented by written agreement.

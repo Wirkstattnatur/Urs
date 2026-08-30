@@ -118,13 +118,13 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
       }`}
     >
       <nav
-        className="site-container flex h-20 items-center justify-between"
+        className="site-container relative flex h-20 items-center justify-between px-4 sm:px-6 lg:px-10"
         aria-label={isEnglish ? "Main navigation" : "Hauptnavigation"}
       >
         <a
           href={`${homePath}#top`}
           aria-label={isEnglish ? "Wirkstattnatur homepage" : "Wirkstattnatur Startseite"}
-          className={`font-display text-2xl font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${foregroundClass}`}
+          className={`absolute left-1/2 -translate-x-1/2 whitespace-nowrap font-display text-xl font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:text-2xl lg:static lg:translate-x-0 ${foregroundClass}`}
         >
           Wirkstatt
           <span className={isInverse ? "text-accent" : "text-accent-foreground"}>natur</span>
@@ -200,7 +200,7 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-3 lg:ml-0">
           <div className="hidden lg:block">
             <LanguageSwitch
               pathname={location.pathname}
@@ -217,22 +217,16 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
             079 413 18 30
           </a>
 
-          <details ref={mobileMenuRef} className="group relative lg:hidden">
+          <details ref={mobileMenuRef} className="group absolute left-4 lg:hidden">
             <summary
               ref={mobileSummaryRef}
-              className={`cursor-pointer list-none rounded-control px-4 py-3 text-sm font-semibold ring-1 transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent [&::-webkit-details-marker]:hidden ${
-                isInverse
-                  ? "bg-primary-foreground/10 text-primary-foreground ring-primary-foreground/30 hover:bg-primary-foreground/20"
-                  : "bg-secondary text-primary ring-border hover:bg-card"
-              }`}
+              className={`flex size-11 cursor-pointer list-none items-center justify-center rounded-control transition hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent [&::-webkit-details-marker]:hidden ${foregroundClass}`}
             >
-              <span className="flex items-center gap-2">
-                {isEnglish ? "Menu" : "Menü"}
-                <ChevronIcon />
-              </span>
+              <span className="sr-only">{isEnglish ? "Menu" : "Menü"}</span>
+              <MenuIcon />
             </summary>
 
-            <div className="absolute right-0 top-full mt-3 w-72 rounded-2xl bg-card p-3 text-foreground shadow-soft ring-1 ring-border">
+            <div className="fixed left-4 right-4 top-20 mt-3 w-auto rounded-2xl bg-card p-3 text-foreground shadow-soft ring-1 ring-border sm:absolute sm:left-auto sm:right-0 sm:top-full sm:w-72">
               <a
                 href={`${sectionPrefix}#konzept`}
                 onClick={closeMobileMenu}
@@ -293,6 +287,7 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
               pathname={location.pathname}
               isEnglish={isEnglish}
               isInverse={isInverse}
+              mobile
             />
           </div>
         </div>
@@ -305,27 +300,31 @@ function LanguageSwitch({
   pathname,
   isEnglish,
   isInverse,
+  mobile = false,
 }: {
   pathname: string;
   isEnglish: boolean;
   isInverse: boolean;
+  mobile?: boolean;
 }) {
   const nextLocale = isEnglish ? "de" : "en";
   const href = getLocalizedPath(pathname, nextLocale);
+  const sizeClass = mobile ? "h-11 min-w-11 gap-1.5 px-2.5 text-xs" : "gap-2 px-3.5 py-1.5 text-xs";
+  const treatmentClass = mobile
+    ? "bg-card/95 text-primary shadow-card ring-border hover:bg-card"
+    : isInverse
+      ? "bg-primary-foreground/10 text-accent ring-primary-foreground/25 hover:bg-primary-foreground/15"
+      : "bg-secondary text-accent-foreground ring-border hover:bg-card";
 
   return (
     <a
       href={href}
       onClick={() => persistLocalePreference(nextLocale)}
       aria-label={isEnglish ? "Switch to German" : "Auf Englisch wechseln"}
-      className={`inline-flex items-center gap-2 rounded-control px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition ring-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
-        isInverse
-          ? "bg-primary-foreground/10 text-accent ring-primary-foreground/25 hover:bg-primary-foreground/15"
-          : "bg-secondary text-accent-foreground ring-border hover:bg-card"
-      }`}
+      className={`inline-flex items-center justify-center rounded-control font-semibold uppercase tracking-[0.14em] transition ring-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${sizeClass} ${treatmentClass}`}
     >
       <GlobeIcon className="h-3.5 w-3.5" />
-      {nextLocale === "en" ? "EN" : "DE"}
+      <span className="max-[359px]:sr-only">{nextLocale === "en" ? "EN" : "DE"}</span>
     </a>
   );
 }
@@ -356,6 +355,29 @@ function ChevronIcon({ open = false }: { open?: boolean }) {
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
+function MenuIcon() {
+  return (
+    <svg viewBox="0 0 20 20" className="size-5" aria-hidden="true">
+      <path
+        d="M3.5 5.5h13M3.5 10h13M3.5 14.5h13"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="1.6"
+        className="group-open:hidden"
+      />
+      <path
+        d="m5.5 5.5 9 9m0-9-9 9"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="1.6"
+        className="hidden group-open:block"
       />
     </svg>
   );

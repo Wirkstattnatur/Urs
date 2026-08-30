@@ -59,7 +59,7 @@ const aboutCopy = {
     ctaEyebrow: "Einfach kennenlernen",
     ctaTitle: (
       <>
-        Persönlich ins Gespräch kommen. <em className="text-accent">Ganz unverbindlich.</em>
+        Persönlich ins Gespräch kommen <em className="text-accent">Ganz unverbindlich</em>
       </>
     ),
   },
@@ -104,7 +104,7 @@ const aboutCopy = {
     ctaTitle: (
       <>
         Start a personal conversation.{" "}
-        <em className="text-accent">Completely without obligation.</em>
+        <em className="text-accent">Completely without obligation</em>
       </>
     ),
   },
@@ -194,7 +194,10 @@ function ProfileCard({
   isEnglish: boolean;
 }) {
   return (
-    <aside className="overflow-hidden rounded-panel bg-primary text-primary-foreground shadow-soft lg:sticky lg:top-28">
+    <aside
+      aria-labelledby="urs-profile-name"
+      className="overflow-hidden rounded-panel bg-primary text-primary-foreground shadow-soft lg:sticky lg:top-28"
+    >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={studioPortraitImage}
@@ -206,7 +209,9 @@ function ProfileCard({
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
           {copy.profileEyebrow}
         </p>
-        <p className="mt-4 font-display text-4xl">{profile.name}</p>
+        <h2 id="urs-profile-name" className="mt-4 font-display text-4xl">
+          {profile.name}
+        </h2>
         <p className="mt-3 leading-relaxed text-primary-foreground/70">{profile.role}</p>
 
         <dl className="mt-8 grid gap-5 border-t border-primary-foreground/15 pt-6">

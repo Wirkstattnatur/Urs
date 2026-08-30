@@ -48,7 +48,7 @@ export function ServiceDetailPage({
 
       <main id="main-content">
         <section className="bg-primary text-primary-foreground">
-          <div className="site-container grid items-stretch gap-12 py-16 lg:grid-cols-12 lg:gap-16 lg:py-24">
+          <div className="site-container grid items-stretch gap-12 pb-16 pt-28 lg:grid-cols-12 lg:gap-16 lg:py-24">
             <div className="flex flex-col justify-center lg:col-span-6 lg:py-6">
               <p className="site-eyebrow text-accent">{service.title} · Thalwil &amp; Horgen</p>
               <h1 className="font-display text-5xl leading-[1.03] sm:text-6xl lg:text-7xl">
@@ -73,11 +73,11 @@ export function ServiceDetailPage({
                 <ServiceHeroImage service={service} />
               </div>
 
-              <dl className="mt-8 grid grid-cols-3 gap-2 rounded-2xl bg-primary-foreground/7 p-2 sm:mt-10 sm:gap-3 sm:p-3">
+              <dl className="mt-8 grid grid-cols-2 gap-2 rounded-2xl bg-primary-foreground/7 p-2 sm:mt-10 sm:grid-cols-3 sm:gap-3 sm:p-3">
                 {service.facts.map((fact) => (
                   <div
                     key={fact.label}
-                    className="min-w-0 rounded-xl bg-primary-foreground/7 px-3 py-3 sm:px-4 sm:py-4"
+                    className="min-w-0 rounded-xl bg-primary-foreground/7 px-3 py-3 last:col-span-2 sm:px-4 sm:py-4 sm:last:col-span-1"
                   >
                     <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground/75">
                       {fact.label}
@@ -99,12 +99,12 @@ export function ServiceDetailPage({
         <section id="angebot" className="site-anchor bg-card">
           <div className="site-container site-section">
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-              <div className="lg:col-span-5">
+              <div className="min-w-0 lg:col-span-5">
                 <p className="site-eyebrow text-muted-foreground">{copy.offerEyebrow}</p>
                 <h2 className="site-title-feature">{service.offerTitle}</h2>
                 <p className="site-lead mt-7">{service.offerIntro}</p>
               </div>
-              <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
+              <div className="min-w-0 grid gap-6 sm:grid-cols-2 lg:col-span-7">
                 {service.offerCards.map((card) => (
                   <article key={card.title} className="site-card p-7 lg:p-8">
                     <span className="block size-3 rounded-full bg-accent" aria-hidden="true" />

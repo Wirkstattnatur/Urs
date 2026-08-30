@@ -184,7 +184,7 @@ export function EnglishHomePage() {
             <h1 className="max-w-4xl font-display text-5xl font-500 leading-[1.02] text-primary-foreground sm:text-6xl lg:text-8xl">
               Movement that <em className="not-italic text-accent">works</em> —{" "}
               <br className="hidden sm:block" />
-              in the rhythm of your life.
+              in the rhythm of your life
             </h1>
             <p className="mt-8 max-w-2xl text-lg text-primary-foreground/85 lg:text-xl">
               No one-size-fits-all programme. We start where you are — with a training plan that
@@ -207,7 +207,7 @@ export function EnglishHomePage() {
             <div className="lg:col-span-5">
               <p className="site-eyebrow text-muted-foreground">Concept</p>
               <h2 className="site-title">
-                Strength, calm and clarity — <em className="text-primary">for the whole person.</em>
+                Strength, calm and clarity — <em className="text-primary">for the whole person</em>
               </h2>
             </div>
             <div className="site-lead space-y-6 lg:col-span-7 lg:pt-4">
@@ -245,7 +245,7 @@ export function EnglishHomePage() {
               <div>
                 <p className="site-eyebrow text-accent">Services</p>
                 <h2 className="site-title-feature max-w-2xl">
-                  Four ways to feel <em className="text-accent">stronger.</em>
+                  Four ways to feel <em className="text-accent">stronger</em>
                 </h2>
               </div>
               <p className="max-w-md text-primary-foreground/70">
@@ -368,12 +368,12 @@ export function EnglishHomePage() {
             <div className="flex flex-col justify-center lg:col-span-7 lg:py-6">
               <p className="site-eyebrow text-muted-foreground">About me</p>
               <h2 className="site-title-feature max-w-2xl">
-                Experience that <em className="text-primary">stays personal.</em>
+                Experience that <em className="text-primary">stays personal</em>
               </h2>
               <div className="site-lead mt-8 max-w-2xl space-y-5">
                 <p>
                   I support people in German and English. As a Movement & Health Trainer and a
-                  martial artist with competitive experience, I combine sound expertise with a fine
+                  Martial Artist with competitive experience, I combine sound expertise with a fine
                   sense for the person in front of me.
                 </p>
                 <p>
@@ -397,8 +397,8 @@ export function EnglishHomePage() {
                   {[
                     "FA Movement Trainer Level 1 BGB",
                     "Movement & Health Trainer",
-                    "GolfFitness Trainer, Albatros Method",
-                    "Karate Instructor, 3rd Dan",
+                    "GolfFitness Trainer Albatros Method (SAFS)",
+                    "Karate Instructor (3rd Dan)",
                     "Pilates Care",
                     "Spinal Therapist",
                   ].map((qualification) => (
@@ -427,7 +427,7 @@ export function EnglishHomePage() {
             <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
               <div>
                 <p className="site-eyebrow text-muted-foreground">Client reviews</p>
-                <h2 className="site-title">What others say.</h2>
+                <h2 className="site-title">What others say</h2>
               </div>
               <div className="flex flex-col items-start gap-3 sm:items-end">
                 <a
@@ -471,8 +471,8 @@ export function EnglishHomePage() {
               eyebrow="Say hello"
               title={
                 <>
-                  A first step.
-                  <em className="block text-accent">Without obligation.</em>
+                  A first step
+                  <em className="block text-accent">Without obligation</em>
                 </>
               }
             />

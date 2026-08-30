@@ -106,7 +106,9 @@
   h3,
   h4 {
     font-family: var(--font-display);
+    hyphens: auto;
     letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -196,6 +198,7 @@
   /* Long-form legal content */
   .legal-prose {
     @apply text-base leading-7 text-foreground/85;
+    max-width: 72ch;
   }
 
   .legal-prose > section {

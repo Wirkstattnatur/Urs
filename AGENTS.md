@@ -208,7 +208,7 @@ Use Codex's built-in browser for local visual verification. Do not launch or con
 - Do not commit, push, open a pull request, deploy, or modify Hostpoint production files unless the user explicitly requests it.
 - Before any requested commit, inspect the complete diff and keep unrelated user work intact.
 - Do not restore deleted Lovable artifacts during merges or cleanup.
-- Production hosting is not yet encoded as part of this repository; do not assume a deployment target.
+- The current deployment target is Vercel. Hostpoint still manages the legacy hosting, domain, and email until the production-domain handoff is complete. Confirm the current linked project and ownership before any deployment or domain change.
 
 ## Definition of done
 

@@ -20,6 +20,6 @@ npm run lint
 npm run build
 ```
 
-The project uses React, TanStack Start, Tailwind CSS, Vite, and Nitro. Production hosting configuration will be added separately for Hostpoint.
+The project uses React, TanStack Start, Tailwind CSS, Vite, and Nitro. The website is deployed through Vercel; Hostpoint continues to manage the legacy hosting, domain, and email until the production-domain handoff is complete.
 
 Visual tokens, shared layout patterns, and extension rules are documented in [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md).

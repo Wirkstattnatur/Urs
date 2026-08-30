@@ -217,7 +217,7 @@ function Home() {
             <h1 className="max-w-4xl font-display text-5xl font-500 leading-[1.02] text-primary-foreground sm:text-6xl lg:text-8xl">
               Bewegung, die <em className="not-italic text-accent">wirkt</em> —{" "}
               <br className="hidden sm:block" />
-              im Rhythmus deines Lebens.
+              im Rhythmus deines Lebens
             </h1>
             <p className="mt-8 max-w-2xl text-lg text-primary-foreground/85 lg:text-xl">
               Kein 08/15-Programm. Wir starten dort, wo du stehst — mit einem Trainingsplan, der zu
@@ -240,8 +240,7 @@ function Home() {
             <div className="lg:col-span-5">
               <p className="site-eyebrow text-muted-foreground">Das Konzept</p>
               <h2 className="site-title">
-                Kraft, Ruhe und Klarheit —{" "}
-                <em className="text-primary">für den ganzen Menschen.</em>
+                Kraft, Ruhe und Klarheit — <em className="text-primary">für den ganzen Menschen</em>
               </h2>
             </div>
             <div className="site-lead space-y-6 lg:col-span-7 lg:pt-4">
@@ -280,7 +279,7 @@ function Home() {
               <div>
                 <p className="site-eyebrow text-accent">Angebot</p>
                 <h2 className="site-title-feature max-w-2xl">
-                  Vier Wege, wie du dich <em className="text-accent">stärker fühlst.</em>
+                  Vier Wege, wie du dich <em className="text-accent">stärker fühlst</em>
                 </h2>
               </div>
               <p className="max-w-md text-primary-foreground/70">
@@ -402,7 +401,7 @@ function Home() {
             <div className="flex flex-col justify-center lg:col-span-7 lg:py-6">
               <p className="site-eyebrow text-muted-foreground">Über mich</p>
               <h2 className="site-title-feature max-w-2xl">
-                Erfahrung, die <em className="text-primary">persönlich bleibt.</em>
+                Erfahrung, die <em className="text-primary">persönlich bleibt</em>
               </h2>
               <div className="site-lead mt-8 max-w-2xl space-y-5">
                 <p>
@@ -433,8 +432,8 @@ function Home() {
                   {[
                     "FA Bewegungstrainer Level 1 BGB",
                     "Trainer Bewegung & Gesundheit",
-                    "GolfFitness-Trainer, Albatros Methode",
-                    "Karatelehrer, 3. Dan",
+                    "GolfFitness-Trainer Albatros Methode (SAFS)",
+                    "Karatelehrer (3. Dan)",
                     "Pilates Care",
                     "Wirbelsäulentherapeut",
                   ].map((qualification) => (
@@ -461,7 +460,7 @@ function Home() {
             <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
               <div>
                 <p className="site-eyebrow text-muted-foreground">Kundenstimmen</p>
-                <h2 className="site-title">Was andere sagen.</h2>
+                <h2 className="site-title">Was andere sagen</h2>
               </div>
               <div className="flex flex-col items-start gap-3 sm:items-end">
                 <a
@@ -503,8 +502,8 @@ function Home() {
             <ContactCta
               title={
                 <>
-                  Ein erster Schritt.
-                  <em className="block text-accent">Ganz unverbindlich.</em>
+                  Ein erster Schritt
+                  <em className="block text-accent">Ganz unverbindlich</em>
                 </>
               }
             />

@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AgbRouteImport } from './routes/agb'
-import { Route as CtaDemoRouteImport } from './routes/cta-demo'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as EnRouteImport } from './routes/en'
 import { Route as ImpressumRouteImport } from './routes/impressum'
@@ -38,11 +37,6 @@ const IndexRoute = IndexRouteImport.update({
 const AgbRoute = AgbRouteImport.update({
   id: '/agb',
   path: '/agb',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CtaDemoRoute = CtaDemoRouteImport.update({
-  id: '/cta-demo',
-  path: '/cta-demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DatenschutzRoute = DatenschutzRouteImport.update({
@@ -135,7 +129,6 @@ const EnAngebotPilatesRoute = EnAngebotPilatesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agb': typeof AgbRoute
-  '/cta-demo': typeof CtaDemoRoute
   '/datenschutz': typeof DatenschutzRoute
   '/en': typeof EnRouteWithChildren
   '/impressum': typeof ImpressumRoute
@@ -157,7 +150,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agb': typeof AgbRoute
-  '/cta-demo': typeof CtaDemoRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
   '/ueber-mich': typeof UeberMichRoute
@@ -179,7 +171,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/agb': typeof AgbRoute
-  '/cta-demo': typeof CtaDemoRoute
   '/datenschutz': typeof DatenschutzRoute
   '/en': typeof EnRouteWithChildren
   '/impressum': typeof ImpressumRoute
@@ -203,7 +194,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/agb'
-    | '/cta-demo'
     | '/datenschutz'
     | '/en'
     | '/impressum'
@@ -225,7 +215,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/agb'
-    | '/cta-demo'
     | '/datenschutz'
     | '/impressum'
     | '/ueber-mich'
@@ -246,7 +235,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/agb'
-    | '/cta-demo'
     | '/datenschutz'
     | '/en'
     | '/impressum'
@@ -269,7 +257,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgbRoute: typeof AgbRoute
-  CtaDemoRoute: typeof CtaDemoRoute
   DatenschutzRoute: typeof DatenschutzRoute
   EnRoute: typeof EnRouteWithChildren
   ImpressumRoute: typeof ImpressumRoute
@@ -294,13 +281,6 @@ declare module '@tanstack/react-router' {
       path: '/agb'
       fullPath: '/agb'
       preLoaderRoute: typeof AgbRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cta-demo': {
-      id: '/cta-demo'
-      path: '/cta-demo'
-      fullPath: '/cta-demo'
-      preLoaderRoute: typeof CtaDemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/datenschutz': {
@@ -454,7 +434,6 @@ const EnRouteWithChildren = EnRoute._addFileChildren(EnRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgbRoute: AgbRoute,
-  CtaDemoRoute: CtaDemoRoute,
   DatenschutzRoute: DatenschutzRoute,
   EnRoute: EnRouteWithChildren,
   ImpressumRoute: ImpressumRoute,

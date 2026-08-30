@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/legal-page";
 import { getLegalPageSchema, getSeoHead, jsonLdScript } from "@/lib/seo";
 
-const title = "Legal notice — Wirkstattnatur";
+const pageTitle = "Legal notice";
+const title = `${pageTitle} — Wirkstattnatur`;
 const description = "Provider details, responsibilities and legal notices.";
 
 export const Route = createFileRoute("/en/impressum")({
@@ -10,7 +11,12 @@ export const Route = createFileRoute("/en/impressum")({
     ...getSeoHead({ path: "/en/impressum", title, description, locale: "en" }),
     scripts: [
       jsonLdScript(
-        getLegalPageSchema({ path: "/en/impressum", name: title, description, inLanguage: "en" }),
+        getLegalPageSchema({
+          path: "/en/impressum",
+          name: pageTitle,
+          description,
+          inLanguage: "en",
+        }),
       ),
     ],
   }),
@@ -19,7 +25,7 @@ export const Route = createFileRoute("/en/impressum")({
 
 function EnglishImpressumPage() {
   return (
-    <LegalPage currentPath="/en/impressum" locale="en" title={title} description={description}>
+    <LegalPage currentPath="/en/impressum" locale="en" title={pageTitle} description={description}>
       <section>
         <h2>Provider, owner and person responsible for content</h2>
         <address>

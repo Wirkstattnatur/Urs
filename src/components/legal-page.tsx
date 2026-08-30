@@ -68,7 +68,7 @@ export function LegalPage({
         </header>
 
         <section className="site-container py-16 lg:py-24">
-          <article className="legal-prose mx-auto max-w-4xl">{children}</article>
+          <article className="legal-prose mx-auto">{children}</article>
         </section>
       </main>
       <SiteFooter />
