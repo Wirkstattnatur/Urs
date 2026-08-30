@@ -1,6 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
+import heroAvif from "@/assets/wirkstatt/hero-stairs.avif";
 import heroImg from "@/assets/wirkstatt/hero-stairs.webp";
+import heroMobile640Avif from "@/assets/wirkstatt/hero-stairs-mobile-640.avif";
+import heroMobile640Img from "@/assets/wirkstatt/hero-stairs-mobile-640.webp";
+import heroMobileAvif from "@/assets/wirkstatt/hero-stairs-mobile.avif";
 import heroMobileImg from "@/assets/wirkstatt/hero-stairs-mobile.webp";
 import parkingImg from "@/assets/wirkstatt/parking-wirkstattnatur-720.webp";
 import parkingLargeImg from "@/assets/wirkstatt/parking-wirkstattnatur-1200.webp";
@@ -147,17 +151,26 @@ export function EnglishHomePage() {
         {/* HERO */}
         <section id="top" className="relative isolate overflow-hidden bg-primary">
           <div className="absolute inset-0 -z-10">
-            <img
-              src={heroImg}
-              srcSet={`${heroMobileImg} 800w, ${heroImg} 1400w`}
-              sizes="100vw"
-              width="1400"
-              height="933"
-              alt="Urs Gremlich running on a leafy staircase"
-              fetchPriority="high"
-              decoding="async"
-              className="h-full w-full object-cover object-[8%_center] lg:object-center"
-            />
+            <picture className="block h-full w-full">
+              <source
+                type="image/avif"
+                media="(max-width: 1023px)"
+                srcSet={`${heroMobile640Avif} 640w, ${heroMobileAvif} 800w`}
+                sizes="100vw"
+              />
+              <source type="image/avif" srcSet={heroAvif} />
+              <img
+                src={heroImg}
+                srcSet={`${heroMobile640Img} 640w, ${heroMobileImg} 800w, ${heroImg} 1400w`}
+                sizes="100vw"
+                width="1400"
+                height="933"
+                alt="Urs Gremlich running on a leafy staircase"
+                fetchPriority="high"
+                decoding="async"
+                className="h-full w-full object-cover object-[8%_center] lg:object-center"
+              />
+            </picture>
             <div className="absolute inset-0 bg-gradient-to-b from-primary/75 via-primary/55 to-primary/90 lg:bg-gradient-to-r lg:from-primary/85 lg:via-primary/55 lg:to-primary/35" />
           </div>
           <div className="site-container flex min-h-[92vh] flex-col justify-end pb-20 pt-40 lg:pb-28">
