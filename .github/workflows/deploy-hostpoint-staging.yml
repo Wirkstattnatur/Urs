@@ -37,7 +37,7 @@ jobs:
           install -m 700 -d "$HOME/.ssh"
           printf '%s\n' "$HOSTPOINT_DEPLOY_KEY" > "$HOME/.ssh/hostpoint_deploy"
           chmod 600 "$HOME/.ssh/hostpoint_deploy"
-          printf '%s\n' '@cert-authority *.hostpoint.ch ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFWLS/vgrNVYR+Yx6UnJD19yMzFGpxrOwScWFIEEJChR Hostpoint Host CA 1' > "$HOME/.ssh/known_hosts"
+          printf '%s\n' 'wirkstat.ssh.cloud.hostpoint.ch ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFcmazgldZ1AkMoPE2sC5ND2n/izgcOjCBysiPcBLG+M' > "$HOME/.ssh/known_hosts"
 
       - name: Deploy static artifact
         run: |
