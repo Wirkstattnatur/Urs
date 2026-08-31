@@ -20,6 +20,6 @@ npm run lint
 npm run build
 ```
 
-The project uses React, TanStack Start, Tailwind CSS, Vite, and Nitro. The production website currently runs on Vercel. A prerendered Hostpoint staging deployment is prepared through `npm run build:hostpoint`; see [HOSTPOINT_DEPLOYMENT.md](./HOSTPOINT_DEPLOYMENT.md) for the deployment and cutover contract.
+The project uses React, TanStack Start, Tailwind CSS, Vite, and Nitro. The production website runs on Hostpoint. Every push to `main` in `Wirkstattnatur/Urs` builds and deploys the complete prerendered website through `npm run build:hostpoint`; see [HOSTPOINT_DEPLOYMENT.md](./HOSTPOINT_DEPLOYMENT.md) for the deployment and rollback contract.
 
 Visual tokens, shared layout patterns, and extension rules are documented in [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md).

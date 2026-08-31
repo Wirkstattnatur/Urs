@@ -208,10 +208,10 @@ Use Codex's built-in browser for local visual verification. Do not launch or con
 - Do not commit, push, open a pull request, deploy, or modify Hostpoint production files unless the user explicitly requests it.
 - Before any requested commit, inspect the complete diff and keep unrelated user work intact.
 - Do not restore deleted Lovable artifacts during merges or cleanup.
-- The production deployment remains on Vercel until the Hostpoint cutover is explicitly approved. Hostpoint staging is generated with `npm run build:hostpoint` and deployed from `Wirkstattnatur/Urs` through `.github/workflows/deploy-hostpoint-staging.yml`; read `HOSTPOINT_DEPLOYMENT.md` before changing this workflow or either hosting target.
-- Never place an unrestricted or personal Hostpoint key in GitHub. The staging workflow must use a dedicated `rrsync -wo` key restricted to its document root.
-- Keep the Hostpoint staging host `noindex`. Do not update the privacy pages from Vercel hosting to Hostpoint hosting until the production cutover is approved and actually performed.
-- Confirm the current linked project, repository ownership, staging target, and rollback path before any deployment or domain change.
+- Production is hosted by Hostpoint and generated with `npm run build:hostpoint`. Every push to `main` in `Wirkstattnatur/Urs` runs `.github/workflows/deploy-hostpoint-staging.yml` and deploys the verified artifact to the document root shared by the production and staging hostnames. Read `HOSTPOINT_DEPLOYMENT.md` before changing the workflow or hosting configuration.
+- Never place an unrestricted or personal Hostpoint key in GitHub. The workflow must use the dedicated `rrsync -wo` key restricted to the deployment document root.
+- Keep the Hostpoint staging hostname `noindex`; the production hostname must remain indexable.
+- Confirm the repository ownership, deployment target, production DNS, mail records, Golden Cobra records, and rollback path before any deployment or domain change.
 
 ## Definition of done
 

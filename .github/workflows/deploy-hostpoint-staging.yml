@@ -1,4 +1,4 @@
-name: Deploy Hostpoint staging
+name: Deploy Hostpoint
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: hostpoint-staging
+  group: hostpoint-production
   cancel-in-progress: false
 
 jobs:

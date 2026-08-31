@@ -32,7 +32,7 @@ function EnglishPrivacyPage() {
       title={pageTitle}
       description={description}
     >
-      <p className="legal-meta">Last updated: 29 August 2026</p>
+      <p className="legal-meta">Last updated: 31 August 2026</p>
 
       <aside className="legal-summary" aria-labelledby="privacy-summary-title">
         <h2 id="privacy-summary-title">Key points at a glance</h2>
@@ -82,18 +82,25 @@ function EnglishPrivacyPage() {
       <section>
         <h2>3. Website and hosting</h2>
         <p>
-          This website is delivered through the globally distributed infrastructure of Vercel Inc.
-          (USA). When you access the website, Vercel processes technically necessary connection and
-          log data. This may include your IP address, date and time of access, requested page or
-          URL, status code, volume of data transferred, referrer URL, browser type, operating
-          system, device information, and error logs.
+          This website is hosted by Hostpoint AG, Neue Jonastrasse 60, 8640 Rapperswil-Jona,
+          Switzerland. Hostpoint operates its server infrastructure in Switzerland. When you access
+          the website, Hostpoint processes technically necessary connection and log data. This may
+          include your IP address, date and time of access, requested page or URL, protocol
+          information, status code, volume of data transferred, referrer URL, browser information,
+          and error logs.
         </p>
         <p>
-          This data is used to provide secure and stable operation, diagnose faults, and defend
-          against attacks. Processing may take place in the USA and other countries where Vercel or
-          its subprocessors operate; section 8 also applies. Further information is available in the{" "}
-          <a href="https://vercel.com/legal/privacy-notice" target="_blank" rel="noreferrer">
-            Vercel Privacy Notice
+          The log data is used to provide secure and stable operation, diagnose faults, and defend
+          against attacks. Hostpoint deletes it when it is no longer operationally necessary and the
+          applicable statutory or contractual retention periods have expired; Hostpoint states that
+          most data is retained for no longer than six months. Data-processing provisions form part
+          of Hostpoint's contractual terms. Further information is available in the{" "}
+          <a
+            href="https://www.hostpoint.ch/hostpoint/kontakt-agb.html#datenschutz"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Hostpoint privacy policy
           </a>
           .
         </p>

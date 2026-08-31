@@ -8,7 +8,7 @@ Diese Checkliste ergänzt die technische Umsetzung und die Rechtstexte der Websi
 - [ ] Im Tidio-Dashboard prüfen, welche Bots, KI-Funktionen, Integrationen und Aufbewahrungsfristen aktiv sind. Die Datenschutzerklärung aktualisieren, falls mehr als der öffentlich sichtbare Live-Chat genutzt wird.
 - [ ] Falls später ein Vorabformular, eine Automatisierung oder eine Datenerhebung vor der ersten Nachricht aktiviert wird, dort einen kurzen Datenschutzhinweis mit Link auf die Datenschutzerklärung einblenden.
 - [ ] Sicherstellen, dass Chatverläufe und Kontakte in Tidio regelmässig gelöscht werden, sobald sie nicht mehr benötigt werden.
-- [ ] Beim Transfer des Vercel-Projekts die für den tatsächlich verwendeten Tarif geltenden Vertrags- und Datenschutzbedingungen prüfen und dokumentieren.
+- [ ] Dokumentieren, dass die Auftragsbearbeitungsvereinbarung von Hostpoint als Bestandteil der Webhosting-AGB gilt, und die jeweils akzeptierte Fassung ablegen.
 - [ ] HTTPS für die gesamte Domain erzwingen und Weiterleitungen von HTTP testen.
 - [ ] Festlegen, wie Gesundheitsfragebogen und Gesundheitsangaben sicher übermittelt, abgelegt, zugriffsbeschränkt und gelöscht werden. Vertrauliche Gesundheitsdaten nicht über Tidio oder ungesicherte Nachrichten anfordern.
 - [ ] Die intern tatsächlich verwendeten Aufbewahrungsfristen für Kunden-, Gesundheits-, Vertrags- und Kommunikationsdaten dokumentieren.
@@ -27,6 +27,7 @@ Diese Checkliste ergänzt die technische Umsetzung und die Rechtstexte der Websi
 
 - Google Fonts werden lokal ausgeliefert.
 - Es gibt keine Analyse- oder Werbetracker.
+- Die Logaholic-Auswertung der Hostpoint-Logfiles ist deaktiviert und darf nicht ohne vorgängige Datenschutzprüfung aktiviert werden.
 - Google Maps und Google-Rezensionen sind nur externe Links und nicht eingebettet.
 - Tidio wird beim Seitenbesuch automatisch geladen, damit das Chatsymbol sichtbar ist; die Datenschutzerklärung beschreibt die dabei entstehende Verbindung und mögliche Browser-Speicherung.
 - Öffentliche Prüfung am 20. August 2026: Der Chat führt direkt zu einem Nachrichtenfeld. Es ist kein Vorabformular sichtbar, und Name, E-Mail-Adresse oder Telefonnummer werden vor der ersten Nachricht nicht zwingend abgefragt.
@@ -35,7 +36,7 @@ Diese Checkliste ergänzt die technische Umsetzung und die Rechtstexte der Websi
 
 - [EDÖB: Datenschutzerklärungen im Internet](https://www.edoeb.admin.ch/de/datenschutzerklaerungen-im-internet)
 - [EDÖB: Leitfaden zu Cookies und ähnlichen Technologien](https://www.edoeb.admin.ch/de/leitfaden-betreffend-datenbearbeitungen-mittels-cookies-veroeffentlicht)
-- [Vercel Privacy Notice](https://vercel.com/legal/privacy-notice)
-- [Vercel Data Processing Addendum](https://vercel.com/legal/dpa)
+- [Hostpoint Datenschutzerklärung](https://www.hostpoint.ch/hostpoint/kontakt-agb.html#datenschutz)
+- [Hostpoint: Auftragsbearbeitungsvereinbarung](https://support.hostpoint.ch/de/administratives/schweizer-dsg/haeufig-gestellte-fragen-zum-neuen-schweizer-dsg/bietet-hostpoint-fuer-kunden-eine-auftragsdatenverarbeitungsvereinbarung-adv)
 - [Tidio: Privacy Policy and GDPR Compliance](https://help.tidio.com/hc/en-us/articles/5462910440220-Privacy-Policy-and-GDPR-Compliance)
 - [Tidio Privacy Policy](https://www.tidio.com/privacy-policy/)
