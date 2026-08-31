@@ -6,10 +6,13 @@ import heroMobile640Avif from "@/assets/wirkstatt/hero-stairs-mobile-640.avif";
 import heroMobile640Img from "@/assets/wirkstatt/hero-stairs-mobile-640.webp";
 import heroMobileAvif from "@/assets/wirkstatt/hero-stairs-mobile.avif";
 import heroMobileImg from "@/assets/wirkstatt/hero-stairs-mobile.webp";
+import parkingSmallImg from "@/assets/wirkstatt/parking-wirkstattnatur-480.webp";
 import parkingImg from "@/assets/wirkstatt/parking-wirkstattnatur-720.webp";
 import parkingLargeImg from "@/assets/wirkstatt/parking-wirkstattnatur-1200.webp";
+import ursGoalSmallImg from "@/assets/wirkstatt/urs-goal-480.webp";
 import ursGoalImg from "@/assets/wirkstatt/urs-goal-720.webp";
 import ursGoalLargeImg from "@/assets/wirkstatt/urs-goal-960.webp";
+import ursSmallImg from "@/assets/wirkstatt/urs-gremlich-480.webp";
 import ursImg from "@/assets/wirkstatt/urs-gremlich-720.webp";
 import ursLargeImg from "@/assets/wirkstatt/urs-gremlich-960.webp";
 import { ContactCta } from "@/components/contact-cta";
@@ -267,6 +270,8 @@ export function EnglishHomePage() {
                   >
                     <img
                       src={service.cardImage}
+                      srcSet={service.cardImageSrcSet}
+                      sizes="(min-width: 1280px) 360px, (min-width: 640px) 50vw, 100vw"
                       alt=""
                       loading="lazy"
                       style={{ objectPosition: service.imagePosition }}
@@ -307,8 +312,8 @@ export function EnglishHomePage() {
             <div className="relative overflow-hidden rounded-panel bg-secondary shadow-soft lg:col-span-5">
               <img
                 src={ursGoalImg}
-                srcSet={`${ursGoalImg} 720w, ${ursGoalLargeImg} 960w`}
-                sizes="(min-width: 1024px) 40vw, 100vw"
+                srcSet={`${ursGoalSmallImg} 480w, ${ursGoalImg} 720w, ${ursGoalLargeImg} 960w`}
+                sizes="(min-width: 1280px) 500px, (min-width: 1024px) 40vw, 100vw"
                 width="720"
                 height="960"
                 alt="Urs Gremlich carrying a child at the basketball hoop"
@@ -322,8 +327,8 @@ export function EnglishHomePage() {
           <div className="mt-16 overflow-hidden rounded-panel bg-primary text-primary-foreground shadow-soft lg:mt-20 lg:grid lg:grid-cols-[1.15fr_0.85fr]">
             <img
               src={parkingImg}
-              srcSet={`${parkingImg} 720w, ${parkingLargeImg} 1200w`}
-              sizes="(min-width: 1024px) 55vw, 100vw"
+              srcSet={`${parkingSmallImg} 480w, ${parkingImg} 720w, ${parkingLargeImg} 1200w`}
+              sizes="(min-width: 1280px) 690px, (min-width: 1024px) 55vw, 100vw"
               width="720"
               height="540"
               alt="Customer parking at the Wirkraum in Thalwil"
@@ -366,8 +371,8 @@ export function EnglishHomePage() {
             <div className="relative overflow-hidden rounded-panel bg-secondary shadow-soft lg:col-span-5">
               <img
                 src={ursImg}
-                srcSet={`${ursImg} 720w, ${ursLargeImg} 960w`}
-                sizes="(min-width: 1024px) 40vw, 100vw"
+                srcSet={`${ursSmallImg} 480w, ${ursImg} 720w, ${ursLargeImg} 960w`}
+                sizes="(min-width: 1280px) 500px, (min-width: 1024px) 40vw, 100vw"
                 width="720"
                 height="480"
                 alt="Urs Gremlich outdoors in front of a stack of wood"

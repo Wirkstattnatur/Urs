@@ -17,6 +17,7 @@ declare global {
 const TIDIO_WIDGET_URL = "https://code.tidio.co/3qrjaekjbikm9l2gftumb7p8sn0lnpek.js";
 const TIDIO_SCRIPT_ID = "wirkstattnatur-tidio";
 const TIDIO_BRAND_COLOR = "#294f3d";
+const TIDIO_AUTOMATIC_LOAD_DELAY_MS = 8000;
 
 let tidioReadyPromise: Promise<void> | undefined;
 
@@ -96,11 +97,16 @@ export function scheduleTidioLoad() {
   function scheduleIdleLoad() {
     if (started || idleCallbackId !== undefined || fallbackTimerId !== undefined) return;
 
-    if ("requestIdleCallback" in window) {
-      idleCallbackId = window.requestIdleCallback(startLoading, { timeout: 4000 });
-    } else {
-      fallbackTimerId = window.setTimeout(startLoading, 2000);
-    }
+    fallbackTimerId = window.setTimeout(() => {
+      fallbackTimerId = undefined;
+
+      if ("requestIdleCallback" in window) {
+        idleCallbackId = window.requestIdleCallback(startLoading, { timeout: 2000 });
+        return;
+      }
+
+      startLoading();
+    }, TIDIO_AUTOMATIC_LOAD_DELAY_MS);
   }
 
   interactionEvents.forEach((eventName) => {

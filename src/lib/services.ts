@@ -1,6 +1,7 @@
 import golfGallery1Image from "@/assets/wirkstatt/golf-gallery-1.webp";
 import golfGallery2Image from "@/assets/wirkstatt/golf-gallery-2.webp";
 import golfGallery3Image from "@/assets/wirkstatt/golf-gallery-3.webp";
+import golfFitnessCardSmallImage from "@/assets/wirkstatt/golf-fitness-card-480.webp";
 import golfFitnessCardImage from "@/assets/wirkstatt/golf-fitness-card.webp";
 import golfFitnessHeroImage from "@/assets/wirkstatt/golf-fitness-hero-258.webp";
 import karateGallery1Image from "@/assets/wirkstatt/karate-gallery-1.webp";
@@ -9,14 +10,17 @@ import karateGallery3Image from "@/assets/wirkstatt/karate-gallery-3.webp";
 import karateGallery4Image from "@/assets/wirkstatt/karate-gallery-4.webp";
 import karateGallery5Image from "@/assets/wirkstatt/karate-gallery-5.webp";
 import karateGallery6Image from "@/assets/wirkstatt/karate-gallery-6.webp";
+import karateCardSmallImage from "@/assets/wirkstatt/karate-card-480.webp";
 import karateCardImage from "@/assets/wirkstatt/karate-card.webp";
 import karateOverviewImage from "@/assets/wirkstatt/karate-overview.webp";
 import wirkraumImage from "@/assets/wirkstatt/pilates.jpg";
 import pilatesGallery1Image from "@/assets/wirkstatt/pilates-gallery-1.webp";
 import pilatesGallery3Image from "@/assets/wirkstatt/pilates-gallery-3.webp";
+import pilatesCardSmallImage from "@/assets/wirkstatt/pilates-card-480.webp";
 import pilatesCardImage from "@/assets/wirkstatt/pilates-card.webp";
 import pilatesOverviewImage from "@/assets/wirkstatt/pilates-overview.webp";
 import personalTrainingCardImage from "@/assets/wirkstatt/personal-training-card.webp";
+import personalTrainingCardSmallImage from "@/assets/wirkstatt/personal-training-card-480.webp";
 import personalTrainingDetailImage from "@/assets/wirkstatt/personal-training-outdoor.webp";
 import personalTrainingGallery1Image from "@/assets/wirkstatt/pt-gallery-1.webp";
 import personalTrainingGallery2Image from "@/assets/wirkstatt/pt-gallery-2.webp";
@@ -91,6 +95,7 @@ export type ServiceDetail = {
   intro: string;
   image: string;
   cardImage: string;
+  cardImageSrcSet: string;
   imageAlt: string;
   imagePosition: string;
   imageFit?: "cover" | "contain";
@@ -120,6 +125,7 @@ export const serviceOffers = [
       "Wir richten jede Einheit an deiner aktuellen Verfassung, deinen Wünschen und deinen Zielen aus. So entsteht ein persönliches Training, das fordert, ohne dich zu überfordern.",
     image: personalTrainingDetailImage,
     cardImage: personalTrainingCardImage,
+    cardImageSrcSet: `${personalTrainingCardSmallImage} 480w, ${personalTrainingCardImage} 800w`,
     imageAlt: "Urs Gremlich beim funktionellen Training mit Widerstandsbändern im Freien",
     imagePosition: "72% center",
     gallery: [
@@ -303,6 +309,7 @@ export const serviceOffers = [
       "Pilates verbindet kontrollierte Bewegung mit bewusster Atmung und Entspannung. Im persönlichen Training oder in einer kleinen Gruppe arbeitest du ruhig und präzise an Stabilität und Beweglichkeit.",
     image: pilatesOverviewImage,
     cardImage: pilatesCardImage,
+    cardImageSrcSet: `${pilatesCardSmallImage} 480w, ${pilatesCardImage} 800w`,
     imageAlt: "Urs Gremlich bei einer Balanceübung mit Gewichten",
     imagePosition: "center 52%",
     gallery: [
@@ -384,6 +391,7 @@ export const serviceOffers = [
       "Ein auf dich abgestimmtes GolfFitness-Training verbindet Kraft, Stabilität, Beweglichkeit und Balance. Es ergänzt die Arbeit mit deinem GolfPro und richtet den Blick auf die körperlichen Voraussetzungen deines Schwungs.",
     image: golfFitnessHeroImage,
     cardImage: golfFitnessCardImage,
+    cardImageSrcSet: `${golfFitnessCardSmallImage} 480w, ${golfFitnessCardImage} 800w`,
     imageAlt: "Urs Gremlich beim Balance- und Rotationstraining mit einem Golfschläger",
     imagePosition: "center 45%",
     gallery: [
@@ -473,6 +481,7 @@ export const serviceOffers = [
       "FitKarate verbindet Elemente des Shotokan-Ryu mit einem vielseitigen Fitnesstraining. Technik, Koordination, Kraft und Konzentration entwickeln sich gemeinsam — angepasst an dein Niveau.",
     image: karateOverviewImage,
     cardImage: karateCardImage,
+    cardImageSrcSet: `${karateCardSmallImage} 480w, ${karateCardImage} 800w`,
     imageAlt: "Urs Gremlich mit Schlagpolstern im Wirkraum",
     imagePosition: "44.5% 5%",
     gallery: [

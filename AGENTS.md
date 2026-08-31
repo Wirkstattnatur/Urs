@@ -208,9 +208,9 @@ Use Codex's built-in browser for local visual verification. Do not launch or con
 - Do not commit, push, open a pull request, deploy, or modify Hostpoint production files unless the user explicitly requests it.
 - Before any requested commit, inspect the complete diff and keep unrelated user work intact.
 - Do not restore deleted Lovable artifacts during merges or cleanup.
-- Production is hosted by Hostpoint and generated with `npm run build:hostpoint`. Every push to `main` in `Wirkstattnatur/Urs` runs `.github/workflows/deploy-hostpoint-staging.yml` and deploys the verified artifact to the document root shared by the production and staging hostnames. Read `HOSTPOINT_DEPLOYMENT.md` before changing the workflow or hosting configuration.
+- Production is hosted by Hostpoint and generated with `npm run build:hostpoint`. Every push to `main` in `Wirkstattnatur/Urs` runs `.github/workflows/deploy-hostpoint-staging.yml` and deploys the verified artifact to the production document root. The workflow retains its historical filename, and the Hostpoint document-root directory retains the legacy staging name. Read `HOSTPOINT_DEPLOYMENT.md` before changing the workflow or hosting configuration.
 - Never place an unrestricted or personal Hostpoint key in GitHub. The workflow must use the dedicated `rrsync -wo` key restricted to the deployment document root.
-- Keep the Hostpoint staging hostname `noindex`; the production hostname must remain indexable.
+- There is no public Hostpoint staging hostname. Keep the defensive staging-host `noindex` rules in place; the production hostname must remain indexable.
 - Confirm the repository ownership, deployment target, production DNS, mail records, Golden Cobra records, and rollback path before any deployment or domain change.
 
 ## Definition of done
