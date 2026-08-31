@@ -16,6 +16,7 @@ export default defineConfig({
         autoStaticPathsDiscovery: true,
         crawlLinks: true,
         failOnError: true,
+        headers: { "Accept-Language": "de-CH" },
       },
       server: { entry: "server" },
     }),
