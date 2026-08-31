@@ -143,17 +143,51 @@ export function ServiceDetailPage({
               <div className={`grid gap-10 ${stacksPracticalDetails ? "" : "md:grid-cols-2"}`}>
                 <div>
                   <h3 className="font-display text-2xl text-primary">{copy.locationsHeading}</h3>
-                  <ul className="mt-5 grid gap-3">
-                    {service.locations.map((location) => (
-                      <li key={location} className="flex items-start gap-3 font-medium">
-                        <span
-                          className="mt-2 size-2 flex-none rounded-full bg-accent"
-                          aria-hidden="true"
-                        />
-                        {location}
-                      </li>
-                    ))}
-                  </ul>
+                  {service.locationGroups ? (
+                    <div
+                      className={
+                        stacksPracticalDetails
+                          ? "mt-5 columns-1 gap-4 sm:columns-2"
+                          : "mt-5 grid gap-4"
+                      }
+                    >
+                      {service.locationGroups.map((group) => (
+                        <section
+                          key={group.title}
+                          className={`break-inside-avoid rounded-2xl bg-card p-5 shadow-card ${
+                            stacksPracticalDetails ? "mb-4" : ""
+                          }`}
+                        >
+                          <h4 className="text-sm font-semibold text-primary">{group.title}</h4>
+                          <ul className="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-sm leading-relaxed text-muted-foreground">
+                            {group.items.map((location, index) => (
+                              <li key={location} className="inline-flex items-center gap-2">
+                                {index > 0 && (
+                                  <span
+                                    className="size-1 flex-none rounded-full bg-accent-foreground/45"
+                                    aria-hidden="true"
+                                  />
+                                )}
+                                {location}
+                              </li>
+                            ))}
+                          </ul>
+                        </section>
+                      ))}
+                    </div>
+                  ) : (
+                    <ul className="mt-5 grid gap-3">
+                      {service.locations?.map((location) => (
+                        <li key={location} className="flex items-start gap-3 font-medium">
+                          <span
+                            className="mt-2 size-2 flex-none rounded-full bg-accent"
+                            aria-hidden="true"
+                          />
+                          {location}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
                 <div>
@@ -173,7 +207,7 @@ export function ServiceDetailPage({
                     </div>
                   ) : (
                     <ul className="mt-5 flex flex-wrap gap-2">
-                      {service.methods.map((method) => (
+                      {service.methods?.map((method) => (
                         <Method key={method}>{method}</Method>
                       ))}
                     </ul>

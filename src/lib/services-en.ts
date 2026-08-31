@@ -15,8 +15,9 @@ type EnglishServiceTranslation = {
   offerIntro: string;
   offerCards: readonly { title: string; text: string }[];
   benefits: readonly { title: string; text: string }[];
-  locations: readonly string[];
-  methods: readonly string[];
+  locations?: readonly string[];
+  locationGroups?: readonly { title: string; items: readonly string[] }[];
+  methods?: readonly string[];
   methodGroups?: readonly { title: string; items: readonly string[] }[];
   prices: readonly { title: string; price: string; note: string }[];
 };
@@ -101,20 +102,57 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
       },
       { title: "Varied", text: "Different methods and equipment keep body and mind engaged." },
     ],
-    locations: ["Wirkraum Thalwil", "In nature", "At your home or office", "On the golf course"],
-    methods: [
-      "Strength & endurance",
-      "Balance & mobility",
-      "Coordination",
-      "Sling training",
-      "Pilates Care",
-      "Sypoba",
-      "Relaxation",
-      "Video analysis",
+    locationGroups: [
+      { title: "Wirkraum", items: ["Thalwil"] },
+      {
+        title: "At your home or office",
+        items: [
+          "Horgen",
+          "Rüschlikon",
+          "Wädenswil",
+          "Richterswil",
+          "Wollerau",
+          "Pfäffikon / Hurden",
+          "Kilchberg",
+          "Erlenbach",
+          "Zürich",
+        ],
+      },
+      {
+        title: "Outdoor, running training & Nordic walking",
+        items: ["Horgen", "Oberrieden", "Thalwil", "Wädenswil", "Langnau am Albis", "Meilen"],
+      },
+      { title: "Athletics", items: ["Horgen", "Brand Thalwil"] },
+      {
+        title: "Swimming coaching",
+        items: ["Bergli Horgen", "Untermosen indoor pool, Wädenswil"],
+      },
+      {
+        title: "Other locations & region",
+        items: [
+          "Schindellegi",
+          "Feusisberg",
+          "Adliswil",
+          "Gattikon",
+          "Left and right shores of Lake Zürich",
+        ],
+      },
     ],
     methodGroups: [
       {
-        title: "Training & movement",
+        title: "Training formats",
+        items: [
+          "Home training",
+          "Outdoor & woodland training",
+          "Nordic walking",
+          "Running analysis & running coaching",
+          "Athletics",
+          "Swimming coaching",
+          "Group sessions",
+        ],
+      },
+      {
+        title: "Methods & focus areas",
         items: [
           "Strength & endurance",
           "Balance & mobility",
@@ -185,7 +223,11 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
         text: "Strength, mobility, breathing and relaxation come into harmony.",
       },
     ],
-    locations: ["Wirkraum Thalwil", "In nature", "At your home or office"],
+    locationGroups: [
+      { title: "Wirkraum", items: ["Thalwil"] },
+      { title: "Outdoors", items: ["Thalwil"] },
+      { title: "Other locations", items: ["Horgen"] },
+    ],
     methods: [
       "Breathing",
       "Balance & mobility",
@@ -253,11 +295,13 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
         text: "Coordination and balance connect the individual phases of movement.",
       },
     ],
-    locations: [
-      "Wirkraum Thalwil",
-      "On the golf course",
-      "On the driving range",
-      "At your home or office",
+    locationGroups: [
+      { title: "Wirkraum", items: ["Thalwil"] },
+      {
+        title: "Golf course & driving range",
+        items: ["Driving Range Thalwil", "Schönenberg Golf Course · Hirzel"],
+      },
+      { title: "Other locations", items: ["Schindellegi", "Feusisberg"] },
     ],
     methods: [
       "Albatros method",
@@ -380,6 +424,12 @@ export function getLocalizedService(service: ServiceDetail, locale: "de" | "en")
           ...translation.methodGroups?.[index],
         }))
       : service.methodGroups,
+    locationGroups: translation.locationGroups
+      ? service.locationGroups?.map((group, index) => ({
+          ...group,
+          ...translation.locationGroups?.[index],
+        }))
+      : service.locationGroups,
     prices: service.prices.map((price, index) => ({ ...price, ...translation.prices[index] })),
   };
 }

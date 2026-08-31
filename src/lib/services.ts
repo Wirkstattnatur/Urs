@@ -67,6 +67,11 @@ type ServiceMethodGroup = {
   items: readonly string[];
 };
 
+type ServiceLocationGroup = {
+  title: string;
+  items: readonly string[];
+};
+
 export type ServiceGalleryImage = {
   src: string;
   alt: string;
@@ -95,8 +100,9 @@ export type ServiceDetail = {
   offerIntro: string;
   offerCards: readonly ServiceTextCard[];
   benefits: readonly ServiceBenefit[];
-  locations: readonly string[];
-  methods: readonly string[];
+  locations?: readonly string[];
+  locationGroups?: readonly ServiceLocationGroup[];
+  methods?: readonly string[];
   methodGroups?: readonly ServiceMethodGroup[];
   prices: readonly ServicePrice[];
 };
@@ -213,25 +219,57 @@ export const serviceOffers = [
         icon: "variety",
       },
     ],
-    locations: [
-      "Wirkraum Thalwil",
-      "In der Natur",
-      "Bei dir zu Hause oder im Büro",
-      "Auf dem Golfplatz",
-    ],
-    methods: [
-      "Kraft & Ausdauer",
-      "Balance & Beweglichkeit",
-      "Koordination",
-      "Sling Training",
-      "Pilates Care",
-      "Sypoba",
-      "Entspannung",
-      "Videoanalyse",
+    locationGroups: [
+      { title: "Wirkraum", items: ["Thalwil"] },
+      {
+        title: "Bei dir zu Hause oder im Büro",
+        items: [
+          "Horgen",
+          "Rüschlikon",
+          "Wädenswil",
+          "Richterswil",
+          "Wollerau",
+          "Pfäffikon / Hurden",
+          "Kilchberg",
+          "Erlenbach",
+          "Zürich",
+        ],
+      },
+      {
+        title: "Outdoor, Lauftraining & Nordic Walking",
+        items: ["Horgen", "Oberrieden", "Thalwil", "Wädenswil", "Langnau am Albis", "Meilen"],
+      },
+      { title: "Leichtathletik", items: ["Horgen", "Brand Thalwil"] },
+      {
+        title: "Schwimmtraining",
+        items: ["Bergli Horgen", "Hallenbad Untermosen Wädenswil"],
+      },
+      {
+        title: "Weitere Orte & Region",
+        items: [
+          "Schindellegi",
+          "Feusisberg",
+          "Adliswil",
+          "Gattikon",
+          "Linkes und rechtes Zürichseeufer",
+        ],
+      },
     ],
     methodGroups: [
       {
-        title: "Training & Bewegung",
+        title: "Trainingsformen",
+        items: [
+          "Hometraining",
+          "Outdoor- & Waldtraining",
+          "Nordic Walking",
+          "Laufanalyse & Lauftraining",
+          "Leichtathletik",
+          "Schwimmtraining",
+          "Gruppentraining",
+        ],
+      },
+      {
+        title: "Methoden & Schwerpunkte",
         items: [
           "Kraft & Ausdauer",
           "Balance & Beweglichkeit",
@@ -323,7 +361,11 @@ export const serviceOffers = [
         icon: "balance",
       },
     ],
-    locations: ["Wirkraum Thalwil", "In der Natur", "Bei dir zu Hause oder im Büro"],
+    locationGroups: [
+      { title: "Wirkraum", items: ["Thalwil"] },
+      { title: "Outdoor", items: ["Thalwil"] },
+      { title: "Weitere Orte", items: ["Horgen"] },
+    ],
     methods: ["Atmung", "Balance & Beweglichkeit", "Kräftigung", "Koordination", "Faszientraining"],
     prices: [
       { title: "Einzeltraining", price: "CHF 130", note: "60 Minuten" },
@@ -399,11 +441,13 @@ export const serviceOffers = [
         icon: "balance",
       },
     ],
-    locations: [
-      "Wirkraum Thalwil",
-      "Auf dem Golfplatz",
-      "Auf der Driving Range",
-      "Bei dir zu Hause oder im Büro",
+    locationGroups: [
+      { title: "Wirkraum", items: ["Thalwil"] },
+      {
+        title: "Golfplatz & Driving Range",
+        items: ["Driving Range Thalwil", "Golfanlage Schönenberg · Hirzel"],
+      },
+      { title: "Weitere Orte", items: ["Schindellegi", "Feusisberg"] },
     ],
     methods: [
       "Albatros-Methode",
