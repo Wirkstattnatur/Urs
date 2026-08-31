@@ -1,0 +1,49 @@
+name: Deploy Hostpoint staging
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hostpoint-staging
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build:hostpoint
+
+      - name: Configure restricted Hostpoint deploy key
+        env:
+          HOSTPOINT_DEPLOY_KEY: ${{ secrets.HOSTPOINT_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$HOSTPOINT_DEPLOY_KEY"
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s\n' "$HOSTPOINT_DEPLOY_KEY" > "$HOME/.ssh/hostpoint_deploy"
+          chmod 600 "$HOME/.ssh/hostpoint_deploy"
+          printf '%s\n' '@cert-authority *.hostpoint.ch ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFWLS/vgrNVYR+Yx6UnJD19yMzFGpxrOwScWFIEEJChR Hostpoint Host CA 1' > "$HOME/.ssh/known_hosts"
+
+      - name: Deploy static artifact
+        run: |
+          set -euo pipefail
+          rsync -az --delete-delay --delay-updates \
+            --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
+            -e "ssh -i $HOME/.ssh/hostpoint_deploy -o IdentitiesOnly=yes" \
+            .output/public/ \
+            wirkstat@wirkstat.ssh.cloud.hostpoint.ch:.

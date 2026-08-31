@@ -10,6 +10,13 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     tanstackStart({
+      prerender: {
+        enabled: true,
+        autoSubfolderIndex: false,
+        autoStaticPathsDiscovery: true,
+        crawlLinks: true,
+        failOnError: true,
+      },
       server: { entry: "server" },
     }),
     nitro({ preset: nitroPreset }),

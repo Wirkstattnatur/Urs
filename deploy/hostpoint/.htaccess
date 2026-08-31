@@ -1,0 +1,65 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+DirectorySlash Off
+
+RewriteEngine On
+
+# Hostpoint terminates TLS before Apache and exposes the original port here.
+RewriteCond %{SERVER_PORT} !=443
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
+
+# Keep the staging host out of search results while retaining production canonicals.
+RewriteCond %{HTTP_HOST} ^staging\.wirkstattnatur\.ch$ [NC]
+RewriteRule ^robots\.txt$ /robots-staging.txt [L]
+
+# Canonical production host once the main website is moved back to Hostpoint.
+RewriteCond %{HTTP_HOST} ^www\.wirkstattnatur\.ch$ [NC]
+RewriteRule ^ https://wirkstattnatur.ch%{REQUEST_URI} [R=301,L,NE]
+
+# Redirects retained from the previous WordPress website.
+RewriteRule ^wirkstattnatur-urs-gremlich-2/?$ / [R=301,L]
+RewriteRule ^eisenhorn-thalwil-horgen/?$ /ueber-mich [R=301,L]
+RewriteRule ^urs-gremlich-thalwil-horgen/?$ /ueber-mich [R=301,L]
+RewriteRule ^preise-agb-2/?$ /agb [R=301,L]
+RewriteRule ^karate-thalwil-horgen/?$ /angebot/karate [R=301,L]
+RewriteRule ^pilates-thalwil-horgen/?$ /angebot/pilates [R=301,L]
+RewriteRule ^golffitness-thalwil-horgen/?$ /angebot/golf-fitness [R=301,L]
+RewriteRule ^golffitness/?$ /angebot/golf-fitness [R=301,L]
+RewriteRule ^personaltraining-thalwil/?$ /angebot/personal-training [R=301,L]
+RewriteRule ^indoor-thalwil-horgen/?$ /angebot/personal-training [R=301,L]
+RewriteRule ^outdoor-thalwil-horgen/?$ /angebot/personal-training [R=301,L]
+RewriteRule ^hometraining-thalwil-horgen/?$ /angebot/personal-training [R=301,L]
+RewriteRule ^massage-thalwil-horgen/?$ /angebot/personal-training [R=301,L]
+RewriteRule ^wirkraum-massage-thalwil-horgen/?$ /angebot/personal-training [R=301,L]
+RewriteRule ^kontakt-2/?$ /#kontakt [R=301,L,NE]
+RewriteRule ^kontakt-3/?$ /#kontakt [R=301,L,NE]
+RewriteRule ^impressum-2/?$ /impressum [R=301,L]
+RewriteRule ^gallery/?$ /#angebot [R=301,L,NE]
+RewriteRule ^sitemap/?$ /sitemap.xml [R=301,L]
+
+# Serve prerendered .html files at their canonical extensionless URLs.
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+)$ $1.html [END]
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "base-uri 'self'; frame-ancestors 'self'; object-src 'none'"
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive" "expr=%{HTTP_HOST} == 'staging.wirkstattnatur.ch'"
+
+  Header set Cache-Control "public, max-age=31536000, immutable" env=immutable_asset
+</IfModule>
+
+SetEnvIf Request_URI "^/assets/" immutable_asset
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
