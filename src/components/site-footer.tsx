@@ -1,5 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { ChatIcon, LocationIcon, MailIcon, PhoneIcon } from "@/components/contact-icons";
+import { openCookieSettingsEvent } from "@/lib/analytics";
 import { getLocaleFromPath } from "@/lib/locale";
 import { serviceOffers } from "@/lib/services";
 import { getLocalizedService } from "@/lib/services-en";
@@ -182,6 +183,13 @@ export function SiteFooter() {
               >
                 {isEnglish ? "Privacy" : "Datenschutz"}
               </Link>
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event(openCookieSettingsEvent))}
+                className="font-medium text-muted-foreground transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+              >
+                {isEnglish ? "Cookie settings" : "Cookie-Einstellungen"}
+              </button>
               <Link
                 to={isEnglish ? "/en/impressum" : "/impressum"}
                 className="font-medium text-muted-foreground transition hover:text-primary"

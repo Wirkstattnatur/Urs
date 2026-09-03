@@ -166,7 +166,7 @@ The Tidio widget is loaded once after hydration through `src/lib/tidio.ts`, so i
 - The AGB content was transferred from the legacy website at the user's explicit request and must not be rewritten, modernised, or harmonised with the site's `du` voice without explicit approval.
 - The privacy statement must describe the site's actual integrations. Update it whenever hosting, analytics, forms, embeds, chat, advertising, or other data flows change.
 - Fonts are self-hosted in `src/assets/fonts/`; do not restore Google Fonts requests.
-- The site intentionally has no analytics or advertising trackers. Do not add them without explicit user approval and a corresponding consent/privacy review.
+- The site uses Google Analytics only after explicit visitor consent and has no advertising trackers. Do not add or expand tracking without explicit user approval and a corresponding consent/privacy review.
 - `COMPLIANCE_CHECKLIST.md` records the non-code operational steps that must be confirmed before production and during ongoing use.
 
 ## Coding conventions

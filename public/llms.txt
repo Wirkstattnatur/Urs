@@ -40,4 +40,4 @@ Wirkstattnatur is the independent practice of Urs Gremlich in Thalwil and Horgen
 
 ## Source and data notes
 
-The site has no analytics or advertising trackers. The Tidio chat widget is loaded as an optional contact channel; its data processing is described on the privacy pages. Service descriptions, prices, locations and biography should be treated as current website information and checked against the linked first-party pages before quoting them.
+The site uses consent-gated Google Analytics for aggregate usage measurement and no advertising trackers. The Tidio chat widget is loaded as an optional contact channel; both data flows are described on the privacy pages. Service descriptions, prices, locations and biography should be treated as current website information and checked against the linked first-party pages before quoting them.

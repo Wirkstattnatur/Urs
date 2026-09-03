@@ -24,12 +24,13 @@ function DatenschutzPage() {
       title="Datenschutzerklärung"
       description="Transparent erklärt: welche Daten wir bearbeiten, wofür wir sie benötigen und welche Wahlmöglichkeiten du hast."
     >
-      <p className="legal-meta">Stand: 31. August 2026</p>
+      <p className="legal-meta">Stand: 3. September 2026</p>
 
       <aside className="legal-summary" aria-labelledby="privacy-summary-title">
         <h2 id="privacy-summary-title">Das Wichtigste in Kürze</h2>
         <ul>
-          <li>Diese Website verwendet keine Analyse- oder Werbetracker.</li>
+          <li>Google Analytics wird nur nach deiner ausdrücklichen Einwilligung geladen.</li>
+          <li>Wir verwenden keine Werbetracker und haben Werbepersonalisierung deaktiviert.</li>
           <li>
             Die Schriften werden lokal geladen; dabei findet keine Verbindung zu Google Fonts statt.
           </li>
@@ -204,14 +205,73 @@ function DatenschutzPage() {
         </p>
       </section>
 
-      <section id="cookies">
-        <h2>7. Cookies und ähnliche Technologien</h2>
+      <section id="analytics">
+        <h2>7. Google Analytics</h2>
         <p>
-          Wirkstattnatur setzt auf dieser Website keine eigenen Analyse- oder Marketing-Cookies ein
-          und speichert keine allgemeine Cookie-Auswahl. Deine gewählte Website-Sprache wird im
-          lokalen Browser-Speicher und im funktionalen Cookie <code>wirkstattnatur-locale</code> für
-          höchstens zwölf Monate gespeichert. So bleibt die manuelle Sprachauswahl bei späteren
-          Besuchen erhalten. Diese Präferenz wird weder für Analyse noch für Marketing verwendet.
+          Mit deiner ausdrücklichen Einwilligung verwenden wir Google Analytics 4, einen
+          Webanalysedienst von Google Ireland Limited. Die Mess-ID dieser Website lautet
+          <code> G-BG8J1YQ71D</code>. Google Analytics hilft uns zu verstehen, wie die Website
+          genutzt wird und welche Inhalte für Besucherinnen und Besucher nützlich sind. Die
+          Auswertung erfolgt ausschliesslich zu Analysezwecken; Werbesignale und personalisierte
+          Werbung sind im Website-Code deaktiviert.
+        </p>
+        <p>
+          Dabei können insbesondere aufgerufene Seiten, Zeitpunkt und ungefähre Dauer des Besuchs,
+          verweisende Seite, technische Angaben zu Browser, Gerät, Betriebssystem und Sprache,
+          Interaktionen sowie eine aus der IP-Adresse abgeleitete ungefähre Region bearbeitet
+          werden. Google gibt an, IP-Adressen von Nutzerinnen und Nutzern in der Schweiz, der EU und
+          dem Vereinigten Königreich nach der Standortableitung zu verwerfen, bevor sie
+          protokolliert werden. Wir übermitteln Google keine Namen, E-Mail-Adressen oder
+          Gesundheitsangaben über Google Analytics.
+        </p>
+        <p>
+          Vor deiner Einwilligung wird das Google-Analytics-Skript nicht geladen und es werden keine
+          Analysedaten an Google übertragen. Bei Zustimmung setzt Google Analytics die
+          Erstanbieter-Cookies <code>_ga</code> und <code>_ga_*</code>, um Besuche und Sitzungen zu
+          unterscheiden. Ihre Laufzeit ist auf höchstens 13 Monate begrenzt. Du kannst deine Auswahl
+          jederzeit über «Cookie-Einstellungen» im Fussbereich ändern. Ein Widerruf gilt für die
+          Zukunft; vorhandene Analytics-Cookies werden dabei nach Möglichkeit gelöscht.
+        </p>
+        <p>
+          Die Einwilligungsentscheidung wird unter
+          <code> wirkstattnatur-analytics-consent-v1</code> im lokalen Browser-Speicher abgelegt.
+          Diese Information bleibt dort, bis du die Website-Daten in deinem Browser löschst oder wir
+          die Einwilligung technisch neu abfragen. Google kann Analysedaten in weiteren Ländern,
+          insbesondere den USA, bearbeiten. Google verweist für internationale Übermittlungen unter
+          anderem auf das Swiss-U.S. Data Privacy Framework und Standardvertragsklauseln.
+        </p>
+        <p>
+          Weitere Informationen findest du in den
+          <a href="https://business.safety.google/privacy/" target="_blank" rel="noreferrer">
+            {" "}
+            Hinweisen von Google zur Datennutzung
+          </a>
+          , in der
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">
+            {" "}
+            Datenschutzerklärung von Google
+          </a>
+          und in den
+          <a
+            href="https://support.google.com/analytics/answer/11397207"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            Angaben zu Google-Analytics-Cookies
+          </a>
+          .
+        </p>
+      </section>
+
+      <section id="cookies">
+        <h2>8. Cookies und ähnliche Technologien</h2>
+        <p>
+          Notwendige Website-Funktionen sind unabhängig von deiner Analytics-Auswahl verfügbar.
+          Deine gewählte Website-Sprache wird im lokalen Browser-Speicher und im funktionalen Cookie
+          <code> wirkstattnatur-locale</code> für höchstens zwölf Monate gespeichert. So bleibt die
+          manuelle Sprachauswahl bei späteren Besuchen erhalten. Diese Präferenz wird weder für
+          Analyse noch für Marketing verwendet.
         </p>
         <p>
           Durch das automatisch geladene Tidio-Chatfenster können bereits beim Seitenbesuch Einträge
@@ -236,12 +296,12 @@ function DatenschutzPage() {
       </section>
 
       <section>
-        <h2>8. Empfänger und Bekanntgabe ins Ausland</h2>
+        <h2>9. Empfänger und Bekanntgabe ins Ausland</h2>
         <p>
           Personendaten erhalten nur Urs Gremlich und jene Dienstleister, die sie für den
-          beschriebenen Zweck benötigen, insbesondere Anbieter für Hosting, E-Mail und den
-          optionalen Chat. Sie bearbeiten Daten im Rahmen ihrer vertraglichen Aufgaben oder in
-          eigener datenschutzrechtlicher Verantwortung.
+          beschriebenen Zweck benötigen, insbesondere Anbieter für Hosting, E-Mail, den optionalen
+          Chat und – nach Einwilligung – Website-Analyse. Sie bearbeiten Daten im Rahmen ihrer
+          vertraglichen Aufgaben oder in eigener datenschutzrechtlicher Verantwortung.
         </p>
         <p>
           Werden Daten in ein Land ohne angemessenes Datenschutzniveau bekanntgegeben, verwenden wir
@@ -252,7 +312,7 @@ function DatenschutzPage() {
       </section>
 
       <section>
-        <h2>9. Externe Links</h2>
+        <h2>10. Externe Links</h2>
         <p>
           Links zu Google Maps, Google-Rezensionen und anderen externen Websites sind nicht
           eingebettet. Daten werden an den jeweiligen Anbieter erst übermittelt, wenn du den Link
@@ -261,7 +321,7 @@ function DatenschutzPage() {
       </section>
 
       <section>
-        <h2>10. Deine Rechte</h2>
+        <h2>11. Deine Rechte</h2>
         <p>
           Du kannst im Rahmen des anwendbaren Rechts insbesondere Auskunft über deine Personendaten
           sowie deren Berichtigung, Löschung oder Herausgabe verlangen und einer Bearbeitung
@@ -278,7 +338,7 @@ function DatenschutzPage() {
       </section>
 
       <section>
-        <h2>11. Änderungen</h2>
+        <h2>12. Änderungen</h2>
         <p>
           Wir passen diese Datenschutzerklärung an, wenn sich Datenbearbeitungen, eingesetzte
           Dienste oder rechtliche Anforderungen ändern. Es gilt die jeweils auf dieser Website

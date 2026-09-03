@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import { AnalyticsConsentBanner } from "@/components/analytics-consent";
 import frauncesFont from "@/assets/fonts/fraunces-latin.woff2?url";
 import interFont from "@/assets/fonts/inter-latin.woff2?url";
 import appCss from "../styles.css?url";
@@ -160,5 +161,10 @@ function RootComponent() {
     document.documentElement.lang = locale === "en" ? "en" : "de-CH";
   }, [location.pathname]);
 
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <AnalyticsConsentBanner pathname={location.pathname} />
+    </>
+  );
 }

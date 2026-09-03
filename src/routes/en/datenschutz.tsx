@@ -32,12 +32,13 @@ function EnglishPrivacyPage() {
       title={pageTitle}
       description={description}
     >
-      <p className="legal-meta">Last updated: 31 August 2026</p>
+      <p className="legal-meta">Last updated: 3 September 2026</p>
 
       <aside className="legal-summary" aria-labelledby="privacy-summary-title">
         <h2 id="privacy-summary-title">Key points at a glance</h2>
         <ul>
-          <li>This website does not use any analytics or advertising trackers.</li>
+          <li>Google Analytics loads only after you give explicit consent.</li>
+          <li>We do not use advertising trackers and have disabled ad personalisation.</li>
           <li>Fonts are hosted locally, meaning no connection is made to Google Fonts.</li>
           <li>
             The Tidio chat window loads upon visiting the website and appears as a contact icon at
@@ -201,14 +202,71 @@ function EnglishPrivacyPage() {
         </p>
       </section>
 
-      <section id="cookies">
-        <h2>7. Cookies and similar technologies</h2>
+      <section id="analytics">
+        <h2>7. Google Analytics</h2>
         <p>
-          Wirkstattnatur does not use any first-party analytics or marketing cookies on this website
-          and does not store general cookie preferences. Your selected website language is stored in
-          local browser storage and in the functional <code>wirkstattnatur-locale</code> cookie for
-          a maximum of twelve months. This preserves your manual language choice for later visits.
-          The preference is not used for analytics or marketing.
+          With your explicit consent, we use Google Analytics 4, a web analytics service provided by
+          Google Ireland Limited. This website uses measurement ID
+          <code> G-BG8J1YQ71D</code>. Google Analytics helps us understand how the website is used
+          and which content visitors find useful. We use it solely for analytics; advertising
+          signals and personalised advertising are disabled in the website code.
+        </p>
+        <p>
+          The data processed may include pages viewed, the time and approximate duration of a visit,
+          the referring page, technical browser, device, operating-system and language details,
+          interactions, and an approximate region derived from the IP address. Google states that it
+          discards IP addresses from users in Switzerland, the EU and the United Kingdom after
+          deriving location information and before logging them. We do not send names, email
+          addresses, or health information to Google through Google Analytics.
+        </p>
+        <p>
+          Before you consent, the Google Analytics script is not loaded and no analytics data is
+          sent to Google. If you accept, Google Analytics sets the first-party cookies
+          <code> _ga</code> and <code>_ga_*</code> to distinguish visits and sessions. Their
+          lifetime is limited to a maximum of 13 months. You can change your choice at any time
+          through “Cookie settings” in the footer. Withdrawal applies to future processing; existing
+          Analytics cookies are deleted where technically possible.
+        </p>
+        <p>
+          Your consent choice is saved under
+          <code> wirkstattnatur-analytics-consent-v1</code> in local browser storage. It remains
+          there until you delete this website's browser data or we technically request consent
+          again. Google may process analytics data in other countries, particularly the United
+          States. For international transfers, Google refers, among other safeguards, to the
+          Swiss-U.S. Data Privacy Framework and standard contractual clauses.
+        </p>
+        <p>
+          Further information is available in Google's
+          <a href="https://business.safety.google/privacy/" target="_blank" rel="noreferrer">
+            {" "}
+            information about data use
+          </a>
+          , the
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">
+            {" "}
+            Google privacy policy
+          </a>
+          , and its
+          <a
+            href="https://support.google.com/analytics/answer/11397207"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            information about Google Analytics cookies
+          </a>
+          .
+        </p>
+      </section>
+
+      <section id="cookies">
+        <h2>8. Cookies and similar technologies</h2>
+        <p>
+          Essential website functions remain available regardless of your Analytics choice. Your
+          selected website language is stored in local browser storage and in the functional
+          <code> wirkstattnatur-locale</code> cookie for a maximum of twelve months. This preserves
+          your manual language choice for later visits. The preference is not used for analytics or
+          marketing.
         </p>
         <p>
           Due to the automatically loaded Tidio chat widget, entries in local browser storage,
@@ -232,12 +290,12 @@ function EnglishPrivacyPage() {
       </section>
 
       <section>
-        <h2>8. Recipients and cross-border data transfers</h2>
+        <h2>9. Recipients and cross-border data transfers</h2>
         <p>
           Personal data is only accessed by Urs Gremlich and service providers who require it for
-          the purposes described, specifically providers for web hosting, email services, and the
-          optional chat feature. They process data either under contractual data processing
-          agreements or under their own data protection responsibility.
+          the purposes described, specifically providers for web hosting, email services, the
+          optional chat feature, and—after consent—website analytics. They process data either under
+          contractual data processing agreements or under their own data protection responsibility.
         </p>
         <p>
           If data is transferred to a country without an adequate level of data protection, we
@@ -248,7 +306,7 @@ function EnglishPrivacyPage() {
       </section>
 
       <section>
-        <h2>9. External links</h2>
+        <h2>10. External links</h2>
         <p>
           Links to Google Maps, Google reviews, and other external websites are not embedded
           widgets. Data is only transmitted to the respective provider when you actively click and
@@ -258,7 +316,7 @@ function EnglishPrivacyPage() {
       </section>
 
       <section>
-        <h2>10. Your rights</h2>
+        <h2>11. Your rights</h2>
         <p>
           Under applicable data protection law, you have the right to request information about your
           personal data, as well as its rectification, erasure, or surrender, and to object to data
@@ -275,7 +333,7 @@ function EnglishPrivacyPage() {
       </section>
 
       <section>
-        <h2>11. Amendments</h2>
+        <h2>12. Amendments</h2>
         <p>
           We update this privacy policy whenever data processing practices, third-party services, or
           legal requirements change. The version published on this website at any given time is the

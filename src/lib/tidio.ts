@@ -1,4 +1,5 @@
 type TidioChatApi = {
+  hide: () => void;
   open: () => void;
   show: () => void;
   setColorPalette: (color: string) => void;
