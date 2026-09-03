@@ -1,6 +1,5 @@
 # Wirkstattnatur website
 
-
 Website for Wirkstattnatur, Urs Gremlich's personal training, Pilates, golf fitness, karate, and massage practice in the Thalwil and Horgen area.
 
 ## Local development
