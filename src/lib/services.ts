@@ -524,7 +524,7 @@ export const serviceOffers = [
       },
     ],
     facts: [
-      { value: "alle Levels", label: "Grad" },
+      { value: "Alle Levels", label: "Grad" },
       { value: "60 Min.", label: "Dauer" },
       { value: "80 CHF", label: "Monat" },
     ],

@@ -67,6 +67,8 @@ The desktop and mobile menus follow the same order:
 
 The German homepage is `/` and the English overview is `/en`. `src/lib/locale.ts` owns the locale rules: the first visit follows the visitor's primary system language, while the compact header switch stores an explicit choice. Keep both locale URLs crawlable and maintain reciprocal `hreflang` links when adding translated pages.
 
+Apply content changes to both the German and English versions unless the user explicitly requests a single language. Use natural, locale-appropriate capitalisation rather than copying the source language mechanically.
+
 The current Angebot contains exactly four services:
 
 - Personal Training

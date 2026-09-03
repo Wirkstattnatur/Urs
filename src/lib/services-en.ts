@@ -351,7 +351,7 @@ export const englishServiceTranslations: Record<ServiceSlug, EnglishServiceTrans
       },
     ],
     facts: [
-      { label: "Rank", value: "3rd Dan" },
+      { label: "Rank", value: "All levels" },
       { label: "Duration", value: "60 min." },
       { label: "Per month", value: "80 CHF" },
     ],
