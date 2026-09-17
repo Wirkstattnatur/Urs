@@ -25,10 +25,13 @@ function setAnalyticsDisabled(disabled: boolean) {
   (window as unknown as Record<string, unknown>)[getDisableKey()] = disabled;
 }
 
+// Mirrors Google's official snippet: a stub that queues an Arguments object.
+// Array-based stubs are processed, but the Arguments form is what gtag.js
+// expects and is what the working reference implementation uses.
 function ensureGtag() {
   window.dataLayer ??= [];
-  window.gtag ??= (...args: unknown[]) => {
-    window.dataLayer?.push(args);
+  window.gtag ??= function () {
+    window.dataLayer?.push(arguments as unknown);
   };
 }
 
@@ -84,20 +87,29 @@ export function loadGoogleAnalytics(): Promise<void> {
     ad_user_data: "denied",
     ad_personalization: "denied",
   });
-  window.gtag?.("js", new Date());
-  window.gtag?.("config", analyticsMeasurementId, {
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false,
-    cookie_expires: analyticsCookieLifetimeSeconds,
-    send_page_view: false,
-  });
 
   analyticsLoadPromise = new Promise<void>((resolve) => {
     const script = document.createElement("script");
     script.id = analyticsScriptId;
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsMeasurementId}`;
-    script.addEventListener("load", () => resolve(), { once: true });
+    script.addEventListener(
+      "load",
+      () => {
+        // The tag must be configured after gtag.js has loaded: with the
+        // config call replayed from the pre-load queue, gtag.js initialises
+        // against a consent state it considers pending and silently drops
+        // every hit.
+        window.gtag?.("js", new Date());
+        window.gtag?.("config", analyticsMeasurementId, {
+          allow_google_signals: false,
+          allow_ad_personalization_signals: false,
+          cookie_expires: analyticsCookieLifetimeSeconds,
+        });
+        resolve();
+      },
+      { once: true },
+    );
     script.addEventListener(
       "error",
       () => {
@@ -113,11 +125,18 @@ export function loadGoogleAnalytics(): Promise<void> {
   return analyticsLoadPromise;
 }
 
+let initialPageViewTracked = false;
+
 export async function trackAnalyticsPageView() {
   if (typeof window === "undefined" || readAnalyticsConsent() !== "granted") return;
 
-  await loadGoogleAnalytics();
-  if (readAnalyticsConsent() !== "granted") return;
+  if (!initialPageViewTracked) {
+    // The initial page view is sent by the config call itself once the tag
+    // has loaded; pushing a manual event here would count the visit twice.
+    await loadGoogleAnalytics();
+    if (readAnalyticsConsent() === "granted") initialPageViewTracked = true;
+    return;
+  }
 
   window.gtag?.("event", "page_view", {
     page_location: window.location.href,
