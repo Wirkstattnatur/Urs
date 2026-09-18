@@ -15,6 +15,7 @@ import ursGoalLargeImg from "@/assets/wirkstatt/urs-goal-960.webp";
 import ursSmallImg from "@/assets/wirkstatt/urs-gremlich-480.webp";
 import ursImg from "@/assets/wirkstatt/urs-gremlich-720.webp";
 import ursLargeImg from "@/assets/wirkstatt/urs-gremlich-960.webp";
+import ursXLImg from "@/assets/wirkstatt/urs-gremlich-1200.webp";
 import { ContactCta } from "@/components/contact-cta";
 import { LocationIcon } from "@/components/contact-icons";
 import { ReviewCard } from "@/components/review-card";
@@ -219,7 +220,7 @@ function Home() {
             <h1 className="max-w-4xl font-display text-5xl font-500 leading-[1.02] text-primary-foreground sm:text-6xl lg:text-8xl">
               Bewegung, die <em className="not-italic text-accent">wirkt</em> —{" "}
               <br className="hidden sm:block" />
-              im Rhythmus deines Lebens
+              im Rhythmus deines&nbsp;Lebens
             </h1>
             <p className="mt-8 max-w-2xl text-lg text-primary-foreground/85 lg:text-xl">
               Kein 08/15-Programm. Wir starten dort, wo du stehst — mit einem Trainingsplan, der zu
@@ -227,7 +228,7 @@ function Home() {
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a href="#kontakt" className="site-button site-button-lg site-button-primary">
-                Kennenlerngespräch buchen
+                Kennenlerngespräch vereinbaren
               </a>
               <a href="#angebot" className="site-button site-button-lg site-button-ghost-inverse">
                 Angebot ansehen
@@ -400,10 +401,10 @@ function Home() {
             <div className="relative overflow-hidden rounded-panel bg-secondary shadow-soft lg:col-span-5">
               <img
                 src={ursImg}
-                srcSet={`${ursSmallImg} 480w, ${ursImg} 720w, ${ursLargeImg} 960w`}
+                srcSet={`${ursSmallImg} 480w, ${ursImg} 720w, ${ursLargeImg} 960w, ${ursXLImg} 1200w`}
                 sizes="(min-width: 1280px) 500px, (min-width: 1024px) 40vw, 100vw"
                 width="720"
-                height="480"
+                height="900"
                 alt="Urs Gremlich im Freien vor einem Holzstapel"
                 loading="lazy"
                 className="aspect-[4/5] h-full w-full object-cover"

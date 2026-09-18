@@ -18,7 +18,7 @@ export function ServiceDetailPage({
   const homePath = isEnglish ? "/en" : "/";
   const copy = isEnglish
     ? {
-        bookIntroAction: "Book an introductory consultation",
+        bookIntroAction: "Arrange an introductory consultation",
         exploreOfferAction: "Explore what I offer",
         offerEyebrow: "What I offer",
         galleryLabel: `Insights into ${service.title}`,
@@ -30,7 +30,7 @@ export function ServiceDetailPage({
         contactEyebrow: "Say hello",
       }
     : {
-        bookIntroAction: "Kennenlerngespräch buchen",
+        bookIntroAction: "Kennenlerngespräch vereinbaren",
         exploreOfferAction: "Angebot entdecken",
         offerEyebrow: "Das Angebot",
         galleryLabel: `Einblicke in ${service.title}`,
