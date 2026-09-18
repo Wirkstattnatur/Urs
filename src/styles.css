@@ -274,10 +274,6 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .offer-card-image {
-    opacity: 0;
-  }
-
   .offer-card-details {
     grid-template-rows: 0fr;
     opacity: 0;
@@ -286,12 +282,14 @@
       opacity 500ms ease;
   }
 
-  .offer-card:hover .offer-card-image {
+  .offer-card:hover .offer-card-image,
+  .offer-card:focus .offer-card-image {
     opacity: 1;
     transform: scale(1);
   }
 
-  .offer-card:hover .offer-card-details {
+  .offer-card:hover .offer-card-details,
+  .offer-card:focus .offer-card-details {
     grid-template-rows: 1fr;
     opacity: 1;
   }
