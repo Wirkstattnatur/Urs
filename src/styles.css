@@ -106,7 +106,10 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    hyphens: auto;
+    /* Headings must never hyphenate: iOS breaks even short German words like
+       "deines" mid-syllable. overflow-wrap keeps pathological words from
+       overflowing without hyphenation. */
+    hyphens: manual;
     letter-spacing: -0.02em;
     overflow-wrap: anywhere;
   }
