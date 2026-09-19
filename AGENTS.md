@@ -32,15 +32,6 @@ Important locations:
 
 Do not migrate the project to Next.js, Remix, another router, another CSS system, or another package manager unless the user explicitly requests an architectural migration.
 
-## Installed custom skills
-
-Three globally installed custom skills are available for this project. Use them deliberately and keep this file, `DESIGN_SYSTEM.md`, and the existing codebase as the project-specific source of truth.
-
-- `$vercel-work`: use for React/TanStack/Vite implementation and review work, including route and component changes, SSR/data flow, loading and bundle performance, component composition, accessibility audits, and pre-handoff verification. It is especially useful when a change affects runtime behaviour or component architecture. It must preserve this project's TanStack Start/Router architecture and must not assume or introduce Next.js patterns.
-- `$front-end-design`: use for visible interface work, including new or redesigned pages, layout, typography, colour, responsive behaviour, forms, navigation, motion, content states, and visual/UX audits. Before applying it, read `DESIGN_SYSTEM.md` and `src/styles.css`; the Wirkstattnatur design system and explicit user direction override generic stylistic suggestions.
-- `$seo-geo-foundation`: use for search, local SEO, international SEO, structured data, crawlability, indexing, metadata, sitemaps, and GEO/AI-search audits or implementation. Read the skill before changing search-facing code, keep repository/build/raw-HTML/rendered/provider evidence separate, and never claim rankings or AI citations from a single observation.
-- For changes that affect both appearance and code, use both: use `$front-end-design` to frame the visual and UX direction, then `$vercel-work` to implement, audit, and verify the React behaviour and performance.
-
 ## Current information architecture
 
 Preserve this homepage narrative unless the user asks to restructure it:
@@ -53,7 +44,7 @@ Preserve this homepage narrative unless the user asks to restructure it:
 6. Stimmen (`#stimmen`)
 7. Kontakt (`#kontakt`)
 
-The homepage and service pages share the approved compact contact composition (CTA demo variant 03): one concise invitation with three direct actions. Phone is the lime primary action; email and Tidio chat are outlined secondary actions. Keep these actions compact and single-line. Addresses, the insurance note, and a linked sitemap live in the shared flat, full-width site footer rather than inside the CTA. The footer is not a floating card and its copyright row does not repeat the services. Preserve this hierarchy unless the user asks to revisit it.
+The homepage and service pages share the approved compact contact composition: one concise invitation with three direct actions. Phone is the lime primary action; email and Tidio chat are outlined secondary actions. Keep these actions compact and single-line. Addresses, the insurance note, and a linked sitemap live in the shared flat, full-width site footer rather than inside the CTA. The footer is not a floating card and its copyright row does not repeat the services. Preserve this hierarchy unless the user asks to revisit it.
 
 The desktop and mobile menus follow the same order:
 
@@ -67,9 +58,9 @@ The desktop and mobile menus follow the same order:
 
 The German homepage is `/` and the English overview is `/en`. `src/lib/locale.ts` owns the locale rules: the first visit follows the visitor's primary system language, while the compact header switch stores an explicit choice. Keep both locale URLs crawlable and maintain reciprocal `hreflang` links when adding translated pages.
 
-Apply content changes to both the German and English versions unless the user explicitly requests a single language. Use natural, locale-appropriate capitalisation rather than copying the source language mechanically.
+Apply content changes to both the German and English versions unless the user explicitly requests one language. Use natural, locale-appropriate capitalisation rather than copying the source language mechanically.
 
-The current Angebot contains exactly four services:
+Current Angebot contains exactly four services:
 
 - Personal Training
 - Pilates
@@ -84,6 +75,8 @@ Each homepage offer card links to a dedicated detail page under `/angebot/`. The
 4. Focused contact call-to-action
 
 This structure was adapted from a client-approved draft. Its visual styling was intentionally not carried over; all service pages must continue to use the Wirkstattnatur design system. The shared gallery in the practical section uses a consistent 1:1 image crop.
+
+Offer cards show their photography semi-transparent at every width and reveal the description on hover (desktop) or keyboard focus (see `.offer-card` rules in `src/styles.css`). This behaviour is approved; keep hover and focus states equivalent.
 
 Do not restore numbering, arrows, Massagen, or Just Me to the homepage offer cards unless the user asks. Massages remain a structured method group within Personal Training, not a fifth homepage offer. At wide widths the four cards appear in one row; they collapse responsively to two and then one column.
 
@@ -100,15 +93,17 @@ Service galleries use `src/components/service-gallery.tsx`. They are manually co
 - Never invent qualifications, prices, addresses, reviews, statistics, affiliations, or health claims.
 - Preserve factual nuance. If a claim is unclear or potentially current, verify it from the old website or ask the user.
 
-The legacy site at `https://wirkstattnatur.ch` is the primary source for existing biography, service, qualification, address, and image content. Prefer public pages, the public WordPress API, or the approved scraping workflow. Hostpoint access is read-only unless the user explicitly authorizes a write. Never expose, copy, or reuse WordPress private keys, OAuth credentials, database secrets, or admin tokens.
+The legacy site at `https://wirkstattnatur.ch` is the primary source for existing biography, service, qualification, address, and image content. The public WordPress API is gone, but the legacy WordPress installs (including their media libraries) still exist on the Hostpoint account and are reachable through the read-only SSH access described below. Hostpoint access is read-only unless the user explicitly authorizes a write. Never expose, copy, or reuse WordPress private keys, OAuth credentials, database secrets, or admin tokens.
 
 When bringing legacy images into the new site:
 
 - Download them into `src/assets/wirkstatt/`; do not hotlink them.
 - Use an appropriately sized source rather than an unnecessarily large original.
+- The WordPress uploads contain resized copies only; for photography used at large sizes, ask the user for the photographer's full-resolution original. Known frames from the "Fotografie Manufaktur" delivery: the about portrait is frame 168, the hero staircase is frame 156 (both originals live in the client's delivery folder, not on the server).
 - Inspect the image and crop visually at desktop and mobile sizes.
 - Write meaningful alt text for informative photography and `alt=""` for decorative imagery.
 - Do not replace client photography with generic stock imagery without approval.
+- `scripts/regenerate-urs-image.sh <original.jpg>` regenerates the About portrait webp set (4:5 crop baked in, 480/720/960/1200). Keep the `srcSet` in both homepages in sync with the exported sizes; the old `urs-gremlich.jpg` was a 1024 px export and is gone.
 
 ## Design-system contract
 
@@ -150,7 +145,7 @@ Do not build a generic component library speculatively. Extract a shared compone
 
 ## Tidio chatbot
 
-The Tidio widget is loaded once after hydration through `src/lib/tidio.ts`, so its standard corner launcher is available throughout the site. Its palette is set through Tidio's supported widget API to the website forest green. The contact actions continue to open the same widget instance.
+The Tidio widget is loaded once after hydration through `src/lib/tidio.ts`, so its standard corner launcher is available throughout the site. Its palette is set through Tidio's supported widget API to the website forest green. The contact actions continue to open that widget instance.
 
 - Do not add a second embed.
 - Do not add a separate hard-coded Tidio script to the document shell; initialise the single widget through `loadTidio()` in the root component.
@@ -159,6 +154,14 @@ The Tidio widget is loaded once after hydration through `src/lib/tidio.ts`, so i
 - Dashboard access is required for bot flows, operators, inboxes, and account-level settings.
 - If changing its appearance from code, use supported Tidio APIs and wait for the ready event.
 - Keep active chat use optional. The privacy page must accurately explain that the widget connects to Tidio automatically on an ordinary page visit.
+
+## Google Analytics
+
+Consent-gated GA4 lives in `src/lib/analytics.ts` with measurement ID `G-BG8J1YQ71D`. That ID belongs to the GA4 property "GA4Wirkstattnatur" (Hostpoint client's account "wirkstattnatur.ch", account 19310624, property 347351810, web stream 4374839679). The same account also holds an unused duplicate property ("http://wirkstattnatur.ch - GA4", ID `G-NQWNGD83LJ`) and a legacy MonsterInsights stream; both are candidates for cleanup, so confirm the ID still matches the property before assuming drift.
+
+- The tag loads only after the visitor accepts the cookie banner, so GA undercounts real visits by design. Use Search Console for traffic levels; never "fix" the undercount by loading the tag without consent.
+- Configuration follows Google's canonical consent-mode order: queue only consent commands before the script tag, and run `js`/`config` in the script's load handler. Queuing `js`/`config` before gtag.js loads makes it silently drop every hit.
+- Verify changes end-to-end with the property's Realtime report (the client has granted the maintainer access); local hits from localhost are visible there.
 
 ## Legal and privacy content
 
@@ -178,7 +181,8 @@ The Tidio widget is loaded once after hydration through `src/lib/tidio.ts`, so i
 - Preserve TanStack file-based routing and the `<Outlet />` in the root component.
 - Never edit `src/routeTree.gen.ts` by hand.
 - Preserve server-side rendering and metadata behavior.
-- Do not add dependencies for behavior that can be implemented clearly with the existing stack.
+- The TanStack Start prerenderer writes one output file per route path. Anchor-link routes (`/#kontakt`, …) resolve to the same output file as their bare route, so rendering them rewrites `index.html` concurrently and intermittently truncates it to zero bytes, failing `build:hostpoint`. The `prerender.filter` in `vite.config.ts` excludes hash routes; do not remove it, and keep new routes free of output-path collisions.
+- Do not add dependencies for behavior that can be implemented clearly with existing stack.
 - Use `apply_patch` for deliberate source edits. Do not overwrite whole files merely for convenience.
 - Preserve unrelated user changes in a dirty worktree.
 
@@ -203,16 +207,18 @@ For visible UI/layout changes, also verify in the running site at `http://localh
 
 Use the browser-verification workflow for visual changes and close automation browser sessions after checking. A successful build alone is not sufficient evidence that a design change is correct.
 
-Use Codex's built-in browser for local visual verification. Do not launch or connect to a separate Chrome instance for this project.
+Do not launch or connect to a separate Chrome instance for this project.
 
 ## Source control and deployment
 
 - Do not commit, push, open a pull request, deploy, or modify Hostpoint production files unless the user explicitly requests it.
-- Before any requested commit, inspect the complete diff and keep unrelated user work intact.
+- Before any requested commit, inspect complete diff and keep unrelated user work intact.
+- Two remotes exist: `urs` (`Wirkstattnatur/Urs`) runs the production deployment and holds the deploy secret; `origin` (`vanja-ivancevic/wirkstattnatur-website`) is a mirror whose deploy workflow is disabled because it lacks that secret. Push to both, and never re-enable the workflow on the mirror — its failures are noise, and the Urs run is the only one that deploys.
+- Read-only SSH access to the Hostpoint account: `ssh -i ~/.ssh/wirkstattnatur_hostpoint wirkstat@wirkstat.ssh.cloud.hostpoint.ch`. Use it to inspect legacy WordPress installs and media (e.g. `www/wirkstattnatur.ch/wordpress/wp-content/uploads`, `www/personal-training.wirkstattnatur.ch/wordpress/wp-content/uploads`); never write or delete over it.
 - Do not restore deleted Lovable artifacts during merges or cleanup.
 - Production is hosted by Hostpoint and generated with `npm run build:hostpoint`. Every push to `main` in `Wirkstattnatur/Urs` runs `.github/workflows/deploy-hostpoint-staging.yml` and deploys the verified artifact to the production document root. The workflow retains its historical filename, and the Hostpoint document-root directory retains the legacy staging name. Read `HOSTPOINT_DEPLOYMENT.md` before changing the workflow or hosting configuration.
 - Never place an unrestricted or personal Hostpoint key in GitHub. The workflow must use the dedicated `rrsync -wo` key restricted to the deployment document root.
-- There is no public Hostpoint staging hostname. Keep the defensive staging-host `noindex` rules in place; the production hostname must remain indexable.
+- No public Hostpoint staging hostname exists. Keep the defensive staging-host `noindex` rules in place; the production hostname must remain indexable.
 - Confirm the repository ownership, deployment target, production DNS, mail records, Golden Cobra records, and rollback path before any deployment or domain change.
 
 ## Definition of done
