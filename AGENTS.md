@@ -166,6 +166,8 @@ Measurement preferences live in `src/lib/analytics.ts` with measurement ID `G-BG
 - Configuration follows Google's canonical consent-mode order: queue only consent commands before the script tag, and run `js`/`config` in the script's load handler. Queuing `js`/`config` before gtag.js loads makes it silently drop every hit.
 - `ad_personalization` stays `denied` in every state; do not grant it.
 - The measured contact events are `contact_phone_click`, `contact_email_click`, `contact_chat_open`, and `generate_lead`. Enabling the ads category only makes them usable in Google Ads once they are marked as key events in GA4 and imported there.
+- The ads category is a separate consent from website analytics. A visitor who allows analytics but declines Google Ads performance is still counted in GA4 while their events stay unusable for Ads evaluation, so the Ads conversion column undercounts relative to GA4. Compare the two rather than treating either as the complete picture.
+- Google Ads call reporting does not depend on the cookie banner at all. Phone is the site's primary contact action, so call reporting is the most complete lead signal the account can have; reach for it when Ads and GA4 disagree.
 - Verify changes end-to-end with the property's Realtime report (the client has granted the maintainer access). Development builds never inject the tag, so a local check only exercises the consent-mode queue.
 
 ## Legal and privacy content

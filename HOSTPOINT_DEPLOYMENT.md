@@ -24,10 +24,11 @@ Every push to `main` in `Wirkstattnatur/Urs` runs linting, builds the complete s
 3. Confirm the retired staging host has no public A or AAAA record.
 4. Confirm the locale cookie overrides `Accept-Language` and `/en` never redirects.
 5. Check the complete site at desktop and mobile sizes, including images, navigation, Tidio, legal pages, and direct deep links.
-6. Confirm that `www.wirkstattnatur.ch` redirects to the canonical apex hostname.
-7. Confirm that the privacy pages identify Hostpoint as the hosting provider.
-8. Confirm that the mail records and Golden Cobra subdomain are unchanged.
-9. Re-run the route, header, SEO, and PageSpeed checks on the production hostname after material infrastructure changes.
+6. Confirm the measurement gate holds in production: no Google or Tidio script is requested before a visitor confirms a choice, and afterwards the four contact events reach the GA4 Realtime report.
+7. Confirm that `www.wirkstattnatur.ch` redirects to the canonical apex hostname.
+8. Confirm that the privacy pages identify Hostpoint as the hosting provider.
+9. Confirm that the mail records and Golden Cobra subdomain are unchanged.
+10. Re-run the route, header, SEO, and PageSpeed checks on the production hostname after material infrastructure changes.
 
 ## Rollback
 
