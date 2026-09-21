@@ -10,6 +10,8 @@ Diese Checkliste ergänzt die technische Umsetzung und die Rechtstexte der Websi
 - [ ] Sicherstellen, dass Chatverläufe und Kontakte in Tidio regelmässig gelöscht werden, sobald sie nicht mehr benötigt werden.
 - [ ] Dokumentieren, dass die Auftragsbearbeitungsvereinbarung von Hostpoint als Bestandteil der Webhosting-AGB gilt, und die jeweils akzeptierte Fassung ablegen.
 - [ ] Im Google-Analytics-Konto die Angaben zum Verantwortlichen prüfen, die Datenfreigaben auf das Erforderliche beschränken, Werbepersonalisierung deaktiviert lassen und die Aufbewahrung für Ereignis- und Nutzerdaten auf zwei Monate setzen.
+- [ ] In GA4 die Ereignisse `contact_phone_click`, `contact_email_click`, `contact_chat_open` und `generate_lead` als Schlüsselereignisse markieren und für die Erfolgsmessung nach Google Ads importieren. Erst danach wirkt die Ads-Kategorie; die Kontaktmessung selbst funktioniert unabhängig davon.
+- [ ] Die Opt-out-Auslegung der Messauswahl (Vorauswahl statt vorgängiger Einwilligung) rechtlich prüfen lassen, insbesondere im Hinblick auf Besucherinnen und Besucher aus der EU/EWR, für die die E-Privacy-Richtlinie bei nicht notwendigen Cookies eine vorgängige Einwilligung verlangt.
 - [ ] Die in den Google-Analytics-Kontobedingungen integrierten Datenverarbeitungsbedingungen prüfen und die aktuelle Fassung dokumentieren.
 - [ ] HTTPS für die gesamte Domain erzwingen und Weiterleitungen von HTTP testen.
 - [ ] Festlegen, wie Gesundheitsfragebogen und Gesundheitsangaben sicher übermittelt, abgelegt, zugriffsbeschränkt und gelöscht werden. Vertrauliche Gesundheitsdaten nicht über Tidio oder ungesicherte Nachrichten anfordern.
@@ -28,10 +30,10 @@ Diese Checkliste ergänzt die technische Umsetzung und die Rechtstexte der Websi
 ## Technische Soll-Lage dieser Website
 
 - Google Fonts werden lokal ausgeliefert.
-- Google Analytics wird erst nach ausdrücklicher Einwilligung geladen; Google-Werbetracking und Werbepersonalisierung sind im Website-Code deaktiviert.
+- Google Analytics und die Google-Ads-Erfolgsmessung sind im Banner vorausgewählt, bleiben aber inaktiv, bis die Auswahl bestätigt wird. Vor der Bestätigung wird kein Google-Skript geladen und kein Mess-Cookie gesetzt. «Nur notwendige» lehnt beide ab und löscht vorhandene Mess-Cookies. Google-Werbetracking und Werbepersonalisierung sind im Website-Code deaktiviert.
 - Die Logaholic-Auswertung der Hostpoint-Logfiles ist deaktiviert und darf nicht ohne vorgängige Datenschutzprüfung aktiviert werden.
 - Google Maps und Google-Rezensionen sind nur externe Links und nicht eingebettet.
-- Tidio wird beim Seitenbesuch automatisch geladen, damit das Chatsymbol sichtbar ist; die Datenschutzerklärung beschreibt die dabei entstehende Verbindung und mögliche Browser-Speicherung.
+- Das Chatsymbol am Bildschirmrand ist ein eigenes Element der Website; das Tidio-Skript wird erst geladen, wenn es angeklickt wird. Vor diesem Klick entsteht keine Verbindung zu Tidio. Die Datenschutzerklärung beschreibt die danach entstehende Verbindung und mögliche Browser-Speicherung.
 - Öffentliche Prüfung am 20. August 2026: Der Chat führt direkt zu einem Nachrichtenfeld. Es ist kein Vorabformular sichtbar, und Name, E-Mail-Adresse oder Telefonnummer werden vor der ersten Nachricht nicht zwingend abgefragt.
 
 ## Prüfreferenzen

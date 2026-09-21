@@ -145,7 +145,7 @@ Do not build a generic component library speculatively. Extract a shared compone
 
 ## Tidio chatbot
 
-The Tidio widget is loaded once after hydration through `src/lib/tidio.ts`, so its standard corner launcher is available throughout the site. Its palette is set through Tidio's supported widget API to the website forest green. The contact actions continue to open that widget instance.
+Tidio is loaded on demand through `src/lib/tidio.ts`, and only once the visitor clicks a chat action. `src/components/tidio-launcher.tsx` renders our own forest-green corner launcher while the widget is absent and removes itself once Tidio reports ready, so exactly one launcher is ever on screen. No connection to Tidio exists before that click. Its palette is set through Tidio's supported widget API to the website forest green. The contact actions open that same widget instance.
 
 - Do not add a second embed.
 - Do not add a separate hard-coded Tidio script to the document shell; initialise the single widget through `loadTidio()` in the root component.
@@ -153,15 +153,20 @@ The Tidio widget is loaded once after hydration through `src/lib/tidio.ts`, so i
 - Do not extract or reuse private WordPress/Tidio tokens.
 - Dashboard access is required for bot flows, operators, inboxes, and account-level settings.
 - If changing its appearance from code, use supported Tidio APIs and wait for the ready event.
-- Keep active chat use optional. The privacy page must accurately explain that the widget connects to Tidio automatically on an ordinary page visit.
+- A failed widget load must stay retryable: remove the injected script and clear the pending promise so the launcher returns to its idle state instead of waiting forever.
+- Keep active chat use optional. The privacy page must accurately explain that no connection to Tidio is made until the visitor clicks a chat action.
 
 ## Google Analytics
 
-Consent-gated GA4 lives in `src/lib/analytics.ts` with measurement ID `G-BG8J1YQ71D`. That ID belongs to the GA4 property "GA4Wirkstattnatur" (Hostpoint client's account "wirkstattnatur.ch", account 19310624, property 347351810, web stream 4374839679). The same account also holds an unused duplicate property ("http://wirkstattnatur.ch - GA4", ID `G-NQWNGD83LJ`) and a legacy MonsterInsights stream; both are candidates for cleanup, so confirm the ID still matches the property before assuming drift.
+Measurement preferences live in `src/lib/analytics.ts` with measurement ID `G-BG8J1YQ71D`. That ID belongs to the GA4 property "GA4Wirkstattnatur" (Hostpoint client's account "wirkstattnatur.ch", account 19310624, property 347351810, web stream 4374839679). The same account also holds an unused duplicate property ("http://wirkstattnatur.ch - GA4", ID `G-NQWNGD83LJ`) and a legacy MonsterInsights stream; both are candidates for cleanup, so confirm the ID still matches the property before assuming drift.
 
-- The tag loads only after the visitor accepts the cookie banner, so GA undercounts real visits by design. Use Search Console for traffic levels; never "fix" the undercount by loading the tag without consent.
+- Measurement is opt-out. The banner preselects website analytics and Google Ads performance, but no Google script is loaded and no measurement cookie is set until the visitor confirms a choice. "Nur notwendige" declines both and also deletes existing measurement cookies.
+- Preferences are stored under `wirkstattnatur-measurement-preferences-v2` as `{ analytics, ads }`. The ads category always requires website analytics; clearing analytics clears it too.
+- The tag loads only after a confirmed choice, so visitors who never answer are never counted. Use Search Console for traffic levels; never "fix" the undercount by loading the tag before a choice is confirmed.
 - Configuration follows Google's canonical consent-mode order: queue only consent commands before the script tag, and run `js`/`config` in the script's load handler. Queuing `js`/`config` before gtag.js loads makes it silently drop every hit.
-- Verify changes end-to-end with the property's Realtime report (the client has granted the maintainer access); local hits from localhost are visible there.
+- `ad_personalization` stays `denied` in every state; do not grant it.
+- The measured contact events are `contact_phone_click`, `contact_email_click`, `contact_chat_open`, and `generate_lead`. Enabling the ads category only makes them usable in Google Ads once they are marked as key events in GA4 and imported there.
+- Verify changes end-to-end with the property's Realtime report (the client has granted the maintainer access). Development builds never inject the tag, so a local check only exercises the consent-mode queue.
 
 ## Legal and privacy content
 
@@ -169,7 +174,8 @@ Consent-gated GA4 lives in `src/lib/analytics.ts` with measurement ID `G-BG8J1YQ
 - The AGB content was transferred from the legacy website at the user's explicit request and must not be rewritten, modernised, or harmonised with the site's `du` voice without explicit approval.
 - The privacy statement must describe the site's actual integrations. Update it whenever hosting, analytics, forms, embeds, chat, advertising, or other data flows change.
 - Fonts are self-hosted in `src/assets/fonts/`; do not restore Google Fonts requests.
-- The site uses Google Analytics only after explicit visitor consent and has no advertising trackers. Do not add or expand tracking without explicit user approval and a corresponding consent/privacy review.
+- The site loads no measurement script and sets no measurement cookie before the visitor confirms a choice, and has no advertising trackers; personalised advertising and remarketing stay disabled in code. Do not add or expand tracking without explicit user approval and a corresponding consent/privacy review.
+- The opt-out preselection is a deliberate decision, not an oversight. If it is revisited, review its effect on visitors from the EU/EEA, where the ePrivacy Directive expects prior consent for non-essential cookies.
 - `COMPLIANCE_CHECKLIST.md` records the non-code operational steps that must be confirmed before production and during ongoing use.
 
 ## Coding conventions
