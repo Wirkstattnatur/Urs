@@ -4,7 +4,10 @@ import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
-const nitroPreset = process.env.NITRO_PRESET ?? "node-server";
+// Hostpoint serves the node-server build; Vercel needs its own preset to emit a
+// Build Output API bundle. Vercel sets VERCEL=1 during its builds, so the two
+// targets can share one build script without an environment variable on Vercel.
+const nitroPreset = process.env.NITRO_PRESET ?? (process.env.VERCEL ? "vercel" : "node-server");
 
 export default defineConfig({
   plugins: [
