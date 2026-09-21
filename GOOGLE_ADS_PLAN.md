@@ -154,6 +154,26 @@ every session and is unsuitable as the basis of regular monitoring.
 Recommendation: pursue **API access** for monitoring and use **Editor** for bulk edits in the meantime,
 keeping the browser route for small changes.
 
+### What the browser route can and cannot do
+
+Verified on 21 September 2026, so nobody repeats the attempt:
+
+- **Works:** navigating, reading any page, the campaign Settings drawer (networks, status), the
+  row-selection → "Edit" → Pause bulk flow, and renaming via the "Edit name" control. Turning off the
+  Display Network and pausing the four legacy ads were both done this way.
+- **Does not work:** controls that Google Ads mounts on **hover**, notably the per-ad "Edit this ad"
+  pencil that opens the ad editor. This blocks changing final URLs, which is the most important fix
+  still outstanding. Headless Chrome does not deliver the hover state Angular needs; synthetic
+  `mouseover` mounts the control but it unmounts before a click lands, and native CDP hover does not
+  trigger it at all.
+- A **headed** browser may behave differently, but a headed browser on the operator's own machine
+  steals focus, which is why that route was abandoned.
+- Moving the work to a second machine does not help: Google binds sessions to the device, so a copied
+  Chrome profile arrives **signed out** and cannot be signed in automatically.
+
+Conclusion: treat final-URL and negative-keyword edits as **Editor or manual work**, not browser
+automation, until API access exists.
+
 ## What we still need from Urs
 
 1. **How much capacity does he have for new Pilates clients?** Group size and available slots set a
