@@ -10,12 +10,13 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import { AnalyticsConsentBanner } from "@/components/analytics-consent";
+import { TidioLauncher } from "@/components/tidio-launcher";
 import frauncesFont from "@/assets/fonts/fraunces-latin.woff2?url";
 import interFont from "@/assets/fonts/inter-latin.woff2?url";
 import appCss from "../styles.css?url";
 import { getLocaleFromPath } from "@/lib/locale";
 import { getSiteGraph, jsonLdScript } from "@/lib/seo";
-import { scheduleTidioLoad } from "@/lib/tidio";
+import { registerContactLinkTracking } from "@/lib/analytics";
 
 const brandGreen = "#294f3d";
 
@@ -153,7 +154,7 @@ function RootComponent() {
   const location = useLocation();
 
   useEffect(() => {
-    return scheduleTidioLoad();
+    return registerContactLinkTracking();
   }, []);
 
   useEffect(() => {
@@ -164,6 +165,7 @@ function RootComponent() {
   return (
     <>
       <Outlet />
+      <TidioLauncher pathname={location.pathname} />
       <AnalyticsConsentBanner pathname={location.pathname} />
     </>
   );

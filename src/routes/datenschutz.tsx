@@ -24,19 +24,23 @@ function DatenschutzPage() {
       title="Datenschutzerklärung"
       description="Transparent erklärt: welche Daten wir bearbeiten, wofür wir sie benötigen und welche Wahlmöglichkeiten du hast."
     >
-      <p className="legal-meta">Stand: 3. September 2026</p>
+      <p className="legal-meta">Stand: 19. September 2026</p>
 
       <aside className="legal-summary" aria-labelledby="privacy-summary-title">
         <h2 id="privacy-summary-title">Das Wichtigste in Kürze</h2>
         <ul>
-          <li>Google Analytics wird nur nach deiner ausdrücklichen Einwilligung geladen.</li>
-          <li>Wir verwenden keine Werbetracker und haben Werbepersonalisierung deaktiviert.</li>
+          <li>
+            Website-Statistik und Google-Ads-Erfolgsmessung sind vorausgewählt, bleiben aber
+            inaktiv, bis du deine Auswahl bestätigst. Du kannst beide mit «Nur notwendige» ablehnen
+            oder einzeln einstellen.
+          </li>
+          <li>Personalisierte Werbung und Remarketing bleiben deaktiviert.</li>
           <li>
             Die Schriften werden lokal geladen; dabei findet keine Verbindung zu Google Fonts statt.
           </li>
           <li>
-            Das Tidio-Chatfenster wird beim Seitenbesuch geladen und erscheint als Kontaktsymbol am
-            Bildschirmrand.
+            Unser eigenes Chatsymbol bleibt sichtbar. Eine Verbindung zu Tidio entsteht erst, wenn
+            du es anklickst.
           </li>
           <li>
             Google Maps und andere externe Seiten werden nur geöffnet, wenn du einen Link anklickst.
@@ -144,12 +148,13 @@ function DatenschutzPage() {
         <h2>6. Optionaler Chat mit Tidio</h2>
         <p>
           Für die Chatkommunikation verwenden wir Tidio, eine Kommunikationsplattform von Tidio LLC
-          (San Francisco, USA) und Tidio Poland sp. z o.o. (Szczecin, Polen). Das Tidio-Skript wird
-          beim Seitenbesuch automatisch geladen, damit das Chatsymbol am Bildschirmrand verfügbar
-          ist. Dadurch entsteht bereits vor dem Öffnen des Chatfensters eine Verbindung zu Tidio.
-          Dabei werden technisch notwendige Verbindungsdaten, insbesondere die IP-Adresse, an Tidio
-          übermittelt. Tidio gibt an, die IP-Adresse im Besucherprofil erst zu speichern, wenn eine
-          Person einen Chat startet. Die aktive Nutzung des Chats bleibt freiwillig.
+          (San Francisco, USA) und Tidio Poland sp. z o.o. (Szczecin, Polen). Beim Seitenbesuch wird
+          zunächst nur ein von Wirkstattnatur bereitgestelltes Chatsymbol angezeigt. Das
+          Tidio-Skript wird erst geladen, wenn du dieses Symbol oder eine andere Chat-Schaltfläche
+          anklickst. Erst dann entsteht eine Verbindung zu Tidio und es werden technisch notwendige
+          Verbindungsdaten, insbesondere die IP-Adresse, übermittelt. Tidio gibt an, die IP-Adresse
+          im Besucherprofil erst zu speichern, wenn eine Person einen Chat startet. Die Nutzung des
+          Chats bleibt freiwillig.
         </p>
         <p>
           Der derzeit eingesetzte Chat führt direkt zu einem Nachrichtenfeld. Vor der ersten
@@ -206,39 +211,49 @@ function DatenschutzPage() {
       </section>
 
       <section id="analytics">
-        <h2>7. Google Analytics</h2>
+        <h2>7. Google Analytics und Google-Ads-Erfolgsmessung</h2>
         <p>
-          Mit deiner ausdrücklichen Einwilligung verwenden wir Google Analytics 4, einen
-          Webanalysedienst von Google Ireland Limited. Die Mess-ID dieser Website lautet
-          <code> G-BG8J1YQ71D</code>. Google Analytics hilft uns zu verstehen, wie die Website
-          genutzt wird und welche Inhalte für Besucherinnen und Besucher nützlich sind. Die
-          Auswertung erfolgt ausschliesslich zu Analysezwecken; Werbesignale und personalisierte
-          Werbung sind im Website-Code deaktiviert.
+          Wir bieten Einstellungen für Google Analytics 4, einen Webanalysedienst von Google Ireland
+          Limited, und für die Google-Ads-Erfolgsmessung an. Die Mess-ID dieser Website lautet
+          <code> G-BG8J1YQ71D</code>. Beide Kategorien sind beim ersten Aufruf vorausgewählt,
+          bleiben jedoch inaktiv, bis du die Auswahl bestätigst. Mit «Nur notwendige» kannst du
+          beide direkt ablehnen; unter «Einstellungen» kannst du sie einzeln steuern. Die
+          Ads-Erfolgsmessung setzt die Website-Statistik voraus. Personalisierte Werbung und
+          Remarketing sind im Website-Code dauerhaft deaktiviert.
         </p>
         <p>
           Dabei können insbesondere aufgerufene Seiten, Zeitpunkt und ungefähre Dauer des Besuchs,
-          verweisende Seite, technische Angaben zu Browser, Gerät, Betriebssystem und Sprache,
-          Interaktionen sowie eine aus der IP-Adresse abgeleitete ungefähre Region bearbeitet
-          werden. Google gibt an, IP-Adressen von Nutzerinnen und Nutzern in der Schweiz, der EU und
-          dem Vereinigten Königreich nach der Standortableitung zu verwerfen, bevor sie
-          protokolliert werden. Wir übermitteln Google keine Namen, E-Mail-Adressen oder
-          Gesundheitsangaben über Google Analytics.
+          verweisende Seite, technische Angaben zu Browser, Gerät, Betriebssystem und Sprache sowie
+          Interaktionen bearbeitet werden. Zu den gemessenen Interaktionen gehören Klicks auf die
+          Telefon- und E-Mail-Kontaktmöglichkeiten, das Öffnen des Chats und der Beginn einer
+          Chat-Unterhaltung. Nachrichteninhalte und eingegebene Kontaktangaben werden dabei nicht an
+          Google Analytics übermittelt. Zusätzlich kann eine aus der IP-Adresse abgeleitete
+          ungefähre Region bearbeitet werden. Google gibt an, IP-Adressen von Nutzerinnen und
+          Nutzern in der Schweiz, der EU und dem Vereinigten Königreich nach der Standortableitung
+          zu verwerfen, bevor sie protokolliert werden. Wir übermitteln Google keine Namen,
+          E-Mail-Adressen oder Gesundheitsangaben über Google Analytics.
         </p>
         <p>
-          Vor deiner Einwilligung wird das Google-Analytics-Skript nicht geladen und es werden keine
-          Analysedaten an Google übertragen. Bei Zustimmung setzt Google Analytics die
-          Erstanbieter-Cookies <code>_ga</code> und <code>_ga_*</code>, um Besuche und Sitzungen zu
-          unterscheiden. Ihre Laufzeit ist auf höchstens 13 Monate begrenzt. Du kannst deine Auswahl
-          jederzeit über «Cookie-Einstellungen» im Fussbereich ändern. Ein Widerruf gilt für die
-          Zukunft; vorhandene Analytics-Cookies werden dabei nach Möglichkeit gelöscht.
+          Vor deiner bestätigten Auswahl wird das Google-Analytics-Skript nicht geladen und es
+          werden keine Messdaten an Google übertragen. Wenn du die Website-Statistik aktivierst,
+          setzt Google Analytics die Erstanbieter-Cookies <code>_ga</code> und <code>_ga_*</code>,
+          um Besuche und Sitzungen zu unterscheiden. Ihre Laufzeit ist auf höchstens 13 Monate
+          begrenzt. Du kannst deine Auswahl jederzeit über «Cookie-Einstellungen» im Fussbereich
+          ändern. Wenn du die Google-Ads-Erfolgsmessung aktivierst, werden die entsprechenden
+          Google-Einwilligungssignale für Messzwecke freigegeben. Die gemessenen
+          Kontaktinteraktionen können nach technischer Verknüpfung zur Beurteilung der
+          Google-Ads-Leistung verwendet werden. Eine solche Verknüpfung wird erst mit der
+          Google-Ads-Konfiguration wirksam. Eine spätere Ablehnung gilt für die Zukunft; vorhandene
+          Mess-Cookies werden dabei nach Möglichkeit gelöscht.
         </p>
         <p>
-          Die Einwilligungsentscheidung wird unter
-          <code> wirkstattnatur-analytics-consent-v1</code> im lokalen Browser-Speicher abgelegt.
-          Diese Information bleibt dort, bis du die Website-Daten in deinem Browser löschst oder wir
-          die Einwilligung technisch neu abfragen. Google kann Analysedaten in weiteren Ländern,
-          insbesondere den USA, bearbeiten. Google verweist für internationale Übermittlungen unter
-          anderem auf das Swiss-U.S. Data Privacy Framework und Standardvertragsklauseln.
+          Deine Auswahl wird unter
+          <code> wirkstattnatur-measurement-preferences-v2</code> im lokalen Browser-Speicher
+          abgelegt. Diese Information bleibt dort, bis du die Website-Daten in deinem Browser
+          löschst oder wir die Einwilligung technisch neu abfragen. Google kann Analysedaten in
+          weiteren Ländern, insbesondere den USA, bearbeiten. Google verweist für internationale
+          Übermittlungen unter anderem auf das Swiss-U.S. Data Privacy Framework und
+          Standardvertragsklauseln.
         </p>
         <p>
           Weitere Informationen findest du in den
@@ -267,15 +282,16 @@ function DatenschutzPage() {
       <section id="cookies">
         <h2>8. Cookies und ähnliche Technologien</h2>
         <p>
-          Notwendige Website-Funktionen sind unabhängig von deiner Analytics-Auswahl verfügbar.
-          Deine gewählte Website-Sprache wird im lokalen Browser-Speicher und im funktionalen Cookie
+          Notwendige Website-Funktionen sind unabhängig von deiner Messauswahl verfügbar. Deine
+          gewählte Website-Sprache wird im lokalen Browser-Speicher und im funktionalen Cookie
           <code> wirkstattnatur-locale</code> für höchstens zwölf Monate gespeichert. So bleibt die
           manuelle Sprachauswahl bei späteren Besuchen erhalten. Diese Präferenz wird weder für
           Analyse noch für Marketing verwendet.
         </p>
         <p>
-          Durch das automatisch geladene Tidio-Chatfenster können bereits beim Seitenbesuch Einträge
-          im lokalen Browser-Speicher, Cookies oder vergleichbare Technologien eingesetzt werden.
+          Tidio kann nach deinem Klick auf das Chatsymbol Einträge im lokalen Browser-Speicher,
+          Cookies oder vergleichbare Technologien einsetzen. Vor diesem Klick wird das Tidio-Skript
+          nicht geladen.
         </p>
         <p>
           Tidio erklärt, dass unter normalen Bedingungen überwiegend der lokale Browser-Speicher
@@ -299,9 +315,10 @@ function DatenschutzPage() {
         <h2>9. Empfänger und Bekanntgabe ins Ausland</h2>
         <p>
           Personendaten erhalten nur Urs Gremlich und jene Dienstleister, die sie für den
-          beschriebenen Zweck benötigen, insbesondere Anbieter für Hosting, E-Mail, den optionalen
-          Chat und – nach Einwilligung – Website-Analyse. Sie bearbeiten Daten im Rahmen ihrer
-          vertraglichen Aufgaben oder in eigener datenschutzrechtlicher Verantwortung.
+          beschriebenen Zweck benötigen, insbesondere Anbieter für Hosting, E-Mail, den nach Klick
+          geladenen Chat sowie – entsprechend deiner bestätigten Auswahl – Website-Statistik und
+          Ads-Erfolgsmessung. Sie bearbeiten Daten im Rahmen ihrer vertraglichen Aufgaben oder in
+          eigener datenschutzrechtlicher Verantwortung.
         </p>
         <p>
           Werden Daten in ein Land ohne angemessenes Datenschutzniveau bekanntgegeben, verwenden wir

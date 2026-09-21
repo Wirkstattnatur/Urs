@@ -32,17 +32,21 @@ function EnglishPrivacyPage() {
       title={pageTitle}
       description={description}
     >
-      <p className="legal-meta">Last updated: 3 September 2026</p>
+      <p className="legal-meta">Last updated: 19 September 2026</p>
 
       <aside className="legal-summary" aria-labelledby="privacy-summary-title">
         <h2 id="privacy-summary-title">Key points at a glance</h2>
         <ul>
-          <li>Google Analytics loads only after you give explicit consent.</li>
-          <li>We do not use advertising trackers and have disabled ad personalisation.</li>
+          <li>
+            Website analytics and Google Ads performance measurement are preselected but remain
+            inactive until you confirm your choice. You can reject both with “Necessary only” or
+            configure them individually.
+          </li>
+          <li>Personalised advertising and remarketing remain disabled.</li>
           <li>Fonts are hosted locally, meaning no connection is made to Google Fonts.</li>
           <li>
-            The Tidio chat window loads upon visiting the website and appears as a contact icon at
-            the edge of the screen.
+            Our own chat icon remains visible. A connection to Tidio is made only after you click
+            it.
           </li>
           <li>Google Maps and other external websites are opened only when you click a link.</li>
         </ul>
@@ -146,12 +150,12 @@ function EnglishPrivacyPage() {
         <h2>6. Optional live chat with Tidio</h2>
         <p>
           We use Tidio, a communication platform operated by Tidio LLC (San Francisco, USA) and
-          Tidio Poland sp. z o.o. (Szczecin, Poland), for chat communication. The Tidio script is
-          loaded automatically when you visit the website so that the chat icon is available at the
-          edge of the screen. This establishes a connection to Tidio before the chat window is
-          opened. Technically necessary connection data, particularly your IP address, is
-          transmitted to Tidio. Tidio states that it only saves the IP address in the visitor
-          profile when a person starts a chat. Actively using the chat remains entirely voluntary.
+          Tidio Poland sp. z o.o. (Szczecin, Poland), for chat communication. When you visit the
+          website, you initially see only a chat icon provided by Wirkstattnatur. The Tidio script
+          is loaded only after you click that icon or another chat button. Only then is a connection
+          to Tidio established and technically necessary connection data, particularly your IP
+          address, transmitted. Tidio states that it only saves the IP address in the visitor
+          profile when a person starts a chat. Using the chat remains entirely voluntary.
         </p>
         <p>
           The chat currently opens directly into a message field. No pre-chat form is enabled before
@@ -203,36 +207,46 @@ function EnglishPrivacyPage() {
       </section>
 
       <section id="analytics">
-        <h2>7. Google Analytics</h2>
+        <h2>7. Google Analytics and Google Ads performance measurement</h2>
         <p>
-          With your explicit consent, we use Google Analytics 4, a web analytics service provided by
-          Google Ireland Limited. This website uses measurement ID
-          <code> G-BG8J1YQ71D</code>. Google Analytics helps us understand how the website is used
-          and which content visitors find useful. We use it solely for analytics; advertising
-          signals and personalised advertising are disabled in the website code.
+          We provide settings for Google Analytics 4, a web analytics service supplied by Google
+          Ireland Limited, and for Google Ads performance measurement. This website uses measurement
+          ID <code>G-BG8J1YQ71D</code>. Both categories are preselected on your first visit but
+          remain inactive until you confirm the selection. You can reject both directly with
+          “Necessary only” or configure them individually under “Settings”. Ads performance
+          measurement requires website analytics. Personalised advertising and remarketing are
+          permanently disabled in the website code.
         </p>
         <p>
           The data processed may include pages viewed, the time and approximate duration of a visit,
-          the referring page, technical browser, device, operating-system and language details,
-          interactions, and an approximate region derived from the IP address. Google states that it
-          discards IP addresses from users in Switzerland, the EU and the United Kingdom after
-          deriving location information and before logging them. We do not send names, email
-          addresses, or health information to Google through Google Analytics.
+          the referring page, technical browser, device, operating-system and language details, and
+          interactions. Measured interactions include clicks on the phone and email contact options,
+          opening the chat, and starting a chat conversation. Message content and contact details
+          entered by visitors are not sent to Google Analytics. The data may also include an
+          approximate region derived from the IP address. Google states that it discards IP
+          addresses from users in Switzerland, the EU and the United Kingdom after deriving location
+          information and before logging them. We do not send names, email addresses, or health
+          information to Google through Google Analytics.
         </p>
         <p>
-          Before you consent, the Google Analytics script is not loaded and no analytics data is
-          sent to Google. If you accept, Google Analytics sets the first-party cookies
+          Before you confirm your choice, the Google Analytics script is not loaded and no
+          measurement data is sent to Google. If you enable website analytics, Google Analytics sets
+          the first-party cookies
           <code> _ga</code> and <code>_ga_*</code> to distinguish visits and sessions. Their
           lifetime is limited to a maximum of 13 months. You can change your choice at any time
-          through “Cookie settings” in the footer. Withdrawal applies to future processing; existing
-          Analytics cookies are deleted where technically possible.
+          through “Cookie settings” in the footer. If you enable Google Ads performance measurement,
+          the corresponding Google consent signals are granted for measurement purposes. Once the
+          technical Google Ads link is configured, measured contact interactions may be used to
+          assess Google Ads performance. That use only takes effect when the Google Ads
+          configuration is completed. A later rejection applies to future processing; existing
+          measurement cookies are deleted where technically possible.
         </p>
         <p>
-          Your consent choice is saved under
-          <code> wirkstattnatur-analytics-consent-v1</code> in local browser storage. It remains
-          there until you delete this website's browser data or we technically request consent
-          again. Google may process analytics data in other countries, particularly the United
-          States. For international transfers, Google refers, among other safeguards, to the
+          Your choice is saved under
+          <code> wirkstattnatur-measurement-preferences-v2</code> in local browser storage. It
+          remains there until you delete this website's browser data or we technically request
+          consent again. Google may process analytics data in other countries, particularly the
+          United States. For international transfers, Google refers, among other safeguards, to the
           Swiss-U.S. Data Privacy Framework and standard contractual clauses.
         </p>
         <p>
@@ -262,15 +276,15 @@ function EnglishPrivacyPage() {
       <section id="cookies">
         <h2>8. Cookies and similar technologies</h2>
         <p>
-          Essential website functions remain available regardless of your Analytics choice. Your
+          Essential website functions remain available regardless of your measurement choice. Your
           selected website language is stored in local browser storage and in the functional
           <code> wirkstattnatur-locale</code> cookie for a maximum of twelve months. This preserves
           your manual language choice for later visits. The preference is not used for analytics or
           marketing.
         </p>
         <p>
-          Due to the automatically loaded Tidio chat widget, entries in local browser storage,
-          cookies, or similar technologies may be set as soon as you visit the website.
+          Tidio may use entries in local browser storage, cookies, or similar technologies after you
+          click the chat icon. The Tidio script is not loaded before that click.
         </p>
         <p>
           Tidio states that under normal conditions it primarily relies on local browser storage and
@@ -293,9 +307,10 @@ function EnglishPrivacyPage() {
         <h2>9. Recipients and cross-border data transfers</h2>
         <p>
           Personal data is only accessed by Urs Gremlich and service providers who require it for
-          the purposes described, specifically providers for web hosting, email services, the
-          optional chat feature, and—after consent—website analytics. They process data either under
-          contractual data processing agreements or under their own data protection responsibility.
+          the purposes described, specifically providers for web hosting, email services, the chat
+          feature loaded after a click and—according to your confirmed choice—website analytics and
+          Ads performance measurement. They process data either under contractual data processing
+          agreements or under their own data protection responsibility.
         </p>
         <p>
           If data is transferred to a country without an adequate level of data protection, we

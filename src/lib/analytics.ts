@@ -1,4 +1,7 @@
-export type AnalyticsConsent = "granted" | "denied";
+export type MeasurementPreferences = {
+  analytics: boolean;
+  ads: boolean;
+};
 
 declare global {
   interface Window {
@@ -8,14 +11,21 @@ declare global {
 }
 
 export const analyticsMeasurementId = "G-BG8J1YQ71D";
-export const analyticsConsentStorageKey = "wirkstattnatur-analytics-consent-v1";
+export const measurementPreferencesStorageKey = "wirkstattnatur-measurement-preferences-v2";
 export const openCookieSettingsEvent = "wirkstattnatur:open-cookie-settings";
 
 const analyticsScriptId = "wirkstattnatur-google-analytics";
 const analyticsCookieLifetimeSeconds = 60 * 60 * 24 * 30 * 13;
 
 let analyticsLoadPromise: Promise<void> | undefined;
-let sessionConsent: AnalyticsConsent | null = null;
+let analyticsConfigured = false;
+let initialPageViewTracked = false;
+let sessionPreferences: MeasurementPreferences | null = null;
+
+type ContactEventName =
+  "contact_chat_open" | "contact_email_click" | "contact_phone_click" | "generate_lead";
+
+type ContactMethod = "chat" | "email" | "phone";
 
 function getDisableKey() {
   return `ga-disable-${analyticsMeasurementId}`;
@@ -36,24 +46,50 @@ function ensureGtag() {
   };
 }
 
-export function readAnalyticsConsent(): AnalyticsConsent | null {
+function updateGoogleConsent(preferences: MeasurementPreferences) {
+  window.gtag?.("consent", "update", {
+    analytics_storage: preferences.analytics ? "granted" : "denied",
+    ad_storage: preferences.ads ? "granted" : "denied",
+    ad_user_data: preferences.ads ? "granted" : "denied",
+    ad_personalization: "denied",
+  });
+}
+
+export function readMeasurementPreferences(): MeasurementPreferences | null {
   if (typeof window === "undefined") return null;
 
   try {
-    const value = window.localStorage.getItem(analyticsConsentStorageKey);
-    return value === "granted" || value === "denied" ? value : sessionConsent;
+    const value = window.localStorage.getItem(measurementPreferencesStorageKey);
+    if (!value) return sessionPreferences;
+
+    const parsed = JSON.parse(value) as Partial<MeasurementPreferences>;
+    if (typeof parsed.analytics !== "boolean" || typeof parsed.ads !== "boolean") {
+      return sessionPreferences;
+    }
+
+    return {
+      analytics: parsed.analytics,
+      ads: parsed.analytics && parsed.ads,
+    };
   } catch {
-    return sessionConsent;
+    return sessionPreferences;
   }
 }
 
-export function storeAnalyticsConsent(consent: AnalyticsConsent) {
+export function storeMeasurementPreferences(preferences: MeasurementPreferences) {
   if (typeof window === "undefined") return;
 
-  sessionConsent = consent;
+  const normalizedPreferences = {
+    analytics: preferences.analytics,
+    ads: preferences.analytics && preferences.ads,
+  };
+  sessionPreferences = normalizedPreferences;
 
   try {
-    window.localStorage.setItem(analyticsConsentStorageKey, consent);
+    window.localStorage.setItem(
+      measurementPreferencesStorageKey,
+      JSON.stringify(normalizedPreferences),
+    );
   } catch {
     // The choice still applies for the current page when browser storage is unavailable.
   }
@@ -61,18 +97,14 @@ export function storeAnalyticsConsent(consent: AnalyticsConsent) {
 
 export function loadGoogleAnalytics(): Promise<void> {
   if (typeof window === "undefined") return Promise.resolve();
-  if (readAnalyticsConsent() !== "granted") return Promise.resolve();
+  const preferences = readMeasurementPreferences();
+  if (!preferences?.analytics) return Promise.resolve();
 
   setAnalyticsDisabled(false);
   ensureGtag();
 
-  if (document.getElementById(analyticsScriptId)) {
-    window.gtag?.("consent", "update", {
-      analytics_storage: "granted",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-    });
+  if (analyticsConfigured || document.getElementById(analyticsScriptId)) {
+    updateGoogleConsent(preferences);
     return analyticsLoadPromise ?? Promise.resolve();
   }
 
@@ -82,12 +114,19 @@ export function loadGoogleAnalytics(): Promise<void> {
     ad_user_data: "denied",
     ad_personalization: "denied",
   });
-  window.gtag?.("consent", "update", {
-    analytics_storage: "granted",
-    ad_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-  });
+  updateGoogleConsent(preferences);
+
+  if (import.meta.env.DEV) {
+    window.gtag?.("js", new Date());
+    window.gtag?.("config", analyticsMeasurementId, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+      cookie_expires: analyticsCookieLifetimeSeconds,
+      debug_mode: true,
+    });
+    analyticsConfigured = true;
+    return Promise.resolve();
+  }
 
   analyticsLoadPromise = new Promise<void>((resolve) => {
     const script = document.createElement("script");
@@ -97,16 +136,16 @@ export function loadGoogleAnalytics(): Promise<void> {
     script.addEventListener(
       "load",
       () => {
-        // The tag must be configured after gtag.js has loaded: with the
-        // config call replayed from the pre-load queue, gtag.js initialises
-        // against a consent state it considers pending and silently drops
-        // every hit.
+        // Configure only after gtag.js has loaded. Replaying js/config from the
+        // pre-load queue causes the tag to initialise against pending consent
+        // and silently drop every hit.
         window.gtag?.("js", new Date());
         window.gtag?.("config", analyticsMeasurementId, {
           allow_google_signals: false,
           allow_ad_personalization_signals: false,
           cookie_expires: analyticsCookieLifetimeSeconds,
         });
+        analyticsConfigured = true;
         resolve();
       },
       { once: true },
@@ -126,16 +165,14 @@ export function loadGoogleAnalytics(): Promise<void> {
   return analyticsLoadPromise;
 }
 
-let initialPageViewTracked = false;
-
 export async function trackAnalyticsPageView() {
-  if (typeof window === "undefined" || readAnalyticsConsent() !== "granted") return;
+  if (typeof window === "undefined" || !readMeasurementPreferences()?.analytics) return;
 
   if (!initialPageViewTracked) {
     // The initial page view is sent by the config call itself once the tag
     // has loaded; pushing a manual event here would count the visit twice.
     await loadGoogleAnalytics();
-    if (readAnalyticsConsent() === "granted") initialPageViewTracked = true;
+    if (readMeasurementPreferences()?.analytics) initialPageViewTracked = true;
     return;
   }
 
@@ -146,24 +183,73 @@ export async function trackAnalyticsPageView() {
   });
 }
 
-export function disableGoogleAnalytics() {
-  if (typeof window === "undefined") return;
+export async function trackContactEvent(eventName: ContactEventName, contactMethod: ContactMethod) {
+  if (typeof window === "undefined" || !readMeasurementPreferences()?.analytics) return;
 
-  setAnalyticsDisabled(true);
-  window.gtag?.("consent", "update", {
-    analytics_storage: "denied",
-    ad_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
+  await loadGoogleAnalytics();
+  if (!readMeasurementPreferences()?.analytics) return;
+
+  window.gtag?.("event", eventName, {
+    contact_method: contactMethod,
+    page_path: `${window.location.pathname}${window.location.search}`,
+    transport_type: "beacon",
   });
+}
 
+export function registerContactLinkTracking() {
+  if (typeof document === "undefined") return () => undefined;
+
+  function trackContactLink(event: MouseEvent) {
+    if (!(event.target instanceof Element)) return;
+
+    const link = event.target.closest<HTMLAnchorElement>("a[href]");
+    if (!link) return;
+
+    const href = link.getAttribute("href")?.toLowerCase();
+    if (href?.startsWith("tel:")) {
+      void trackContactEvent("contact_phone_click", "phone");
+    } else if (href?.startsWith("mailto:")) {
+      void trackContactEvent("contact_email_click", "email");
+    }
+  }
+
+  document.addEventListener("click", trackContactLink, { capture: true });
+  return () => document.removeEventListener("click", trackContactLink, { capture: true });
+}
+
+function deleteMeasurementCookies(prefixes: readonly string[]) {
   const cookieNames = document.cookie
     .split(";")
     .map((cookie) => cookie.split("=")[0]?.trim())
-    .filter((name): name is string => Boolean(name?.startsWith("_ga")));
+    .filter((name): name is string =>
+      Boolean(name && prefixes.some((prefix) => name.startsWith(prefix))),
+    );
 
   for (const name of cookieNames) {
     document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax`;
     document.cookie = `${name}=; Domain=.wirkstattnatur.ch; Path=/; Max-Age=0; SameSite=Lax`;
   }
+}
+
+export function applyMeasurementPreferences(preferences: MeasurementPreferences) {
+  if (typeof window === "undefined") return;
+
+  storeMeasurementPreferences(preferences);
+  const normalizedPreferences = readMeasurementPreferences();
+  if (!normalizedPreferences) return;
+
+  if (!normalizedPreferences.ads) {
+    deleteMeasurementCookies(["_gac", "_gcl"]);
+  }
+
+  if (!normalizedPreferences.analytics) {
+    ensureGtag();
+    updateGoogleConsent(normalizedPreferences);
+    setAnalyticsDisabled(true);
+    deleteMeasurementCookies(["_ga", "_gac", "_gcl"]);
+    return;
+  }
+
+  setAnalyticsDisabled(false);
+  void loadGoogleAnalytics();
 }

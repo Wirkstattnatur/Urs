@@ -1,5 +1,8 @@
+import { readMeasurementPreferences, trackContactEvent } from "@/lib/analytics";
+
 type TidioChatApi = {
   hide: () => void;
+  on: (event: "open" | "messageFromVisitor", callback: () => void) => void;
   open: () => void;
   show: () => void;
   setColorPalette: (color: string) => void;
@@ -18,13 +21,40 @@ declare global {
 const TIDIO_WIDGET_URL = "https://code.tidio.co/3qrjaekjbikm9l2gftumb7p8sn0lnpek.js";
 const TIDIO_SCRIPT_ID = "wirkstattnatur-tidio";
 const TIDIO_BRAND_COLOR = "#294f3d";
-const TIDIO_AUTOMATIC_LOAD_DELAY_MS = 8000;
+const TIDIO_LEAD_TRACKED_KEY = "wirkstattnatur-tidio-lead-tracked";
 
 let tidioReadyPromise: Promise<void> | undefined;
+let tidioLeadTracked = false;
+const configuredTidioApis = new WeakSet<TidioChatApi>();
+
+function trackFirstTidioMessage() {
+  if (!readMeasurementPreferences()?.analytics || tidioLeadTracked) return;
+
+  try {
+    if (window.sessionStorage.getItem(TIDIO_LEAD_TRACKED_KEY)) {
+      tidioLeadTracked = true;
+      return;
+    }
+    window.sessionStorage.setItem(TIDIO_LEAD_TRACKED_KEY, "true");
+  } catch {
+    // Continue with in-memory GA4 tracking if session storage is unavailable.
+  }
+
+  tidioLeadTracked = true;
+  void trackContactEvent("generate_lead", "chat");
+}
 
 function configureTidio() {
-  window.tidioChatApi?.setColorPalette(TIDIO_BRAND_COLOR);
-  window.tidioChatApi?.show();
+  const api = window.tidioChatApi;
+  if (!api) return;
+
+  api.setColorPalette(TIDIO_BRAND_COLOR);
+  api.show();
+
+  if (configuredTidioApis.has(api)) return;
+  configuredTidioApis.add(api);
+  api.on("open", () => void trackContactEvent("contact_chat_open", "chat"));
+  api.on("messageFromVisitor", trackFirstTidioMessage);
 }
 
 export function loadTidio() {
@@ -57,6 +87,11 @@ export function loadTidio() {
     script.addEventListener(
       "error",
       () => {
+        // Leave no tag behind: a retained script makes the next attempt take the
+        // existing-script branch below and wait forever for a ready event that
+        // can no longer arrive.
+        script.remove();
+        document.removeEventListener("tidioChat-ready", handleReady);
         tidioReadyPromise = undefined;
         resolve();
       },
@@ -68,71 +103,14 @@ export function loadTidio() {
   return tidioReadyPromise;
 }
 
-export function scheduleTidioLoad() {
-  if (typeof window === "undefined") return () => undefined;
+export async function openTidioChat() {
+  if (typeof window === "undefined") return false;
 
-  let idleCallbackId: number | undefined;
-  let fallbackTimerId: number | undefined;
-  let started = false;
+  await loadTidio();
+  const api = window.tidioChatApi;
+  if (!api) return false;
 
-  const interactionEvents = ["pointerdown", "keydown", "scroll"] as const;
-
-  function removeInteractionListeners() {
-    interactionEvents.forEach((eventName) => {
-      window.removeEventListener(eventName, startLoading);
-    });
-  }
-
-  function startLoading() {
-    if (started) return;
-    started = true;
-    removeInteractionListeners();
-    window.removeEventListener("load", scheduleIdleLoad);
-
-    if (idleCallbackId !== undefined) window.cancelIdleCallback(idleCallbackId);
-    if (fallbackTimerId !== undefined) window.clearTimeout(fallbackTimerId);
-
-    void loadTidio();
-  }
-
-  function scheduleIdleLoad() {
-    if (started || idleCallbackId !== undefined || fallbackTimerId !== undefined) return;
-
-    fallbackTimerId = window.setTimeout(() => {
-      fallbackTimerId = undefined;
-
-      if ("requestIdleCallback" in window) {
-        idleCallbackId = window.requestIdleCallback(startLoading, { timeout: 2000 });
-        return;
-      }
-
-      startLoading();
-    }, TIDIO_AUTOMATIC_LOAD_DELAY_MS);
-  }
-
-  interactionEvents.forEach((eventName) => {
-    window.addEventListener(eventName, startLoading, { once: true, passive: true });
-  });
-
-  if (document.readyState === "complete") {
-    scheduleIdleLoad();
-  } else {
-    window.addEventListener("load", scheduleIdleLoad, { once: true });
-  }
-
-  return () => {
-    removeInteractionListeners();
-    window.removeEventListener("load", scheduleIdleLoad);
-    if (idleCallbackId !== undefined) window.cancelIdleCallback(idleCallbackId);
-    if (fallbackTimerId !== undefined) window.clearTimeout(fallbackTimerId);
-  };
-}
-
-export function openTidioChat() {
-  if (typeof window === "undefined") return;
-
-  void loadTidio().then(() => {
-    window.tidioChatApi?.show();
-    window.tidioChatApi?.open();
-  });
+  api.show();
+  api.open();
+  return true;
 }
