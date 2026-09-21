@@ -49,6 +49,24 @@ CHF 5,507 produced no attributable lead, and until September the site could not 
 Fixing measurement and destination is the large majority of the available value. Keyword refinement
 is a rounding error beside it.
 
+## Decisions confirmed by Urs (21 September 2026)
+
+- Fix the Pilates landing page: **yes**.
+- Pilates as the main campaign, Personal Training smaller alongside: **yes**. He is open to
+  experimenting with equal weighting, but Golf-Fitness and Karate are **not wanted at all**.
+- Remove the discount and free-trial promises: **confirmed** they no longer exist.
+- Negative keywords for job seekers and other providers: **go**.
+- Budget stays at CHF 2/day until a contact's cost is known: **go**.
+- He named the central change himself: **the KPI has to move from clicks to contacts.**
+- Weekly report: **agreed**.
+- No second Google Maps entry; add the category to the existing profile instead: **agreed**.
+
+Two notes on his reply:
+
+- He answered the "has Google ever produced a client" question only indirectly — he is found, but
+  by other providers rather than potential customers. Capacity and client value are still open.
+- The campaign was paused while awaiting his reply. He may not know that yet.
+
 ## Phase 0 — make it measurable (blocking)
 
 Nothing else is worth doing first, and doing it in the wrong order is worse than doing nothing: an
@@ -88,8 +106,8 @@ is not too small to push Pilates; it is too small to push four services.
 
 - One Search-only campaign, Pilates primary, with Personal Training as a small second ad group.
 - Pause the dynamic-search ad group until destinations and tracking are trustworthy.
-- Golf-Fitness and Karate are worth testing later as ad groups, not campaigns — high intent and
-  almost no local competition — but not at this budget.
+- Golf-Fitness and Karate get no campaigns and no ad groups. Urs confirmed on
+  21 September 2026 that he does not need them.
 - Keep acquisition on Pilates intent and let conversion generalise: the contact path is shared, so a
   Pilates-sourced contact can become whichever client fits. Do not blur the ad or the landing page.
 
@@ -136,17 +154,18 @@ every session and is unsuitable as the basis of regular monitoring.
 Recommendation: pursue **API access** for monitoring and use **Editor** for bulk edits in the meantime,
 keeping the browser route for small changes.
 
-## What we need from Urs
+## What we still need from Urs
 
-1. **Has Google Ads ever produced a client he is aware of?** This is the single most valuable fact and
-   it is not in the account. It tells us whether we are fixing a broken channel or restarting a dead one.
-2. **How much capacity does he have for new Pilates clients?** Group size and available slots set a
+1. **How much capacity does he have for new Pilates clients?** Group size and available slots set a
    ceiling on spend.
-3. **What is a new client worth over a year?** Needed to judge an acceptable cost per lead.
-4. **Who answers the phone and chat, and how quickly?** The site's primary CTA is the phone; conversion
+2. **What is a new client worth over a year?** Needed to judge an acceptable cost per lead.
+3. **Who answers the phone and chat, and how quickly?** The site's primary CTA is the phone; conversion
    depends on the answer rate more than on the ad.
-5. **Is CHF 2/day a real ceiling or just the historic default?**
-6. **Pilates only, or should Personal Training be advertised alongside it?**
+4. **Has Google Ads ever produced a client he is aware of?** Only answered indirectly so far — he is
+   found, but by other providers rather than potential customers. Worth asking again directly, since it
+   distinguishes repairing a broken channel from restarting a dead one.
+
+Settled: budget stays at CHF 2/day, and Pilates leads with Personal Training alongside.
 
 ## Metrics that matter
 
