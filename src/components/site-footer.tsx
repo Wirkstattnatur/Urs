@@ -126,7 +126,7 @@ export function SiteFooter() {
             </div>
           </nav>
 
-          <div>
+          <div data-contact-surface="footer">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
               {isEnglish ? "Contact" : "Kontakt"}
             </p>
@@ -147,7 +147,7 @@ export function SiteFooter() {
               </a>
               <button
                 type="button"
-                onClick={openTidioChat}
+                onClick={() => void openTidioChat("footer")}
                 className="inline-flex w-fit items-center gap-2.5 font-semibold text-primary transition hover:text-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
               >
                 <ChatIcon className="h-4 w-4" />

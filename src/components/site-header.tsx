@@ -211,6 +211,7 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
 
           <a
             href="tel:+41794131830"
+            data-contact-surface="header"
             className="hidden shrink-0 items-center gap-2 rounded-control bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-card transition hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent xl:inline-flex"
           >
             <PhoneIcon className="h-3.5 w-3.5" />
@@ -274,6 +275,7 @@ export function SiteHeader({ variant = "surface", currentServicePath }: SiteHead
 
               <a
                 href="tel:+41794131830"
+                data-contact-surface="header"
                 className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-center text-sm font-semibold text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 <PhoneIcon className="h-3.5 w-3.5" />

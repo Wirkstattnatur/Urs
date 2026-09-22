@@ -1,4 +1,8 @@
-import { readMeasurementPreferences, trackContactEvent } from "@/lib/analytics";
+import {
+  readMeasurementPreferences,
+  trackContactEvent,
+  type ContactSurface,
+} from "@/lib/analytics";
 
 type TidioChatApi = {
   hide: () => void;
@@ -25,6 +29,8 @@ const TIDIO_LEAD_TRACKED_KEY = "wirkstattnatur-tidio-lead-tracked";
 
 let tidioReadyPromise: Promise<void> | undefined;
 let tidioLeadTracked = false;
+let pendingOpenSurface: ContactSurface = "unknown";
+let currentChatSurface: ContactSurface = "unknown";
 const configuredTidioApis = new WeakSet<TidioChatApi>();
 
 function trackFirstTidioMessage() {
@@ -41,7 +47,7 @@ function trackFirstTidioMessage() {
   }
 
   tidioLeadTracked = true;
-  void trackContactEvent("generate_lead", "chat");
+  void trackContactEvent("generate_lead", "chat", currentChatSurface);
 }
 
 function configureTidio() {
@@ -53,7 +59,11 @@ function configureTidio() {
 
   if (configuredTidioApis.has(api)) return;
   configuredTidioApis.add(api);
-  api.on("open", () => void trackContactEvent("contact_chat_open", "chat"));
+  api.on("open", () => {
+    currentChatSurface = pendingOpenSurface;
+    pendingOpenSurface = "unknown";
+    void trackContactEvent("contact_chat_open", "chat", currentChatSurface);
+  });
   api.on("messageFromVisitor", trackFirstTidioMessage);
 }
 
@@ -103,12 +113,16 @@ export function loadTidio() {
   return tidioReadyPromise;
 }
 
-export async function openTidioChat() {
+export async function openTidioChat(sourceSurface: ContactSurface = "unknown") {
   if (typeof window === "undefined") return false;
 
+  pendingOpenSurface = sourceSurface;
   await loadTidio();
   const api = window.tidioChatApi;
-  if (!api) return false;
+  if (!api) {
+    pendingOpenSurface = "unknown";
+    return false;
+  }
 
   api.show();
   api.open();

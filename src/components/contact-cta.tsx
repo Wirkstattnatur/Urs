@@ -26,7 +26,10 @@ export function ContactCta({ eyebrow, title, locale = "de" }: ContactCtaProps) {
         };
 
   return (
-    <div className="rounded-panel bg-primary p-8 text-primary-foreground shadow-soft sm:p-10">
+    <div
+      data-contact-surface="contact_cta"
+      className="rounded-panel bg-primary p-8 text-primary-foreground shadow-soft sm:p-10"
+    >
       <div className="grid items-center gap-8 xl:grid-cols-[minmax(0,0.7fr)_minmax(34rem,1.3fr)]">
         <div>
           <p className="site-eyebrow text-accent">{eyebrow ?? copy.eyebrow}</p>
@@ -55,7 +58,7 @@ export function ContactCta({ eyebrow, title, locale = "de" }: ContactCtaProps) {
           </a>
           <button
             type="button"
-            onClick={openTidioChat}
+            onClick={() => void openTidioChat("contact_cta")}
             className="site-button site-button-md site-button-outline-inverse gap-2 whitespace-nowrap"
           >
             <ChatIcon className="h-5 w-5" />

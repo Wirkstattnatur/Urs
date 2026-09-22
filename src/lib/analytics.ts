@@ -27,6 +27,23 @@ type ContactEventName =
 
 type ContactMethod = "chat" | "email" | "phone";
 
+export type ContactSurface = "contact_cta" | "floating_launcher" | "footer" | "header" | "unknown";
+
+const contactSurfaces = new Set<ContactSurface>([
+  "contact_cta",
+  "floating_launcher",
+  "footer",
+  "header",
+  "unknown",
+]);
+
+function getContactSurface(element: Element): ContactSurface {
+  const surface = element.closest<HTMLElement>("[data-contact-surface]")?.dataset.contactSurface;
+  return surface && contactSurfaces.has(surface as ContactSurface)
+    ? (surface as ContactSurface)
+    : "unknown";
+}
+
 function getDisableKey() {
   return `ga-disable-${analyticsMeasurementId}`;
 }
@@ -183,7 +200,11 @@ export async function trackAnalyticsPageView() {
   });
 }
 
-export async function trackContactEvent(eventName: ContactEventName, contactMethod: ContactMethod) {
+export async function trackContactEvent(
+  eventName: ContactEventName,
+  contactMethod: ContactMethod,
+  sourceSurface: ContactSurface = "unknown",
+) {
   if (typeof window === "undefined" || !readMeasurementPreferences()?.analytics) return;
 
   await loadGoogleAnalytics();
@@ -191,7 +212,8 @@ export async function trackContactEvent(eventName: ContactEventName, contactMeth
 
   window.gtag?.("event", eventName, {
     contact_method: contactMethod,
-    page_path: `${window.location.pathname}${window.location.search}`,
+    page_path: window.location.pathname,
+    source_surface: sourceSurface,
     transport_type: "beacon",
   });
 }
@@ -206,10 +228,11 @@ export function registerContactLinkTracking() {
     if (!link) return;
 
     const href = link.getAttribute("href")?.toLowerCase();
+    const sourceSurface = getContactSurface(link);
     if (href?.startsWith("tel:")) {
-      void trackContactEvent("contact_phone_click", "phone");
+      void trackContactEvent("contact_phone_click", "phone", sourceSurface);
     } else if (href?.startsWith("mailto:")) {
-      void trackContactEvent("contact_email_click", "email");
+      void trackContactEvent("contact_email_click", "email", sourceSurface);
     }
   }
 

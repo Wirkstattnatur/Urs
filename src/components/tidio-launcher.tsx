@@ -38,7 +38,7 @@ export function TidioLauncher({ pathname }: { pathname: string }) {
       disabled={isLoading}
       onClick={() => {
         setIsLoading(true);
-        void openTidioChat().then((opened) => {
+        void openTidioChat("floating_launcher").then((opened) => {
           if (!opened) setIsLoading(false);
         });
       }}

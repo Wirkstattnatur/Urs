@@ -1,7 +1,7 @@
 # Google Ads plan — Wirkstattnatur
 
 Account: **Gremlich - Wirkstattnatur**. Reached through the client's Google login.
-State captured 21 September 2026. Update the "Where the account stands" section at each review.
+State captured 22 September 2026. Update the "Where the account stands" section at each review.
 
 ## Overarching goal
 
@@ -25,18 +25,18 @@ next decision can build on it instead of rediscovering it.
 
 ## Where the account stands
 
-One campaign, **"Personal Training | GSN"**, created 31 August 2020.
+One campaign, **"Pilates & Personal Training | Search"**, created 31 August 2020.
 
 | | Value |
 |---|---|
 | Daily budget | CHF 2.00 |
 | Bid strategy | Maximize clicks |
-| Networks | Google search, Search partners, **Display Network** |
-| Status | Eligible (Limited) — "Missing enough relevant keywords", "Limited by budget" |
+| Networks | Google Search, Search partners |
+| Status | Eligible (Limited) — "Limited by budget" |
 | Languages | English; German |
 | Locations | Horgen, Kilchberg +3 |
 
-Last 30 days (22 Aug – 20 Sep 2026):
+Baseline before the account changes, last 30 days (22 Aug – 20 Sep 2026):
 
 | Network | Impressions | Clicks | CTR | Cost |
 |---|---:|---:|---:|---:|
@@ -76,10 +76,69 @@ decisions — its largest component is simply spending more.
   the discount and free-trial claims and a performance promise. Replacements are drawn from
   `src/lib/services.ts`: the Pilates hero title, eyebrow, facts, `Pilates Care`, and the Personal
   Training hero title, eyebrow, facts, `Hometraining` and the location list.
-- **Campaign left paused** until negative keywords are in place.
+- **Campaign renamed** to `Pilates & Personal Training | Search` and re-enabled after the destination
+  and copy fixes. Its two intended ad groups and responsive ads are eligible; the dynamic-search ad
+  group and four obsolete expanded text ads remain paused.
+- **Campaign-level negative-keyword safety layer added.** Fifty-four broad and phrase negatives now
+  exclude trainer jobs and education, agencies and vendors, unrelated modalities, free/online
+  workouts, and the competitor brands already seen in search terms. The historical exact negatives
+  remain in place for now; review them from evidence rather than deleting them wholesale.
 
-Still outstanding: the campaign rename (the UI's name field would not commit), and the negative
-keyword rebuild.
+On 22 September, `generate_lead` was retained as the only Primary imported website action. The
+phone-click, email-click, and chat-open actions are Secondary: they describe intent, not a confirmed
+lead. The inactive `Website traffic` page-view action is also Secondary. The *Page view* goal was
+removed from account defaults and the campaign settings now show only *Submit lead forms* as its
+conversion goal. `Local actions - Website visits` remains a Google-hosted Primary action in the
+account, but its Page view goal is not assigned to the campaign. There are still no measured lead
+conversions, so Maximize clicks is unchanged.
+
+Call reporting is on and the approved account/ad-group call asset uses Urs's existing number. Its
+editor reports "call recording off". The conversion setup currently offers website calls and uploads,
+but not *Calls from ads*; the account has no duration-qualified call action to verify yet. Check again
+after Google's call-reporting change has propagated; never promote a phone-button click as a substitute.
+The conversion wizard was checked again on 22 September and still offered only website calls and
+uploads. The imported `generate_lead` action has no recent conversions and is counted in GA4, not
+directly in Ads. The website emits it only for a visitor's first Tidio message, and only when the
+visitor has enabled analytics. It does not represent phone or email enquiries.
+
+The conversion wizard was rechecked with *Conversions from phone calls* as the only selected source
+and *Phone call lead* as the category. It offered website-number calls and click-to-call on the
+website, but still no *Calls from ads* option. Account settings confirm call reporting is on, and
+the Swiss call asset is eligible. Do not substitute the existing *Clicks to call* proxy for a
+duration-qualified call. Ask Google Ads support or the account owner to resolve the missing option
+if it remains unavailable after propagation.
+
+On 22 September, six account-level auto-apply recommendation types were disabled in the History
+tab and verified Off: *Improve your responsive search ads*, *Remove non-serving keywords*, *Use
+optimized targeting*, *Upgrade your conversion tracking*, *Bid more efficiently with Maximize
+clicks*, and *Bid more efficiently with Maximize conversions*. They could otherwise rewrite copy,
+remove local keywords, expand targeting, change attribution, or silently change bidding. Only
+*Use optimized ad rotation* remains On. *Add new keywords* and *Add broad match keywords* were
+already Off. Review recommendations manually during the weekly check.
+
+The account-level `Kontakt` sitelink and its shared ad-group associations now use the site's `du`
+voice (`Mach den ersten Schritt` / `Ich freue mich auf dich`) and link directly to `/#kontakt`. The
+campaign-level `Pilates Thalwil` sitelink now uses `Ruhig und präzise trainieren` / `In Kleingruppen
+oder persönlich` and links directly to `/angebot/pilates`, removing the unsupported medical-outcome
+promise. Both revised assets are pending Google's review. The unsupported `Neukundenrabatt` sitelink
+is paused at account level and its formerly enabled Pilates ad-group association was paused on
+22 September; verify that it remains paused during the weekly asset review.
+
+GA4 now has event-scoped custom dimensions for `contact_method` and `source_surface` (both verified in
+property 347351810). The latter is emitted by the website changes in this release; live event
+delivery still needs verification in GA4 Realtime. GA4 has
+no Search Console link; the signed-in maintainer is not a verified owner of `wirkstattnatur.ch` in the
+link wizard, so Urs or the domain's verified owner must grant access before this can be connected.
+
+On 22 September, three Pilates phrase-match keywords (`pilates thalwil`, `pilates horgen`,
+`pilates privatunterricht`) were added to the Pilates ad group and were pending review. The local
+Personal Training terms `personal training thalwil` and `personal trainer horgen` already existed;
+no duplicate was retained. Four poor-fit generic/workout keywords were paused: `training studio`,
+`coach trainer`, `pilates workout`, and `pilates workout program`. The campaign's CHF 2 daily budget
+did not change. A campaign-level broad negative `reformer` was confirmed, so no duplicate was added.
+
+Still outstanding: a duration-qualified call conversion, real lead-event verification, and a
+deliberate review of the historical exact negatives.
 
 ## The honest diagnosis
 
@@ -104,7 +163,8 @@ Two notes on his reply:
 
 - He answered the "has Google ever produced a client" question only indirectly — he is found, but
   by other providers rather than potential customers. Capacity and client value are still open.
-- The campaign was paused while awaiting his reply. He may not know that yet.
+- The campaign was re-enabled on 22 September 2026 after its destinations, copy, structure and
+  campaign-level negatives were corrected.
 
 ## Phase 0 — make it measurable (blocking)
 
@@ -112,28 +172,41 @@ Nothing else is worth doing first, and doing it in the wrong order is worse than
 imported conversion that never fires teaches Smart Bidding to buy the wrong traffic, which is a
 confident failure rather than an honest one.
 
-- [ ] Mark `generate_lead` and `contact_phone_click` as key events in GA4 (property 347351810).
-      Mark `contact_email_click` and `contact_chat_open` as secondary.
-- [ ] Import those into Google Ads; Primary for the first two, Secondary for the rest.
-- [ ] Enable call reporting with a **60-second minimum**. This does not depend on the cookie banner,
-      so it is the most complete lead signal available for a business whose primary CTA is the phone.
-- [ ] Change the campaign goal off *Page views* to those conversions. Demote Page views to Secondary.
-- [ ] Record a baseline snapshot of the tables above before changing anything else.
+- [x] Register `generate_lead`, `contact_phone_click`, `contact_email_click`, and `contact_chat_open`
+      as key events in GA4 property 347351810.
+- [x] Import all four events into Google Ads. The new-action wizard initially created all four as
+      Primary; before adding their goals to the campaign, keep only `generate_lead` Primary and demote
+      the three contact-click/open proxies to Secondary.
+- [x] Enable account-level call reporting.
+- [ ] Create a duration-qualified **Calls from ads** conversion with a 60-second minimum and confirm a
+      current call or location asset supplies the correct number. This does not depend on the cookie
+      banner, so it is the most complete lead signal available for a business whose primary CTA is the
+      phone.
+- [x] Remove *Page view* from account-default goals; the campaign settings now show *Submit lead
+      forms* only. Keep page views out of bidding while `Local actions - Website visits` remains a
+      Google-hosted Primary action outside the campaign goal.
+- [x] Record a baseline snapshot of the tables above before changing anything else.
 
 ## Phase 1 — fix the account
 
-- [ ] Repoint all six ads: Pilates ads → `/angebot/pilates`, Personal Training → `/angebot/personal-training`.
-- [ ] Turn off the Display Network.
-- [ ] Turn off automatically created assets (they mix the site's `du` voice with the old `Sie` copy).
-- [ ] Pause the two legacy expanded text ads carrying discount and free-trial copy.
-- [ ] Replace the 528 ad-hoc exact negatives with thematic phrase and broad negatives: gyms and fitness
-      centres, competitor brands, trainer jobs, yoga/CrossFit/EMS/Aquafit, free or online workouts,
-      and `reformer` (Urs works on mat, chair and bench only).
-- [ ] Rebuild keywords around genuine local intent: `pilates thalwil`, `pilates horgen`,
-      `pilates privatunterricht`, `personal trainer thalwil`.
-- [ ] Correct the campaign name — it says "Personal Training" while the priority is Pilates.
-- [ ] Keep Maximize clicks with a CPC cap. Smart Bidding needs roughly 15–30 conversions per month and
-      there are currently zero.
+- [x] Repoint the two intended responsive ads: Pilates → `/angebot/pilates`, Personal Training →
+      `/angebot/personal-training`. The four obsolete expanded text ads remain paused with their old
+      URLs and must never be re-enabled unchanged.
+- [x] Turn off the Display Network.
+- [x] Turn off automatically created assets (they mix the site's `du` voice with the old `Sie` copy).
+      The campaign settings were verified as "Off: Use only assets I provide directly for my ads"
+      after Urs confirmed Google's warning on 22 September.
+- [x] Pause the four legacy expanded text ads carrying discount, free-trial or unsupported copy.
+- [x] Add a campaign-level thematic phrase/broad layer for trainer jobs and education, agencies and
+      vendors, unrelated modalities, free/online workouts, and competitor brands.
+- [ ] Review and retire redundant historical exact negatives only when the search-terms evidence shows
+      they are safely covered by the thematic layer.
+- [x] Start a small local-intent experiment with `pilates thalwil`, `pilates horgen`, and
+      `pilates privatunterricht` in the Pilates ad group. Existing Personal Training local terms
+      include `personal trainer thalwil`, `personal training thalwil`, and `personal trainer horgen`.
+- [x] Rename the campaign to `Pilates & Personal Training | Search`.
+- [x] Keep Maximize clicks while there are zero verified lead conversions. A maximum CPC cap is not
+      set; choose one only after reviewing the CPC distribution and lost relevant local searches.
 
 ## Phase 2 — restructure Pilates-first
 
@@ -188,7 +261,8 @@ reporting is the tiebreaker.
 Only after four to six weeks of trustworthy data.
 
 - Judge cost per lead against what a client is worth, never against Google's peer-spend recommendation.
-- Consider Maximize Conversions once roughly 15–30 conversions per month are recorded reliably.
+- Consider Maximize Conversions only after reliable lead conversions accumulate, with a deliberate
+  before/after test; do not treat a fixed monthly count as a guarantee that bidding will improve.
 - Increase budget only against a known acceptable cost per lead.
 
 ## Access and tooling
@@ -216,18 +290,17 @@ Verified on 21 September 2026, so nobody repeats the attempt:
 - **Works:** navigating, reading any page, the campaign Settings drawer (networks, status), the
   row-selection → "Edit" → Pause bulk flow, and renaming via the "Edit name" control. Turning off the
   Display Network and pausing the four legacy ads were both done this way.
-- **Does not work:** controls that Google Ads mounts on **hover**, notably the per-ad "Edit this ad"
-  pencil that opens the ad editor. This blocks changing final URLs, which is the most important fix
-  still outstanding. Headless Chrome does not deliver the hover state Angular needs; synthetic
-  `mouseover` mounts the control but it unmounts before a click lands, and native CDP hover does not
-  trigger it at all.
+- **Intermittent:** controls that Google Ads mounts on **hover**, notably the per-ad "Edit this ad"
+  pencil, and long conversion-setup sessions after the account reaches Chrome's high-memory state.
+  The final URLs were corrected on 21 September, but do not rely on this route for repeatable bulk
+  work or unattended monitoring.
 - A **headed** browser may behave differently, but a headed browser on the operator's own machine
   steals focus, which is why that route was abandoned.
 - Moving the work to a second machine does not help: Google binds sessions to the device, so a copied
   Chrome profile arrives **signed out** and cannot be signed in automatically.
 
-Conclusion: treat final-URL and negative-keyword edits as **Editor or manual work**, not browser
-automation, until API access exists.
+Conclusion: prefer **Editor or manual work** for bulk ad and keyword edits, and use the browser for
+bounded account-setting changes until API access exists.
 
 ## What we still need from Urs
 
