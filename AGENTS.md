@@ -179,7 +179,7 @@ Measurement preferences live in `src/lib/analytics.ts` with measurement ID `G-BG
 - The site loads no measurement script and sets no measurement cookie before the visitor confirms a choice, and has no advertising trackers; personalised advertising and remarketing stay disabled in code. Do not add or expand tracking without explicit user approval and a corresponding consent/privacy review.
 - The opt-out preselection is a deliberate decision, not an oversight. If it is revisited, review its effect on visitors from the EU/EEA, where the ePrivacy Directive expects prior consent for non-essential cookies.
 - `COMPLIANCE_CHECKLIST.md` records the non-code operational steps that must be confirmed before production and during ongoing use.
-- `GOOGLE_ADS_PLAN.md` holds the campaign diagnosis, the phased remediation, the operating cadence, and the access constraints. Google blocks sign-in from automated browsers, so the account cannot be reached without a session the user starts by hand; read that file before proposing Ads work.
+- `GOOGLE_ADS_PLAN.md` holds the overarching goal, the campaign diagnosis, the phased remediation, the operating cadence, and the access constraints. The goal is to experiment deliberately and decide from evidence, using Google Ads data together with Google Search Console. Google blocks sign-in from automated browsers, so the account cannot be reached without a session the user starts by hand; read that file before proposing Ads work.
 
 ## Coding conventions
 

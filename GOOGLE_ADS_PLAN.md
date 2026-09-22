@@ -3,6 +3,26 @@
 Account: **Gremlich - Wirkstattnatur**. Reached through the client's Google login.
 State captured 21 September 2026. Update the "Where the account stands" section at each review.
 
+## Overarching goal
+
+**Experiment deliberately, then decide from evidence.**
+
+The account is not a set-and-forget campaign; it is a system to be tested and revised. Keep changing
+keywords, structure, bidding and assets in small, recorded steps, and let the decisions flow from what
+the data says rather than from habit or from Google's recommendations.
+
+Two data sources, used together:
+
+- **Google Ads** — what was served, what was clicked, what it cost, and which conversions are attached.
+- **Google Search Console** — what people actually search for and which queries the site already earns
+  impressions for. This is the cheapest source of new keyword and negative-keyword ideas, and it is the
+  only place that shows demand the ads are *not* capturing.
+
+Every change should be traceable to one of those two, and every review should end in a decision:
+change something, or keep something because the evidence supports it. A review that produces neither is
+a review that wasted a month. Write the reasoning down — in this file, or in the change log — so the
+next decision can build on it instead of rediscovering it.
+
 ## Where the account stands
 
 One campaign, **"Personal Training | GSN"**, created 31 August 2020.
@@ -29,9 +49,9 @@ Last 30 days (22 Aug – 20 Sep 2026):
 
 ### Three defects that explain the numbers
 
-1. **Every ad points at the wrong page.** All six ads carry the final URL
+1. **Every ad pointed at the wrong page.** All six ads carried the final URL
    `wirkstattnatur.ch/personaltraining-thalwil/`, which redirects to `/angebot/personal-training`.
-   Their display URLs advertise `/pilates`. So all 141 clicks — including the 70 on the
+   Their display URLs advertised `/pilates`. So all 141 clicks — including the 70 on the
    best-performing Pilates ad — landed on the Personal Training page.
 2. **Display is consuming a third of the budget** — 61.7% of clicks at CHF 0.24 each, against
    CHF 0.76 on Search, for no measured return.
@@ -41,6 +61,25 @@ Last 30 days (22 Aug – 20 Sep 2026):
 Maximize clicks is the root of the third symptom: the campaign is explicitly optimising for the
 cheapest available traffic rather than for enquiries. The 81.9% optimisation score should not drive
 decisions — its largest component is simply spending more.
+
+### Changes applied on 21 September 2026
+
+- **Display Network turned off.** Verified in the campaign settings drawer.
+- **Two live ads repointed.** The Pilates responsive ad now targets `/angebot/pilates` and the
+  Personal Training responsive ad targets `/angebot/personal-training`. Both saved and verified.
+- **Four legacy expanded text ads paused.** They carried "Aktuell mit Neukundenrabatt",
+  "Kostenloses Probetraining" and "1 Jahr Kundenrabatt" — offers that no longer exist. They still hold
+  the old final URL, so correct or delete them before ever re-enabling them.
+- **Dynamic-search ad group paused.**
+- **Ad copy rewritten to match the website.** Two headlines were removed as unsupported — `Personal
+  Training Senioren` and `Umfassendes Trainingskonzept` appear nowhere in the site's copy — along with
+  the discount and free-trial claims and a performance promise. Replacements are drawn from
+  `src/lib/services.ts`: the Pilates hero title, eyebrow, facts, `Pilates Care`, and the Personal
+  Training hero title, eyebrow, facts, `Hometraining` and the location list.
+- **Campaign left paused** until negative keywords are in place.
+
+Still outstanding: the campaign rename (the UI's name field would not commit), and the negative
+keyword rebuild.
 
 ## The honest diagnosis
 
@@ -113,11 +152,27 @@ is not too small to push Pilates; it is too small to push four services.
 
 ## Phase 3 — operating cadence
 
+The point of the cadence is the loop, not the ceremony. Each review takes both data sources, asks what
+they disagree about, and ends with a decision.
+
 | Cadence | Work |
 |---|---|
-| Weekly (15 min) | Spend and pacing; search-terms report → new negatives; disapprovals |
-| Monthly (45 min) | Leads by channel; cost per lead; ad strength; landing-page check; budget decision |
+| Weekly (15 min) | Spend and pacing; **Ads search-terms report** → new negatives; disapprovals |
+| Monthly (45 min) | Leads by channel; cost per lead; ad strength; landing-page check; **Search Console queries vs the keyword list**; budget decision |
 | Quarterly | Offer, creative refresh, structure, whether to scale |
+
+**The two sources answer different questions, so read them together:**
+
+- **Ads search terms** show what people typed *before* clicking a paid ad — including the terms that
+  wasted money. This is the negative-keyword feed.
+- **Search Console queries** show what people typed *without* clicking an ad, and which pages already
+  rank. Terms the site earns impressions for but the campaign does not bid on are the cheapest new
+  keyword ideas available, and terms with impressions but no clicks tell you the page or the offer is
+  the problem, not the ad.
+
+Experiments belong in the weekly slot. Change one thing at a time — a keyword set, an asset, a bid
+strategy — note it, and give it enough time to produce signal before judging it. At CHF 2/day that
+means weeks, not days; judging a change after three days is reading noise.
 
 **The monthly report has one column that matters: Urs's confirmed new clients.** Spend, clicks and
 even cost per lead are proxies. Without the confirmed-client column the report is incomplete, and it
