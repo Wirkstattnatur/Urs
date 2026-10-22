@@ -19,7 +19,6 @@ export default defineConfig({
         autoStaticPathsDiscovery: true,
         crawlLinks: true,
         failOnError: true,
-        headers: { "Accept-Language": "de-CH" },
         // Anchor links resolve to the same output file as their bare route;
         // rendering both would write index.html concurrently and
         // intermittently truncate it to zero bytes.

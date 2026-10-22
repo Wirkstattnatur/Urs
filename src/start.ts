@@ -1,32 +1,30 @@
 import { createStart, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
-import { shouldUseEnglish } from "./lib/locale-negotiation";
+import { readLocaleCookie } from "./lib/locale-negotiation";
 
 const localeMiddleware = createMiddleware().server(async ({ next, request, handlerType }) => {
   const url = new URL(request.url);
-  const isNegotiatedHomepage =
+  const isCrawlableHomepage =
     handlerType === "router" &&
     (request.method === "GET" || request.method === "HEAD") &&
     url.pathname === "/";
 
-  if (isNegotiatedHomepage) {
-    if (shouldUseEnglish(request.headers.get("cookie"), request.headers.get("accept-language"))) {
-      url.pathname = "/en";
-      return new Response(null, {
-        status: 307,
-        headers: {
-          "cache-control": "private, no-store",
-          location: url.toString(),
-          vary: "Accept-Language, Cookie",
-        },
-      });
-    }
+  if (isCrawlableHomepage && readLocaleCookie(request.headers.get("cookie")) === "en") {
+    url.pathname = "/en";
+    return new Response(null, {
+      status: 307,
+      headers: {
+        "cache-control": "private, no-store",
+        location: url.toString(),
+        vary: "Cookie",
+      },
+    });
   }
 
   const result = await next();
-  if (isNegotiatedHomepage) {
-    result.response.headers.append("vary", "Accept-Language, Cookie");
+  if (isCrawlableHomepage) {
+    result.response.headers.append("vary", "Cookie");
   }
   return result;
 });

@@ -1,6 +1,6 @@
 import { localePreferenceCookieName, type Locale } from "./locale-negotiation";
 
-export { localePreferenceCookieName, type Locale } from "./locale-negotiation";
+export { localePreferenceCookieName, readLocaleCookie, type Locale } from "./locale-negotiation";
 
 const localeStorageKey = localePreferenceCookieName;
 

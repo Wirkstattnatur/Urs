@@ -18,6 +18,7 @@ import ursLargeImg from "@/assets/wirkstatt/urs-gremlich-960.webp";
 import ursXLImg from "@/assets/wirkstatt/urs-gremlich-1200.webp";
 import { ContactCta } from "@/components/contact-cta";
 import { LocationIcon } from "@/components/contact-icons";
+import { LanguageHint } from "@/components/language-hint";
 import { ReviewCard } from "@/components/review-card";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -50,6 +51,11 @@ export const Route = createFileRoute("/")({
 });
 
 const reviews = [
+  {
+    author: "Sonnenkind",
+    language: "de",
+    text: "Dank der wertvollen Unterstützung von Urs konnte ich mir einen grossen Traum erfüllen: den Weg zur Polizei! 💪\n\nUrs ist ein äusserst kompetenter, engagierter und motivierender Personal Trainer, der mit viel Fachwissen, Leidenschaft und Herzblut auf die individuellen Ziele und Bedürfnisse eingeht.\n\nBesonders geschätzt habe ich von Anfang an seine Fähigkeit, mich immer wieder aus meiner Komfortzone zu holen und mir zu zeigen, wozu ich wirklich fähig bin. Mit seiner motivierenden und zugleich fordernden Art hat er mich immer wieder dazu ermutigt, über mich hinauszuwachsen und an meine eigenen Fähigkeiten zu glauben.\n\nDie Trainings sind abwechslungsreich, durchdacht und stets auf die persönlichen Ziele abgestimmt. Besonders wertvoll war für mich seine vielseitige Erfahrung aus unterschiedlichen beruflichen Bereichen sowie sein fundiertes Wissen im Karate und in der Selbstverteidigung. Von diesem breiten Erfahrungsschatz konnte ich sowohl körperlich als auch mental enorm profitieren.\n\nAuch seine Flexibilität und sein Umgang mit Verletzungen oder Rückschlägen sind besonders hervorzuheben. Urs findet stets passende Lösungen und versteht es, das Training individuell anzupassen, ohne dabei das angestrebte Ziel aus den Augen zu verlieren.\n\nWas Urs für mich besonders auszeichnet, ist, dass er nicht einfach nur Trainings durchführt, sondern mit echtem Interesse und grossem Engagement dabei ist. Er erkennt Potenzial, das man selbst vielleicht noch gar nicht sieht, fordert einen heraus und schafft es gleichzeitig, das Vertrauen in die eigenen Fähigkeiten zu stärken.\n\nRückblickend bin ich unglaublich dankbar für seine wertvolle Unterstützung auf meinem Weg zur Polizei. Urs hat einen wichtigen Teil dazu beigetragen, dass aus einem lang gehegten Traum Wirklichkeit werden konnte. Umso schöner ist es, dass ich auch heute noch gelegentlich bei ihm trainiere und weiterhin von seinem Wissen und seiner Erfahrung profitieren darf.\n\nEin herzliches Dankeschön an Urs für seine Geduld, seine Motivation und seinen unermüdlichen Einsatz! ♥️\n\nWirkstattnatur kann ich von Herzen weiterempfehlen!",
+  },
   {
     author: "Florine Allimann",
     language: "en",
@@ -84,8 +90,8 @@ const reviews = [
 
 const reviewColumns = [
   [reviews[0], reviews[1]],
-  [reviews[2], reviews[3]],
-  [reviews[4], reviews[5]],
+  [reviews[2], reviews[3], reviews[4]],
+  [reviews[5], reviews[6]],
 ] as const;
 
 const reviewColumnMotion = [
@@ -179,6 +185,7 @@ function ReviewGrid() {
 function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <LanguageHint />
       <SiteHeader variant="home" />
 
       <main id="main-content">

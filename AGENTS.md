@@ -56,7 +56,7 @@ The desktop and mobile menus follow the same order:
 
 `Angebot` is a grouped navigation item: it links to the homepage offer overview and exposes the four service detail pages. The header is persistent across the homepage and service pages. Reuse `SiteHeader`; do not create route-specific headers or duplicate navigation arrays.
 
-The German homepage is `/` and the English overview is `/en`. `src/lib/locale.ts` owns the locale rules: the first visit follows the visitor's primary system language, while the compact header switch stores an explicit choice. Keep both locale URLs crawlable and maintain reciprocal `hreflang` links when adding translated pages.
+The German homepage is `/` and the English overview is `/en`. `src/lib/locale.ts` owns the locale rules: `/` is the crawlable German default, while the compact header switch stores an explicit choice and a returning visitor who chose English is redirected from `/` to `/en`. First-time visitors whose browser prefers English see a dismissible language hint on the homepage instead of an automatic redirect. Never redirect `/` based on `Accept-Language`; Googlebot must always see the canonical German homepage as a `200` response. Keep both locale URLs crawlable and maintain reciprocal `hreflang` links when adding translated pages.
 
 Apply content changes to both the German and English versions unless the user explicitly requests one language. Use natural, locale-appropriate capitalisation rather than copying the source language mechanically.
 

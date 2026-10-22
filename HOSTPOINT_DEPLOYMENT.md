@@ -22,7 +22,7 @@ Every push to `main` in `Wirkstattnatur/Urs` runs linting, builds the complete s
 1. Confirm all sitemap routes return `200` and contain their canonical metadata in the raw HTML.
 2. Confirm unknown routes return `404`.
 3. Confirm the retired staging host has no public A or AAAA record.
-4. Confirm the locale cookie overrides `Accept-Language` and `/en` never redirects.
+4. Confirm `/` returns `200` for a first-time visitor regardless of `Accept-Language`, that only an explicit `wirkstattnatur-locale=en` cookie redirects to `/en`, and that `/en` never redirects.
 5. Check the complete site at desktop and mobile sizes, including images, navigation, Tidio, legal pages, and direct deep links.
 6. Confirm the measurement gate holds in production: no Google or Tidio script is requested before a visitor confirms a choice, and afterwards the four contact events reach the GA4 Realtime report.
 7. Confirm that `www.wirkstattnatur.ch` redirects to the canonical apex hostname.
