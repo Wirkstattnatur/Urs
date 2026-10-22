@@ -66,7 +66,7 @@ export function ReviewCard({ review, labels, quotationMarks }: ReviewCardProps) 
       <blockquote
         id={reviewBodyId}
         lang={review.language}
-        className="mt-6 text-base leading-relaxed text-foreground/85"
+        className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/85"
       >
         {quotationMarks[0]}
         {displayedText}

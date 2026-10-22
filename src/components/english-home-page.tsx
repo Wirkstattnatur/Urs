@@ -27,6 +27,10 @@ import { googleMapsUrl } from "@/lib/seo";
 
 const reviews = [
   {
+    author: "Sonnenkind",
+    text: "Thanks to Urs's valuable support, I was able to fulfil a big dream: my path into the police force! 💪\n\nUrs is an extremely competent, committed and motivating personal trainer who responds to individual goals and needs with great expertise, passion and dedication.\n\nWhat I appreciated from the start was his ability to keep taking me out of my comfort zone and show me what I am truly capable of. With his motivating yet demanding manner, he repeatedly encouraged me to grow beyond myself and to believe in my own abilities.\n\nThe training sessions are varied, well thought-out and always tailored to personal goals. His wide-ranging experience from different professional fields, as well as his sound knowledge of karate and self-defence, was especially valuable to me. I was able to benefit enormously from this wealth of experience, both physically and mentally.\n\nHis flexibility and his handling of injuries or setbacks also deserve special mention. Urs always finds suitable solutions and knows how to adapt training individually without losing sight of the goal.\n\nWhat particularly sets Urs apart for me is that he doesn't just run training sessions, but is involved with genuine interest and great commitment. He recognises potential that you may not yet see in yourself, challenges you and at the same time strengthens your confidence in your own abilities.\n\nLooking back, I am incredibly grateful for his valuable support on my path into the police force. Urs played an important part in turning a long-held dream into reality. It is all the nicer that I still train with him occasionally today and can continue to benefit from his knowledge and experience.\n\nA heartfelt thank you to Urs for his patience, his motivation and his tireless commitment! ♥️\n\nI can recommend Wirkstattnatur from the bottom of my heart!",
+  },
+  {
     author: "Florine Allimann",
     text: "Urs is a very competent trainer. He has a broad knowledge and experience. He is also certified with the best education. I train there once a week in a small group and saw a difference in my posture very fast. The exercises are efficient and adapted to your personal needs. Urs also pays attention to your health condition and adapts his training. I can only recommend training at Wirkstattnatur.",
   },
@@ -54,8 +58,8 @@ const reviews = [
 
 const reviewColumns = [
   [reviews[0], reviews[1]],
-  [reviews[2], reviews[3]],
-  [reviews[4], reviews[5]],
+  [reviews[2], reviews[3], reviews[4]],
+  [reviews[5], reviews[6]],
 ] as const;
 
 const reviewColumnMotion = [
