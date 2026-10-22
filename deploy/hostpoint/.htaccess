@@ -67,6 +67,8 @@ RewriteRule ^wp-sitemap.*\.xml$ /sitemap.xml [R=301,L]
 RewriteRule ^feed/?$ / [R=301,L]
 RewriteRule ^comments/feed/?$ / [R=301,L]
 RewriteRule ^wordpress/?$ / [R=301,L]
+RewriteRule ^wp-admin(?:/.*)?$ / [R=301,L]
+RewriteRule ^wp-login\.php$ / [R=301,L]
 
 # Service pages and their old child, gallery and method URLs.
 RewriteRule ^personal-?training.*$ /angebot/personal-training [R=301,L,NC]
