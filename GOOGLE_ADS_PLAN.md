@@ -1,7 +1,7 @@
 # Google Ads plan — Wirkstattnatur
 
 Account: **Gremlich - Wirkstattnatur**. Reached through the client's Google login.
-State captured 22 September 2026. Update the "Where the account stands" section at each review.
+State updated 23 September 2026. Update the "Where the account stands" section at each review.
 
 ## Overarching goal
 
@@ -84,29 +84,27 @@ decisions — its largest component is simply spending more.
   workouts, and the competitor brands already seen in search terms. The historical exact negatives
   remain in place for now; review them from evidence rather than deleting them wholesale.
 
-On 22 September, `generate_lead` was retained as the only Primary imported website action. The
-phone-click, email-click, and chat-open actions are Secondary: they describe intent, not a confirmed
-lead. The inactive `Website traffic` page-view action is also Secondary. The *Page view* goal was
-removed from account defaults and the campaign settings now show only *Submit lead forms* as its
-conversion goal. `Local actions - Website visits` remains a Google-hosted Primary action in the
-account, but its Page view goal is not assigned to the campaign. There are still no measured lead
-conversions, so Maximize clicks is unchanged.
+On 22 September, `generate_lead` was initially the only Primary imported website action, and the
+phone-click, email-click, and chat-open actions were Secondary. The inactive `Website traffic`
+page-view action is also Secondary. The *Page view* goal was removed from account defaults.
+
+**Decision on 23 September:** Urs defines the paid-ad conversion as a website phone click, email
+click, or chat open, regardless of contact method. Those three imported GA4 actions are now Primary;
+`generate_lead` (the first Tidio message) is Secondary to avoid counting a chat open and message as
+two campaign conversions. The campaign uses the campaign-specific custom goal *Website contact
+actions*, containing exactly those three website actions. It excludes `generate_lead`, Google-hosted
+*Clicks to call*, directions, and page views. The campaign still uses Maximize clicks until enough
+attributable contact-action data accumulates to evaluate conversion bidding. These
+events are **contact-intent proxies**, not confirmed conversations or new clients. GA4 currently
+counts every occurrence of each key event, so repeat actions and a visitor trying multiple methods
+can produce multiple conversions; report them as actions, not unique people.
 
 Call reporting is on and the approved account/ad-group call asset uses Urs's existing number. Its
-editor reports "call recording off". The conversion setup currently offers website calls and uploads,
-but not *Calls from ads*; the account has no duration-qualified call action to verify yet. Check again
-after Google's call-reporting change has propagated; never promote a phone-button click as a substitute.
-The conversion wizard was checked again on 22 September and still offered only website calls and
-uploads. The imported `generate_lead` action has no recent conversions and is counted in GA4, not
-directly in Ads. The website emits it only for a visitor's first Tidio message, and only when the
-visitor has enabled analytics. It does not represent phone or email enquiries.
-
-The conversion wizard was rechecked with *Conversions from phone calls* as the only selected source
-and *Phone call lead* as the category. It offered website-number calls and click-to-call on the
-website, but still no *Calls from ads* option. Account settings confirm call reporting is on, and
-the Swiss call asset is eligible. Do not substitute the existing *Clicks to call* proxy for a
-duration-qualified call. Ask Google Ads support or the account owner to resolve the missing option
-if it remains unavailable after propagation.
+editor reports "call recording off". On 23 September, the user chose not to pursue call-duration
+measurement: the website phone-button click is the intended phone conversion. This records contact
+intent, not a completed call. Google-hosted *Clicks to call* remains outside the campaign's custom
+goal. The imported `generate_lead` action is counted in GA4, not directly in Ads; the website emits
+it only for a visitor's first Tidio message after analytics is enabled.
 
 On 22 September, six account-level auto-apply recommendation types were disabled in the History
 tab and verified Off: *Improve your responsive search ads*, *Remove non-serving keywords*, *Use
@@ -124,11 +122,11 @@ promise. Both revised assets are pending Google's review. The unsupported `Neuku
 is paused at account level and its formerly enabled Pilates ad-group association was paused on
 22 September; verify that it remains paused during the weekly asset review.
 
-GA4 now has event-scoped custom dimensions for `contact_method` and `source_surface` (both verified in
-property 347351810). The latter is emitted by the website changes in this release; live event
-delivery still needs verification in GA4 Realtime. GA4 has
-no Search Console link; the signed-in maintainer is not a verified owner of `wirkstattnatur.ch` in the
-link wizard, so Urs or the domain's verified owner must grant access before this can be connected.
+GA4 has event-scoped custom dimensions for `contact_method` and `source_surface` (both verified in
+property 347351810). On 23 September, the signed-in maintainer verified ownership of the correct
+`https://wirkstattnatur.ch/` Search Console property using the approved HTML-file method. GA4's
+Search Console links table then confirmed this URL-prefix property is linked to the Wirkstattnatur
+web stream (`4374839679`). The verification file is live and included in `public/` for future builds.
 
 On 22 September, three Pilates phrase-match keywords (`pilates thalwil`, `pilates horgen`,
 `pilates privatunterricht`) were added to the Pilates ad group and were pending review. The local
@@ -137,8 +135,12 @@ no duplicate was retained. Four poor-fit generic/workout keywords were paused: `
 `coach trainer`, `pilates workout`, and `pilates workout program`. The campaign's CHF 2 daily budget
 did not change. A campaign-level broad negative `reformer` was confirmed, so no duplicate was added.
 
-Still outstanding: a duration-qualified call conversion, real lead-event verification, and a
-deliberate review of the historical exact negatives.
+On 23 September, one live click each on the Pilates page's phone, email, and chat actions appeared in
+GA4 Realtime as `contact_phone_click`, `contact_email_click`, and `contact_chat_open`; all three were
+also shown as key events. Google Ads lists the three GA4 imports as enabled Primary actions. Its
+"No recent conversions" status is expected for these direct, non-ad test visits and does not prove
+paid-click attribution. The campaign-specific goal still needs routine observation after real ad
+clicks. A deliberate review of the historical exact negatives also remains.
 
 ## The honest diagnosis
 
@@ -174,17 +176,14 @@ confident failure rather than an honest one.
 
 - [x] Register `generate_lead`, `contact_phone_click`, `contact_email_click`, and `contact_chat_open`
       as key events in GA4 property 347351810.
-- [x] Import all four events into Google Ads. The new-action wizard initially created all four as
-      Primary; before adding their goals to the campaign, keep only `generate_lead` Primary and demote
-      the three contact-click/open proxies to Secondary.
+- [x] Import all four events into Google Ads. Per Urs's 23 September decision, set the three
+      contact-click/open actions Primary and `generate_lead` Secondary. Assign only the three actions
+      to the campaign-specific *Website contact actions* goal.
 - [x] Enable account-level call reporting.
-- [ ] Create a duration-qualified **Calls from ads** conversion with a 60-second minimum and confirm a
-      current call or location asset supplies the correct number. This does not depend on the cookie
-      banner, so it is the most complete lead signal available for a business whose primary CTA is the
-      phone.
-- [x] Remove *Page view* from account-default goals; the campaign settings now show *Submit lead
-      forms* only. Keep page views out of bidding while `Local actions - Website visits` remains a
-      Google-hosted Primary action outside the campaign goal.
+- [x] Use the website phone-button click as the phone conversion, per the 23 September decision.
+      Do not add duration-qualified call measurement unless that decision changes.
+- [x] Remove *Page view* from account-default goals. Keep page views out of the campaign goal while
+      `Local actions - Website visits` remains a Google-hosted Primary action outside it.
 - [x] Record a baseline snapshot of the tables above before changing anything else.
 
 ## Phase 1 — fix the account
@@ -248,8 +247,8 @@ strategy — note it, and give it enough time to produce signal before judging i
 means weeks, not days; judging a change after three days is reading noise.
 
 **The monthly report has one column that matters: Urs's confirmed new clients.** Spend, clicks and
-even cost per lead are proxies. Without the confirmed-client column the report is incomplete, and it
-is the only way to tell a real lead from a `tel:` tap.
+cost per contact action are proxies. Without the confirmed-client column the report is incomplete,
+and it is the only way to tell a real lead from a `tel:` tap.
 
 Reconcile Ads against GA4 rather than trusting either: the ads consent category is separate from
 analytics, so a visitor who allows analytics but declines ads is counted in GA4 while their events
@@ -317,6 +316,6 @@ Settled: budget stays at CHF 2/day, and Pilates leads with Personal Training alo
 
 ## Metrics that matter
 
-Spend · cost per lead · share of leads answered · **confirmed new clients** · retention past month one.
+Spend · cost per contact action · share of enquiries answered · **confirmed new clients** · retention past month one.
 
 Impressions, clicks, CTR and the optimisation score are diagnostics, not goals.
